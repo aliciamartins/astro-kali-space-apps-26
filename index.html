@@ -1356,6 +1356,12 @@
       { key: 'GROUND', label: 'PI Ground Lab Hardware', test: (h, meta) => /principal investigator/i.test(h) || /ground/i.test(meta.projectType || '') },
     ];
 
+    const CANONICAL_PROJECT_TYPES = [
+      'Microgravity Investigation',
+      'Reduced Gravity Investigation',
+      'Ground Investigation',
+    ];
+
     const QUICK_PROMPTS = [
       'Find cool flame droplet studies and link their CSV simulation data',
       'Which studies investigate spacecraft fire safety and smoke aerosols?',
@@ -1428,6 +1434,23 @@
       return HARDWARE_PATTERNS.filter((p) => p.test(hw, meta)).map((p) => p.key);
     }
 
+    function studyMatchesProjectType(inv, summary, targetType) {
+      if (!targetType) return true;
+      const meta = (inv && inv.metadata) || {};
+      const rawType = String(meta.projectType || '').trim() || 'Unspecified';
+      if (rawType.toLowerCase() === targetType.toLowerCase()) return true;
+
+      if (targetType === 'Reduced Gravity Investigation') {
+        const metaText = `${meta.projectType || ''} ${meta.flightProgram || ''} ${meta.spaceProgram || ''} ${meta.investigation_objective || ''}`;
+        if (/reduced[- ]gravity/i.test(metaText)) return true;
+        const sampleFiles = (summary && summary.sample_files) || [];
+        return sampleFiles.some(
+          (f) => /reduced[- ]gravity/i.test(f.folder || '') || /reduced[_ -]?gravity/i.test(f.file_name || '')
+        );
+      }
+      return false;
+    }
+
     function getPrimaryPiLabel(meta) {
       const contacts = Array.isArray(meta.contacts) ? meta.contacts : [];
       if (!contacts.length) return '';
@@ -1487,6 +1510,7 @@
         state.data = data;
 
         const filesMap = data.files_by_accession || {};
+        CANONICAL_PROJECT_TYPES.forEach((ptype) => state.projectTypes.set(ptype, 0));
         let totalFiles = 0;
         let totalBytes = 0;
         let totalPubs = 0;
@@ -1494,15 +1518,24 @@
         for (const inv of data.investigations || []) {
           const acc = inv.accession || '';
           const meta = inv.metadata || {};
+          const summary = filesMap[acc] || {};
           const subNorm = normalizeSubArea(meta.subResearchArea);
           state.subAreas.set(subNorm, (state.subAreas.get(subNorm) || 0) + 1);
-          const pType = String(meta.projectType || '').trim() || 'Unspecified';
-          state.projectTypes.set(pType, (state.projectTypes.get(pType) || 0) + 1);
+
+          for (const ptype of CANONICAL_PROJECT_TYPES) {
+            if (studyMatchesProjectType(inv, summary, ptype)) {
+              state.projectTypes.set(ptype, (state.projectTypes.get(ptype) || 0) + 1);
+            }
+          }
+          const rawType = String(meta.projectType || '').trim() || 'Unspecified';
+          if (!CANONICAL_PROJECT_TYPES.some((c) => c.toLowerCase() === rawType.toLowerCase())) {
+            state.projectTypes.set(rawType, (state.projectTypes.get(rawType) || 0) + 1);
+          }
+
           totalPubs += (meta.publications || []).length;
 
           getHardwareKeys(meta).forEach((k) => state.hardwareGroups.add(k));
 
-          const summary = filesMap[acc] || {};
           totalFiles += Number(summary.file_count || 0);
           totalBytes += Number(summary.total_bytes || 0);
           for (const [cat, cnt] of Object.entries(summary.categories || {})) {
@@ -1564,14 +1597,19 @@
       });
 
       const ptypeSelect = document.getElementById('project-type-filter');
-      [...state.projectTypes.entries()]
-        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-        .forEach(([ptype, count]) => {
-          const opt = document.createElement('option');
-          opt.value = ptype;
-          opt.textContent = `${ptype} (${count})`;
-          ptypeSelect.appendChild(opt);
-        });
+      const orderedTypes = [
+        ...CANONICAL_PROJECT_TYPES,
+        ...[...state.projectTypes.keys()]
+          .filter((k) => !CANONICAL_PROJECT_TYPES.includes(k))
+          .sort((a, b) => a.localeCompare(b)),
+      ];
+      orderedTypes.forEach((ptype) => {
+        if (!state.projectTypes.has(ptype)) return;
+        const opt = document.createElement('option');
+        opt.value = ptype;
+        opt.textContent = `${ptype} (${state.projectTypes.get(ptype)})`;
+        ptypeSelect.appendChild(opt);
+      });
     }
 
     function renderExplorerStrip() {
@@ -1637,7 +1675,7 @@
         if (categoryFilter && !(categoryFilter in (summary.categories || {}))) return false;
         if (subAreaFilter && normalizeSubArea(meta.subResearchArea) !== subAreaFilter) return false;
         if (hardwareFilter && !getHardwareKeys(meta).includes(hardwareFilter)) return false;
-        if (projectTypeFilter && ((meta.projectType || '').trim() || 'Unspecified') !== projectTypeFilter) return false;
+        if (projectTypeFilter && !studyMatchesProjectType(inv, summary, projectTypeFilter)) return false;
         if (!query) return true;
 
         return buildStudyHaystack(inv, summary).includes(query);
@@ -2095,6 +2133,7 @@
       const projectTypes = [];
       if (/\bground investigation|\bground stud|\bground-based/i.test(lower)) projectTypes.push('Ground Investigation');
       if (/\bmicrogravity investigation|\bmicrogravity stud|\bflight investigation/i.test(lower)) projectTypes.push('Microgravity Investigation');
+      if (/\breduced[- ]gravity/i.test(lower)) projectTypes.push('Reduced Gravity Investigation');
 
       // 6. Investigator / Affiliation matching against live dataset
       const investigatorTerms = [];
@@ -2124,7 +2163,16 @@
 
       const formatTokens = new Set(['csv', '.csv', 'xlsx', '.xlsx', 'xls', '.xls', 'pdf', '.pdf', 'zip', '.zip', 'mp4', '.mp4', 'video', 'videos', 'excel', 'spreadsheet', 'spreadsheets']);
       const sortOnlyTokens = new Set(['largest', 'biggest', 'most', 'recent', 'latest', 'newest', 'volume', 'size', 'terabytes', 'gigabytes', 'count']);
-      const projectTypeTokens = new Set(projectTypes.length ? ['ground', 'ground-based', 'microgravity', 'flight'] : []);
+      const projectTypeTokens = new Set();
+      if (projectTypes.includes('Ground Investigation')) {
+        ['ground', 'ground-based'].forEach((t) => projectTypeTokens.add(t));
+      }
+      if (projectTypes.includes('Microgravity Investigation')) {
+        ['microgravity', 'flight'].forEach((t) => projectTypeTokens.add(t));
+      }
+      if (projectTypes.includes('Reduced Gravity Investigation')) {
+        ['reduced', 'gravity', 'reduced-gravity'].forEach((t) => projectTypeTokens.add(t));
+      }
 
       const scientificTerms = [];
       const phrases = ['cool flame', 'cool flames', 'fire safety', 'spacecraft fire', 'flame spread', 'smoke point', 'diffusion flame', 'surface combustion'];
@@ -2257,9 +2305,8 @@
           }
 
           // Project Type filter / affinity
-          const invProjectType = String(meta.projectType || '').trim() || 'Unspecified';
           if (filterPlan.projectTypes && filterPlan.projectTypes.length) {
-            if (!filterPlan.projectTypes.includes(invProjectType)) continue;
+            if (!filterPlan.projectTypes.some((pt) => studyMatchesProjectType(inv, summary, pt))) continue;
             score += 24;
           }
 
