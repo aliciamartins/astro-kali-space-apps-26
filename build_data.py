@@ -15,19 +15,33 @@ from typing import Any
 
 from psi_api_client import BASE_URL, PSIAPIClient, build_repo_folder_path
 
-DEFAULT_KEYWORDS = ("combustion", "flame", "fire")
-MAX_WORKERS = 6
+DEFAULT_RESEARCH_AREA = "Combustion Science"
+DETAIL_FIELDS = "accession,doi,researchArea,subResearchArea"
+DETAIL_WORKERS = 10
+FILE_WORKERS = 6
 
 
-def _matches_keywords(investigation: dict[str, Any], keywords: Sequence[str]) -> bool:
-    """Return True if any keyword appears in the investigation title, objective, or accession."""
-    meta = investigation.get("metadata") or {}
-    haystack = " ".join(
-        str(meta.get(field) or "")
-        for field in ("investigation_title", "investigation_objective")
-    ).lower()
-    accession = str(investigation.get("accession") or "").lower()
-    return any(kw in haystack or kw in accession for kw in keywords)
+def _enrich_investigation_details(
+    client: PSIAPIClient,
+    investigation: dict[str, Any],
+) -> dict[str, Any]:
+    """Fetch repository details and merge doi, researchArea, and subResearchArea into metadata."""
+    enriched = dict(investigation)
+    meta = dict(investigation.get("metadata") or {})
+    inv_id = investigation.get("accession_id")
+    accession = str(investigation.get("accession") or f"PSI-{inv_id}")
+
+    if inv_id is not None:
+        try:
+            details = client.get_investigation_details(inv_id, fields=DETAIL_FIELDS)
+            for field in ("doi", "researchArea", "subResearchArea"):
+                if field in details and details[field] is not None:
+                    meta[field] = details[field]
+        except (RuntimeError, TimeoutError, OSError) as exc:
+            print(f"Warning: {accession} details fetch failed ({exc})", file=sys.stderr)
+
+    enriched["metadata"] = meta
+    return enriched
 
 
 def _summarize_study_files(
@@ -111,24 +125,39 @@ def _fetch_study_summary(
 
 
 def build_dashboard_data(
-    keywords: Sequence[str] | None = DEFAULT_KEYWORDS,
+    research_area: str | None = DEFAULT_RESEARCH_AREA,
     include_all: bool = False,
     max_files: int = 50,
 ) -> dict[str, Any]:
-    """Fetch metadata and file summaries from NASA PSI and return the dashboard payload."""
+    """Fetch metadata, research areas, and file summaries from NASA PSI."""
     client = PSIAPIClient(timeout=20.0)
     all_investigations = client.get_investigations_metadata()
 
-    if include_all or not keywords:
-        selected = all_investigations
-        active_keywords: list[str] = []
+    enriched_by_index: dict[int, dict[str, Any]] = {}
+    with ThreadPoolExecutor(max_workers=DETAIL_WORKERS) as executor:
+        future_to_idx = {
+            executor.submit(_enrich_investigation_details, client, item): idx
+            for idx, item in enumerate(all_investigations)
+        }
+        for future in as_completed(future_to_idx):
+            enriched_by_index[future_to_idx[future]] = future.result()
+
+    enriched_all = [enriched_by_index[idx] for idx in range(len(all_investigations))]
+
+    if include_all or not research_area:
+        selected = enriched_all
+        active_research_area: str | None = None
     else:
-        normalized_kws = [kw.strip().lower() for kw in keywords if kw.strip()]
-        selected = [item for item in all_investigations if _matches_keywords(item, normalized_kws)]
-        active_keywords = normalized_kws
+        target_area = research_area.strip().lower()
+        selected = [
+            item
+            for item in enriched_all
+            if str((item.get("metadata") or {}).get("researchArea") or "").strip().lower() == target_area
+        ]
+        active_research_area = research_area.strip()
 
     files_by_accession: dict[str, dict[str, Any]] = {}
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+    with ThreadPoolExecutor(max_workers=FILE_WORKERS) as executor:
         futures = [
             executor.submit(_fetch_study_summary, client, item, max_files)
             for item in selected
@@ -147,7 +176,7 @@ def build_dashboard_data(
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "keywords": active_keywords,
+        "research_area": active_research_area,
         "total_public_investigations": len(all_investigations),
         "investigations": selected,
         "files_by_accession": ordered_files,
@@ -157,16 +186,15 @@ def build_dashboard_data(
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Build static JSON snapshot for the NASA PSI dashboard.")
     parser.add_argument(
-        "--keyword",
-        action="append",
-        dest="keywords",
-        help="Keyword filter (can be repeated; defaults to combustion, flame, fire)",
+        "--research-area",
+        default=DEFAULT_RESEARCH_AREA,
+        help=f"Filter investigations by exact researchArea (default: {DEFAULT_RESEARCH_AREA!r})",
     )
     parser.add_argument(
         "--all",
         action="store_true",
         dest="include_all",
-        help="Include all public investigations without keyword filtering",
+        help="Include all public investigations without researchArea filtering",
     )
     parser.add_argument(
         "--max-files",
@@ -182,7 +210,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     payload = build_dashboard_data(
-        keywords=args.keywords or DEFAULT_KEYWORDS,
+        research_area=args.research_area,
         include_all=args.include_all,
         max_files=args.max_files,
     )

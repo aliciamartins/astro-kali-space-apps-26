@@ -160,9 +160,9 @@ class PSIAPIClient:
     def get_investigation_details(
         self,
         investigation_id: int | str,
-        fields: str | Sequence[str] | None = "accession,doi",
+        fields: str | Sequence[str] | None = "accession,doi,researchArea,subResearchArea",
     ) -> dict[str, Any]:
-        """Fetch selected repository fields (e.g. accession, doi) for one investigation."""
+        """Fetch selected repository fields (e.g. accession, doi, researchArea) for one investigation."""
         accession_num = _normalize_accession_number(investigation_id)
         params: dict[str, Any] = {}
         if fields:
@@ -287,7 +287,11 @@ def _build_parser() -> tuple[argparse.ArgumentParser, dict[str, argparse.Argumen
 
     details_cmd = subparsers.add_parser("details", help="Get investigation details by accession")
     details_cmd.add_argument("id", help="Investigation accession (e.g. 117 or PSI-117)")
-    details_cmd.add_argument("--fields", default="accession,doi", help="Comma-separated fields")
+    details_cmd.add_argument(
+        "--fields",
+        default="accession,doi,researchArea,subResearchArea",
+        help="Comma-separated fields",
+    )
 
     dl_cmd = subparsers.add_parser("download", help="Download a file from an investigation")
     dl_cmd.add_argument("id", help="Investigation accession (e.g. 174 or PSI-174)")
@@ -302,21 +306,12 @@ def _build_parser() -> tuple[argparse.ArgumentParser, dict[str, argparse.Argumen
         "download": dl_cmd,
     }
 
-    help_cmd = subparsers.add_parser("help", help="Show general help or help for a specific command")
-    help_cmd.add_argument("topic", nargs="?", choices=sorted(command_parsers), help="Optional subcommand name")
-    command_parsers["help"] = help_cmd
-
     return parser, command_parsers
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser, command_parsers = _build_parser()
     args = parser.parse_args(argv)
-
-    if args.command == "help":
-        target = command_parsers.get(args.topic) if args.topic else parser
-        target.print_help()
-        return 0
 
     client = PSIAPIClient()
 

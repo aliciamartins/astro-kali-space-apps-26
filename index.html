@@ -400,8 +400,8 @@
         document.getElementById('kpi-cats').textContent = state.categories.size.toLocaleString();
 
         const generatedAt = data.generated_at ? new Date(data.generated_at).toLocaleString() : 'Unknown';
-        const kwText = (data.keywords && data.keywords.length) ? ` | Keywords: ${data.keywords.join(', ')}` : '';
-        document.getElementById('snapshot-meta').textContent = `Updated: ${generatedAt}${kwText}`;
+        const areaText = data.research_area ? ` | Research Area: ${data.research_area}` : '';
+        document.getElementById('snapshot-meta').textContent = `Updated: ${generatedAt}${areaText}`;
 
         const select = document.getElementById('category-filter');
         [...state.categories].sort().forEach((cat) => {
@@ -434,7 +434,7 @@
         if (!query) return true;
 
         const fileNames = (summary.sample_files || []).map((f) => f.file_name || '').join(' ');
-        const haystack = `${accession} ${meta.investigation_title || ''} ${meta.investigation_objective || ''} ${fileNames}`.toLowerCase();
+        const haystack = `${accession} ${meta.investigation_title || ''} ${meta.investigation_objective || ''} ${meta.researchArea || ''} ${meta.subResearchArea || ''} ${meta.doi || ''} ${fileNames}`.toLowerCase();
         return haystack.includes(query);
       });
 
@@ -456,6 +456,12 @@
         const objectiveBlock = objectiveRaw.length > 320
           ? `<details><summary>Read full objective</summary><p class="objective">${escapeHtml(objectiveRaw)}</p></details>`
           : `<p class="objective">${escapeHtml(objectiveRaw)}</p>`;
+
+        const areaPills = [
+          meta.researchArea ? `<span class="cat-pill" style="color: var(--accent); border-color: rgba(56, 189, 248, 0.35);">${escapeHtml(meta.researchArea)}</span>` : '',
+          meta.subResearchArea ? `<span class="cat-pill">${escapeHtml(meta.subResearchArea)}</span>` : '',
+          meta.doi ? `<a class="cat-pill" href="https://doi.org/${encodeURIComponent(meta.doi)}" target="_blank" rel="noopener">DOI: ${escapeHtml(meta.doi)}</a>` : '',
+        ].filter(Boolean).join('');
 
         const catPills = Object.entries(summary.categories || {})
           .map(([cat, count]) => `<span class="cat-pill">${escapeHtml(cat)}: ${count}</span>`)
@@ -489,6 +495,7 @@
             </td>
             <td>
               <div class="title">${escapeHtml(meta.investigation_title || 'Untitled Investigation')}</div>
+              ${areaPills ? `<div class="pills" style="margin: 0 0 0.5rem;">${areaPills}</div>` : ''}
               ${objectiveBlock}
               ${catPills ? `<div class="pills">${catPills}</div>` : ''}
             </td>

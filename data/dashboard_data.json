@@ -1,10 +1,6 @@
 {
-  "generated_at": "2026-11-15T05:25:41.125534+00:00",
-  "keywords": [
-    "combustion",
-    "flame",
-    "fire"
-  ],
+  "generated_at": "2026-11-15T14:12:11.265212+00:00",
+  "research_area": "Combustion Science",
   "total_public_investigations": 133,
   "investigations": [
     {
@@ -16,7 +12,10 @@
       "metadata": {
         "investigation_title": "Advanced Combustion via Microgravity Experiments / Cool Flames Investigation with Gases",
         "investigation_objective": "1. Plan and support flight testing on the International Space Station (ISS).\n2. Determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane; normal and inverse flames; and a broad range of Zst, Tad, and fluent flow rate.\n3. Support the flight tests with advanced CFD simulations.\n4. Identify or develop a chemical kinetics mechanism that yields good agreement between the CFD predictions and the ISS measurements.\n5. Disseminate the results as widely as possible.",
-        "public_release_date": "20-Nov-2025"
+        "public_release_date": "20-Nov-2025",
+        "doi": "10.60555/cyt1-kh64",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Flames of Gaseous Fuels"
       }
     },
     {
@@ -28,7 +27,10 @@
       "metadata": {
         "investigation_title": "Quantitative Studies of Cool Flame Transitions at Radiation / Stretch Extinction Using Counterflow Flames",
         "investigation_objective": "By using the Flame Extinguishment (FLEX) experimental data from the Physical Sciences Informatics (PSI) system of combustion science, the purpose of this grant was to conduct new simulations and ground-based experiments using ozone-sensitized counterflow flames to:\n    1) Develop a new diagram of the flammability limits of diffusional cool flames affected by radiation, diffusion, and convection.\n    2) Bridge the knowledge gap between the flammability limits and extinction limits of hot flames and cool flames.\n    3) Verify the phenomena observed on the ISS flame extinguishment experiments.\n    4) Obtain new, quantitative data of extinction limit, flame temperature, and species distribution for the validation of kinetic and radiation models involving cool flames.\n    5) Extend the cool flame experiments from the original ISS droplet experiments to a more general ground-based combustion system involving radiation, diffusion, convection, and low-temperature chemistry while maintaining a one-dimensional geometry.",
-        "public_release_date": "18-Sep-2024"
+        "public_release_date": "18-Sep-2024",
+        "doi": "10.60555/80qf-vj95",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Spacecraft Fire Safety"
       }
     },
     {
@@ -40,7 +42,25 @@
       "metadata": {
         "investigation_title": "Effect of External Thermo-Convective Perturbation on Cool Flame Dynamics: A Multidimensional Multi-Physics CFD Analysis",
         "investigation_objective": "The objective of this ground investigation was to use flight data obtained from PSI through NASA\u2019s Flame Extinguishment Experiment (FLEX) to quantify how externally imposed thermal and convective perturbations regulated the dynamics and ultimate fate of already established droplet cool flames, and to explain run-to-run variability by isolating the roles of deliberate heating and unintentional drift-induced convection. Focusing on both small and large droplets, the work mapped stability windows for ignition, sustained oscillation, transitions to hot ignition and warm-flame behavior, and extinction under microgravity. By leveraging and extending the FLEX data in the PSI, this study produced reusable models and sensitivity analyses that coupled low-temperature chemistry with transport and radiative effects.",
-        "public_release_date": "10-Jun-2026"
+        "public_release_date": "10-Jun-2026",
+        "doi": "10.60555/gz0q-b577",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Droplet"
+      }
+    },
+    {
+      "accession": "PSI-115",
+      "date_created": 1748870046846.0,
+      "date_modified": 1748870047434.0,
+      "accession_id": 115,
+      "public": true,
+      "metadata": {
+        "investigation_title": "Utilization of the Smoke Aerosol Measurement Experiment Data for Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity",
+        "investigation_objective": "The objective of this investigation was to use numerical simulation to explore the influence of gravity on pyrolysis smoke growth from a fundamental perspective. The intention of this effort is to quantify the differences between microgravity and Earth gravity smoke, and to identify the fluid dynamic mechanisms that cause the differences.",
+        "public_release_date": "18-Sep-2024",
+        "doi": "10.60555/q0v5-1v28",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Smoke Aerosol, Combustion Simulation"
       }
     },
     {
@@ -52,7 +72,10 @@
       "metadata": {
         "investigation_title": "Smoke Point In Co-flow Experiment",
         "investigation_objective": "The objective of SPICE is to better understand the complex process of combustion by observing flames in a microgravity environment aboard the International Space Station (ISS) and analogous ground experiments.\n\nSpecific objectives were:\n(1) Identify the laminar smoke-point properties of non-buoyant jet diffusion flames under various co-flow conditions in microgravity.\n(2) Determine the effects of burner diameter and co-flow velocity on the luminous flame lengths and smoke points.\n(3) Quantify the sooting propensity of different fuels, such as ethylene, propane, and propylene mixtures.\n(4) Validate the correlation between luminous flame shape and residence time under microgravity conditions.\n(5) Investigate the impact of air and fuel flow rate variations on smoke point phenomena in space.",
-        "public_release_date": "18-Sep-2024"
+        "public_release_date": "18-Sep-2024",
+        "doi": "10.60555/9kbh-e962",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Fire Safety"
       }
     },
     {
@@ -64,7 +87,40 @@
       "metadata": {
         "investigation_title": "Structure and Liftoff In Combustion Experiment",
         "investigation_objective": "Objective: The objective of this investigation is to better understand the structure and stability of laminar diffusion flames in microgravity.\n\nSpecific objectives of this investigation were:\n1. To investigate the structure of laminar diffusion flames in microgravity to understand the stabilizing mechanisms at the flames base.\n2. Determine the liftoff velocity limits for different fuels and burner diameters.\n3. Evaluate the impact of fuel dilution with nitrogen on soot formation and flame stability.\n4. Quantify the effects of microgravity on flame length and radiative heat loss compared to normal gravity conditions.\n5. Validate numerical models for flame dynamics, soot production, and thermal radiation in non-premixed flames.",
-        "public_release_date": "18-Sep-2024"
+        "public_release_date": "18-Sep-2024",
+        "doi": "10.60555/pm12-rg61",
+        "researchArea": "Combustion Science",
+        "subResearchArea": ""
+      }
+    },
+    {
+      "accession": "PSI-102",
+      "date_created": 1748868438724.0,
+      "date_modified": 1748868439610.0,
+      "accession_id": 102,
+      "public": true,
+      "metadata": {
+        "investigation_title": "Smoke and Aerosol Measurement Experiment",
+        "investigation_objective": "One of the major goals of this investigation was to quantify the sizes that the liquid smoke particulate achieves in low gravity and to relate the droplet size distribution to the smoke generation and smoke transport conditions in the experiment. A numerical code was to be developed to predict the smoke droplet growth as a function of the fuel pyrolysis rate, the thermodynamic properties of the pyrolysis vapor, and the flow environment.",
+        "public_release_date": "18-Sep-2024",
+        "doi": "10.60555/gd4k-8h62",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Spacecraft Fire Safety"
+      }
+    },
+    {
+      "accession": "PSI-101",
+      "date_created": 1748878670582.0,
+      "date_modified": 1748878671470.0,
+      "accession_id": 101,
+      "public": true,
+      "metadata": {
+        "investigation_title": "Smoke Aerosol Measurement Experiment-Reflight",
+        "investigation_objective": "Similar to the original SAME investigation, the primary objective of the SAME-R investigation was to quantify the sizes that the liquid smoke particulate achieves in low gravity and to relate the droplet size distribution to the smoke generation and smoke transport conditions in the experiment. One of the problems encountered during the SAME investigation was that after the thermal precipitators were returned to the ground, it was found that all the TEM grids were severely contaminated with some unidentified foreign particles, making these grids unusable although some of them showed shapes of certain types of smoke particles. Based on that experience the SAME-R investigation employed several modification covering new materials, extended operating conditions, and diagnostic equipments.",
+        "public_release_date": "18-Sep-2024",
+        "doi": "10.60555/2np7-jv14",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Spacecraft Fire Safety"
       }
     },
     {
@@ -76,7 +132,10 @@
       "metadata": {
         "investigation_title": "Spacecraft Fire Experiment-III",
         "investigation_objective": "The objectives of this investigation were to:\n(1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA\u2019s normal gravity material flammability screening test.",
-        "public_release_date": "18-Sep-2024"
+        "public_release_date": "18-Sep-2024",
+        "doi": "10.60555/040q-4h36",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Spacecraft Fire Safety"
       }
     },
     {
@@ -88,7 +147,10 @@
       "metadata": {
         "investigation_title": "Spacecraft Fire Experiment-II",
         "investigation_objective": "The objectives of SAFFIRE-II are to determine how rapidly a large scale fire grows in low-gravity and to investigate the low-g flammability limits compared to those obtained in NASA\u2019s normal gravity material flammability screening test.",
-        "public_release_date": "18-Sep-2024"
+        "public_release_date": "18-Sep-2024",
+        "doi": "10.60555/2chp-m469",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Surface Combustion"
       }
     },
     {
@@ -100,7 +162,10 @@
       "metadata": {
         "investigation_title": "Spacecraft Fire Safety Experiment-I",
         "investigation_objective": "The objectives of this investigation were to:\n(1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA\u2019s normal\ngravity material flammability screening test.",
-        "public_release_date": "18-Sep-2024"
+        "public_release_date": "18-Sep-2024",
+        "doi": "10.60555/0t15-1z43",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Spacecraft Fire, Smoke Distribution"
       }
     },
     {
@@ -112,7 +177,10 @@
       "metadata": {
         "investigation_title": "Flame Extinguishment Experiment",
         "investigation_objective": "The FLEX (Flame Extinguishment Experiment) investigation aims to map the flammability limits of liquid fuels in microgravity environments, measure the effectiveness of various gaseous fire suppressants such as CO2, He, and SF6, and develop reliable predictive models for combustion limits under reduced gravity conditions. The mission seeks to validate and improve simplified models by incorporating detailed chemical reactions, heat transfer, and material movement, using both space-based data and extensive ground-based tests. Key flight experiment goals include obtaining high-resolution measurements of droplet burning rates, flame extinction behavior, heat radiation, soot levels, and temperature profiles, while systematically analyzing the effects of different ambient conditions and suppressant concentrations. These investigations are essential for advancing the fundamental understanding of combustion processes in microgravity and enhancing fire safety protocols for future space missions.",
-        "public_release_date": "31-Jul-2016"
+        "public_release_date": "31-Jul-2016",
+        "doi": "10.60555/mbq8-0451",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Spacecraft Fire Safety"
       }
     },
     {
@@ -124,7 +192,10 @@
       "metadata": {
         "investigation_title": "Flame Extinguishment Experiment - 2",
         "investigation_objective": "The primary goal of the FLEX-2 flight experiments is to extend the results of FLEX-1 to fuels and environmental conditions that mimic real combustor conditions, as well as, provide benchmark experimental data on bi-component droplet combustion over a wide range of initial conditions in order to validate numerical simulations and to develop new theoretical models.\n\nDetailed experimental objectives can be further itemized as:\n  1. Investigate the role of liquid-phase mixing on the burning characteristics of bi-component fuel droplets.\n  2. Examine the steady and unsteady liquid and gas-phase phenomena in pure fuel combustion.\n  3. Study flame extinction mechanisms and their boundaries.\n  4. Analyze the soot formation process, including soot volume fraction soot-shell dynamics.\n  5. Determine the influence of droplet interactions on the flammability limits and extinction behavior of droplet arrays.\n  6. Validate theoretical models of droplet combustion through comprehensive experimental data collection in microgravity environments.",
-        "public_release_date": "30-Sep-2019"
+        "public_release_date": "30-Sep-2019",
+        "doi": "10.60555/byp8-h018",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Spacecraft Fire Safety"
       }
     },
     {
@@ -136,7 +207,10 @@
       "metadata": {
         "investigation_title": "Concurrent Flame Spread Modeling using Flamelet Generated Manifolds in Microgravity with Comparison to BASS Experiments using Two-Color Tomography",
         "investigation_objective": "The objective of this research was to develop and validate new flamelet generated manifold (FGM) modeling techniques for concurrent flame spread in microgravity. Concurrent flame spread presented one of the greatest modeling challenges in combustion science due to the intricate coupling between heat transfer, mass transport, and chemical kinetics near the solid-vapor interface. Traditional modeling strategies often relied on hybridized turbulence and chemistry models that were not fully consistent and failed to capture important intermediate reaction pathways.\nTo overcome these shortcomings, this PSI grant advanced the use of an unsteady flamelet generated manifold (UFGM) framework that reduced the complexity of reacting systems by mapping them into lower-dimensional manifolds. The research aimed to leverage this methodology to simulate solid fuel combustion processes with high fidelity, using the NASA Burning and Suppression of Solids (BASS and BASS-II) experiments as benchmarks. Ultimately, the long-term goal was to enable accurate prediction of flammability limits for spacecraft materials and to provide a tool that could also serve as a subgrid-scale model in large-eddy simulations of fires, supporting spacecraft safety and hazard mitigation.",
-        "public_release_date": "14-Nov-2025"
+        "public_release_date": "14-Nov-2025",
+        "doi": "10.60555/e9xp-ex83",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Spacecraft Fire Safety"
       }
     },
     {
@@ -148,7 +222,25 @@
       "metadata": {
         "investigation_title": "Computational and Experimental Analysis of SPICE Data Sets",
         "investigation_objective": "This ground investigation  sought to increase understanding of the issues that control the large discrepancy between soot formation in 1g and in 0g flames.  The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment (SPICE) data available in PSI. By analyzing over 1600 raw DSLR images and incorporating advanced soot models, the study sought to improve understanding of soot formation, oxidation, radiative re-absorption, and aggregate growth in heavily sooting flames. The work further aimed to reconcile microgravity and normal gravity flame behavior, identify key physical and chemical processes influencing smoke point development, and provide a framework for evaluating model parameter sensitivity.",
-        "public_release_date": "30-Sep-2025"
+        "public_release_date": "30-Sep-2025",
+        "doi": "10.60555/mzjm-yv57",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Gaseous"
+      }
+    },
+    {
+      "accession": "PSI-47",
+      "date_created": 1748876096434.0,
+      "date_modified": 1748876097000.0,
+      "accession_id": 47,
+      "public": true,
+      "metadata": {
+        "investigation_title": "Dust and Aerosol Measurement Feasibility Test / Dust and Aerosol Measurement Feasibility Test-2",
+        "investigation_objective": "The focus of DAFT / DAFT-2 was to mitigate the risk for the Smoke Aerosol Measurement Experiment (SAME). SAME relied on a commercially available condensate nuclei counter, the TSI P-Trak,  to quantify smoke aerosols in a microgravity environment, however there were concerns that th P-Trak would not be reliable in microgravity as it relies on gravity to recycle isopropyl alcohol used in the measurement process.\nDAFT / DAFT-2 tests that a modified P-Trak particulate counter would be accurate in microgravity.\n\nSummarized objectives include:\n    1) Demonstrate the Functionality of the Modified TSI P-Trak in Microgravity\n    2) Compare the TSI P-Trak Performance against the DustTrak control\n    3) Create and Analyze Aerosol Standards in Microgravity\n    4) Ensure the reliability of future aerosol experiments",
+        "public_release_date": "01-Jun-2009",
+        "doi": "10.60555/ztgj-d202",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Spacecraft Fire Safety"
       }
     },
     {
@@ -160,7 +252,10 @@
       "metadata": {
         "investigation_title": "Cool Flames Investigation",
         "investigation_objective": "The objectives of this investigation are to:\n    1) Examine the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm.\n    2) Analyze the effects of helium dilution on cool flame behavior.\n    3) Examine the behavior of combustion characteristics.\n    4) Investigate the relationship between droplet size, pressure, and flame extinction, and (5) understand the consequence of soot formation during cool flame combustion.",
-        "public_release_date": "18-Sep-2024"
+        "public_release_date": "18-Sep-2024",
+        "doi": "10.60555/m6pj-a914",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Droplets"
       }
     },
     {
@@ -172,7 +267,10 @@
       "metadata": {
         "investigation_title": "Burning and Suppression of Solids",
         "investigation_objective": "The two main objectives for BASS are to:\n    1.) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity. The relation between these can be investigated by observing flames burning for the longer times available in flight. Practical, realistic (thicker) fuels in typical geometries will be examined, including wake flames which have characteristics of a fire burning behind another object (for example, a fire burning in tight area which may not be easily accessible).\n    2.) Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.",
-        "public_release_date": "30-Jun-2013"
+        "public_release_date": "30-Jun-2013",
+        "doi": "10.60555/58h4-dy80",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Spacecraft Fire Safety"
       }
     },
     {
@@ -184,7 +282,10 @@
       "metadata": {
         "investigation_title": "Burning and Suppression of Solids - II",
         "investigation_objective": "BASS-II results contribute to the combustion computational models used in the design of fire detection and suppression systems in microgravity and on Earth.\nObjectives Include:\n  1) Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.\n  2) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test #1 method, ground-based microgravity tests, and actual material flammability in microgravity.\n  3) Provide SoFIE PIs with preliminary data to refine Science Requirements.\n  4)  Practical, realistic (thicker) fuels in typical geometries will be examined, including slabs, cylinders, and spherical sections.\n\nThe primary variables include:\n     \u2022 Forced flow velocity (speed and direction)\n     \u2022 Ambient oxygen concentration (via working volume nitrogen vitiation)\n     \u2022 Sample geometry (rods, spherical section, slabs, films, and fabric sheets",
-        "public_release_date": "31-Dec-2022"
+        "public_release_date": "31-Dec-2022",
+        "doi": "10.60555/4qc4-de67",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Spacecraft Fire Safety"
       }
     },
     {
@@ -196,7 +297,10 @@
       "metadata": {
         "investigation_title": "Advanced Combustion via Microgravity Experiments-Structure and Response of Spherical Diffusion Flames",
         "investigation_objective": "A series of experiments is proposed with the following specific objectives, in both soot-free and sooty flames, to compare with detailed computational simulation to assess transport properties and detailed chemical kinetics (including chemiluminescence):\n    Objective A. Measure and characterize the transient structure (such as temperature and species distribution) of diffusion flames established at initially non-steady, spherical flame structures for mixtures of different H2/CH4/diluent ratios   (soot-free) and different C2H4/diluent ratios (sooty), for different flow rates.\n    Objective B. Determine the quasi-steady convective/chemical-kinetic extinction limits (low system Damk\u00f6hler numbers) and radiative/chemical-kinetic extinction limits (high system Damk\u00f6hler numbers) for mixtures of different H2/CH4/diluent ratios (soot-free) and different C2H4/diluent ratios (sooty).\n    Objective C. Determine the existence (for different Zeldovich number, Ze), onset (as a function Da), and nature (i.e. mode, frequency, amplitude) of pulsating instabilities theoretically predicted to occur in transient spherical diffusion flames using fuel/diluent mixtures that are above a critical Lewis number.",
-        "public_release_date": "05-Apr-2018"
+        "public_release_date": "05-Apr-2018",
+        "doi": "10.60555/k57n-p030",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Flames of gaseous fuels"
       }
     },
     {
@@ -208,7 +312,10 @@
       "metadata": {
         "investigation_title": "Advanced Combustion via Microgravity Experiments Electric-Field Effects on Laminar Diffusion Flames",
         "investigation_objective": "The objective of this investigation is to better understand the relationship between electric field voltage and chemi-ion current, analyze the dynamic response of flames to electric field changes, evaluate soot formation, and characterize stabilized near-limit lifted flames.",
-        "public_release_date": "15-Apr-2019"
+        "public_release_date": "15-Apr-2019",
+        "doi": "10.60555/se5a-8c73",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Laminar Flames"
       }
     },
     {
@@ -220,7 +327,10 @@
       "metadata": {
         "investigation_title": "Advanced Combustion via Microgravity Experiments / Coflow Laminar Diffusion Flame",
         "investigation_objective": "In order to provide the experimental data needed to allow rigorous testing of computational models at the extremes of the fuel dilution spectrum, we have the following objectives:\nA) Characterize the behavior of weak coflow diffusion flames of methane and ethylene, as a function of velocity and fuel dilution, through measurement of flame shape, lift-off heights, temperatures and extinction limits.\nB) Characterize the sooting tendencies of diffusion flames with long residence times, as a function of velocity and fuel dilution, through measurement of flame shape, gas temperatures in the soot-free portion of the flame, soot luminosity, soot temperatures, and soot volume fractions.",
-        "public_release_date": "15-Sep-2023"
+        "public_release_date": "15-Sep-2023",
+        "doi": "10.60555/23e1-9950",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Flames of gaseous fuel"
       }
     },
     {
@@ -232,7 +342,10 @@
       "metadata": {
         "investigation_title": "Advanced Combustion via Microgravity Experiments - Burning Rate Emulator",
         "investigation_objective": "The BRE flight program seeks to establish the burning conditions in a quiescent microgravity ambient in terms of material properties.\nThe specific flight objectives are as follows.\n  1. Observe burning behavior in long-duration microgravity for CH4/N2 and C2H4/N2mixtures on porous circular burners of 25  and 50 mm diameter. Consider O2/N2 ambients with various pressures and ambient O2 concentrations and pressures. NASA - considered atmosphere for human space missions will be examined: 14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen. Emphasize fuel conditions that can be related to a diverse range of condensed fuels.\n  2. Consider the conditions of Objective 1 for ambients of O2/CO2 (desired).\n  3. Consider the conditions of Objectives 1 \u2013 2 for extinction limits.",
-        "public_release_date": "15-Sep-2022"
+        "public_release_date": "15-Sep-2022",
+        "doi": "10.60555/vb93-3y72",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Flames of Gaseous Fuels"
       }
     },
     {
@@ -244,7 +357,10 @@
       "metadata": {
         "investigation_title": "Advanced Combustion via Microgravity Experiments / Flame Design",
         "investigation_objective": "The primary objectives of this flight experiment are:\nA. Obtain soot-inception limits of quasi-steady normal and inverse spherical diffusion flames as functions of flow rate, Zst, amount of inert (N2 or CO2), and pressure for C2H4 and CH4 flames. Identify the corresponding temperatures in hot regions. Obtain similar limits and temperatures for inverse and normal coflow flames.\nB. Obtain detailed measurements in quasi-steady normal and inverse spherical diffusion flames for C2H4 and CH4. Determine the effects of flow rate, Zst, amount of N2, and pressure on flame temperature, size, color, and soot volume fraction. Evaluate the possible existence of steady flames.\nC. Obtain extinction limits as functions of Zst, amount of N2, and pressure for normal and inverse spherical C2H4 and CH4 flames. Identify the corresponding temperatures in hot regions. Identify the presence of radiative or kinetic extinction. Evaluate whether pseudo-flammability limits can be obtained for these flames.",
-        "public_release_date": "20-Nov-2025"
+        "public_release_date": "20-Nov-2025",
+        "doi": "10.60555/w4zy-bt45",
+        "researchArea": "Combustion Science",
+        "subResearchArea": "Flames of Gaseous Fuels"
       }
     }
   ],
@@ -838,6 +954,394 @@
         }
       ]
     },
+    "PSI-115": {
+      "file_count": 47,
+      "total_bytes": 264404901,
+      "categories": {
+        "Analyzed Data": 44,
+        "Reports": 1,
+        "Science Documents": 1,
+        "Study Metadata Files": 1
+      },
+      "sample_files": [
+        {
+          "file_name": "PSI-115_metadata_PSI-185_Utilization of the S.zip",
+          "file_size": 7021,
+          "category": "Study Metadata Files",
+          "folder": "Study Metadata Files",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_metadata_PSI-185_Utilization+of+the+S.zip",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityNumDen.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityNumDen.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityNucRate.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityNucRate.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravitySmoke.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravitySmoke.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityDAM.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityDAM.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityU.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityU.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityPSD.dat",
+          "file_size": 1716,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityPSD.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityVort.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityVort.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravitySpeciesMF.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravitySpeciesMF.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityTemperature.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityTemperature.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityV.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityV.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityNS_PSD.dat",
+          "file_size": 1755,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity; no settling",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityNS_PSD.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityuR.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity; rotated",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityuR.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityvR.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity; rotated",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityvR.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmGravityNumdenR.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Earth Gravity; rotated",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmGravityNumdenR.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityPSD.dat",
+          "file_size": 1716,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityPSD.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityNumDen.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityNumDen.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravitySmoke.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravitySmoke.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityDAM.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityDAM.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityNucRate.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityNucRate.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityV.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityV.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityVaporMF.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityVaporMF.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityVort.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityVort.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityTemperature.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityTemperature.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityU.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityU.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityNoTF_PSD.dat",
+          "file_size": 1755,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity; no thermophoresis",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityNoTF_PSD.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityNoTF_u.dat",
+          "file_size": 6220839,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity; no thermophoresis",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityNoTF_u.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityNoTF_v.dat",
+          "file_size": 6220839,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity; no thermophoresis",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityNoTF_v.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityNoTF_NumDen.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity; no thermophoresis",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityNoTF_NumDen.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityuR.dat",
+          "file_size": 6220865,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity; rotated",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityuR.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityvR.dat",
+          "file_size": 6220865,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity; rotated",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityvR.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cmNoGravityNumDenR.dat",
+          "file_size": 6220865,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity; rotated",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cmNoGravityNumDenR.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_10cmGravitySmoke.dat",
+          "file_size": 6220838,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_10cmGravitySmoke.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_10cmGravityU.dat",
+          "file_size": 6220849,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_10cmGravityU.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_10cmGravityV.dat",
+          "file_size": 6220849,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_10cmGravityV.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_10cmGravityPSD.dat",
+          "file_size": 1716,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_10cmGravityPSD.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_10cmGravityNumDen.dat",
+          "file_size": 6220849,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Earth Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_10cmGravityNumDen.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_10cmNoGravitySmoke.dat",
+          "file_size": 6220866,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_10cmNoGravitySmoke.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_10cmNoGravityU.dat",
+          "file_size": 6220866,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_10cmNoGravityU.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_10cmNoGravityV.dat",
+          "file_size": 6220866,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_10cmNoGravityV.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_10cmNoGravityPSD.dat",
+          "file_size": 1716,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_10cmNoGravityPSD.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_10cmNoGravityNumDen.dat",
+          "file_size": 6220866,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_10cmNoGravityNumDen.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_10cm_sGrid_grid3d.dat",
+          "file_size": 17971238,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_10cm_sGrid_grid3d.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_nodeDiameters.dat",
+          "file_size": 1059,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case2/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_nodeDiameters.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Analyzed Data_8cm_sGrid_grid3d.dat",
+          "file_size": 17971238,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Modeling Data/Case1/Microgravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Analyzed+Data_8cm_sGrid_grid3d.dat",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "file_size": 10617514,
+          "category": "Reports",
+          "folder": "Reports",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-115_Science Documents_DataOrganizationDocument.pdf",
+          "file_size": 96899,
+          "category": "Science Documents",
+          "folder": "Science Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-115/download?source=datamanager&file=PSI-115_Science+Documents_DataOrganizationDocument.pdf",
+          "restricted": false
+        }
+      ]
+    },
     "PSI-107": {
       "file_count": 188,
       "total_bytes": 6946864573,
@@ -1260,6 +1764,839 @@
       "categories": {},
       "sample_files": [],
       "error": "File index exceeds NASA API response limit \u2014 browse directly on psi.nasa.gov"
+    },
+    "PSI-102": {
+      "file_count": 101,
+      "total_bytes": 657608178,
+      "categories": {
+        "Analyzed Data": 59,
+        "Engineering Documents": 28,
+        "Experimental table": 1,
+        "Presentations": 6,
+        "Reference Data": 3,
+        "Reports": 1,
+        "Science Documents": 2,
+        "Study Metadata Files": 1
+      },
+      "sample_files": [
+        {
+          "file_name": "PSI-102_metadata_PSI-170_SAME.zip",
+          "file_size": 13127,
+          "category": "Study Metadata Files",
+          "folder": "Study Metadata Files",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_metadata_PSI-170_SAME.zip",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Engineering Documents_SAME_EIRD.pdf",
+          "file_size": 5378409,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Engineering+Documents_SAME_EIRD.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Reports_SAME_Final Science Report.pdf",
+          "file_size": 3712845,
+          "category": "Reports",
+          "folder": "Reports",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Reports_SAME_Final+Science+Report.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Engineering Documents_Resistive Heater Coil-TN002.mp4",
+          "file_size": 6866548,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Engineering+Documents_Resistive+Heater+Coil-TN002.mp4",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Engineering Documents_Resistive Heater Coil-TN001.mp4",
+          "file_size": 7339333,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Engineering+Documents_Resistive+Heater+Coil-TN001.mp4",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT252run1testhkp with plots.xls",
+          "file_size": 3121152,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 01",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT252run1testhkp+with+plots.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT252run1testhkp with plotszgy average.xls",
+          "file_size": 3315200,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 01",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT252run1testhkp+with+plotszgy+average.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_Run 1 GMT252 testlog.xls",
+          "file_size": 26112,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 01",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_Run+1+GMT252+testlog.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_Run 2 DBP GMT 254 with averages.xls",
+          "file_size": 2917376,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 02",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_Run+2+DBP+GMT+254+with+averages.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT254HKPandLOGmultiple runs.xls",
+          "file_size": 10293248,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 02",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT254HKPandLOGmultiple+runs.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_Run 2 GMT254 testlog.xlsx",
+          "file_size": 20970,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 02",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_Run+2+GMT254+testlog.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT254run2btesthkp with zgy average.xls",
+          "file_size": 1851904,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 03",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT254run2btesthkp+with+zgy+average.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_Run 2 GMT254 testlog b.xlsx",
+          "file_size": 20866,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 03",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_Run+2+GMT254+testlog+b.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_DBP run 4 GMT255hkp with zgy average.xls",
+          "file_size": 5205504,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 04",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_DBP+run+4+GMT255hkp+with+zgy+average.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT255 log.xlsx",
+          "file_size": 18763,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 04",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT255+log.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT255hkp.xlsx",
+          "file_size": 1563904,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 04",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT255hkp.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_DBP  GMT257hkp.xls",
+          "file_size": 1202176,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 09",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_DBP++GMT257hkp.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_dbpGMT257hkp zgy average.xls",
+          "file_size": 1257984,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 09",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_dbpGMT257hkp+zgy+average.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT262 Run 11 DBP hkp.xls",
+          "file_size": 1875456,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 11",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT262+Run+11+DBP+hkp.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT262 Run 12 dbp.xls",
+          "file_size": 1707520,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 12",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT262+Run+12+dbp.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT263 Run 15 DBP.xls",
+          "file_size": 645120,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 15",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT263+Run+15+DBP.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT263 Run 16 DBP.xls",
+          "file_size": 713728,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 16",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT263+Run+16+DBP.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT264 Run 18 DBP.xls",
+          "file_size": 4993024,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 18",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT264+Run+18+DBP.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT264dbptest19and20hkp.xls",
+          "file_size": 4012032,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 19, 20",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT264dbptest19and20hkp.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT264 Run 22 DBP.xls",
+          "file_size": 5331968,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 21, 22",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT264+Run+22+DBP.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT264 Run 21 DBP.xls",
+          "file_size": 5327872,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 21, 22",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT264+Run+21+DBP.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT276dbp36hkp.xls",
+          "file_size": 5863936,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 36",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT276dbp36hkp.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT276dbp37.xls",
+          "file_size": 1187328,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 37",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT276dbp37.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT276dbp38.xls",
+          "file_size": 6122496,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 38",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT276dbp38.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT276dbp39hkp.xls",
+          "file_size": 2551296,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 39",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT276dbp39hkp.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT276dbp40hkp.xls",
+          "file_size": 4268544,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 40",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT276dbp40hkp.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT277dbp42hkp peak 1.xls",
+          "file_size": 4574720,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 42",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT277dbp42hkp+peak+1.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT277dbp42hkp peak 2.xls",
+          "file_size": 6299136,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 42",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT277dbp42hkp+peak+2.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT277DBP43hkp.xls",
+          "file_size": 3217408,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 43",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT277DBP43hkp.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT277dbp43hkpa.xls",
+          "file_size": 6428672,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 43",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT277dbp43hkpa.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT277DBPTest44.xls",
+          "file_size": 11580928,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 44",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT277DBPTest44.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT278DBP45.xls",
+          "file_size": 6271488,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Dibutyl Phthalate/Run 45",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT278DBP45.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_kaptonGMT257 zgy average.xls",
+          "file_size": 2234368,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Kapton/Run 08",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_kaptonGMT257+zgy+average.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_kaptonGMT257.xls",
+          "file_size": 2120704,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Kapton/Run 08",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_kaptonGMT257.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT263 run 14 kapton avg.xls",
+          "file_size": 1066496,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Kapton/Run 14",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT263+run+14+kapton+avg.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT271kapton29.xls",
+          "file_size": 5160960,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Kapton/Run 29",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT271kapton29.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT272kapton30.xls",
+          "file_size": 2646528,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Kapton/Run 30",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT272kapton30.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT273kapton33.xls",
+          "file_size": 5982720,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Kapton/Run 33",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT273kapton33.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT273lampwick34.xls",
+          "file_size": 3213312,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 34",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT273lampwick34.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT256HKP.xls",
+          "file_size": 4460544,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 06, 07",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT256HKP.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT256HKP zgy average.xls",
+          "file_size": 4487680,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 06, 07",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT256HKP+zgy+average.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT256LOG.xlsx",
+          "file_size": 28778,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 06, 07",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT256LOG.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT264 Run 17 lampwick.xls",
+          "file_size": 1867776,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 17",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT264+Run+17+lampwick.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT272lampwick31.xls",
+          "file_size": 1492480,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 31",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT272lampwick31.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-102_Analyzed Data_GMT272lampwick32.xls",
+          "file_size": 5031936,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 32",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-102/download?source=datamanager&file=PSI-102_Analyzed+Data_GMT272lampwick32.xls",
+          "restricted": false
+        }
+      ]
+    },
+    "PSI-101": {
+      "file_count": 344,
+      "total_bytes": 6308124750,
+      "categories": {
+        "Analyzed Data": 86,
+        "Engineering Documents": 24,
+        "Experimental table": 1,
+        "Presentations": 4,
+        "Raw Data": 223,
+        "Reference Data": 2,
+        "Reports": 1,
+        "Science Documents": 2,
+        "Study Metadata Files": 1
+      },
+      "sample_files": [
+        {
+          "file_name": "PSI-101_Engineering Documents_SAME EIRD Rev 2.00 02-25-05 HIgh Q.pdf",
+          "file_size": 5378409,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Engineering+Documents_SAME+EIRD+Rev+2.00+02-25-05+HIgh+Q.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Reports_SAME-R_Final Report.pdf",
+          "file_size": 4578437,
+          "category": "Reports",
+          "folder": "Reports",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Reports_SAME-R_Final+Report.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Presentations_SAME-2_Comparison of Flight and Ground Test Results.pptx",
+          "file_size": 5634955,
+          "category": "Presentations",
+          "folder": "Presentations",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Presentations_SAME-2_Comparison+of+Flight+and+Ground+Test+Results.pptx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Presentations_SAME-R_Particle Morphology and Size Results from the Smoke Aerosol Measurement Experiment-2.pptx",
+          "file_size": 11483943,
+          "category": "Presentations",
+          "folder": "Presentations",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Presentations_SAME-R_Particle+Morphology+and+Size+Results+from+the+Smoke+Aerosol+Measurement+Experiment-2.pptx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Presentations_SAME_Measurement of Smoke Particle Size under Low-Gravity Conditions.ppt",
+          "file_size": 7918592,
+          "category": "Presentations",
+          "folder": "Presentations",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Presentations_SAME_Measurement+of+Smoke+Particle+Size+under+Low-Gravity+Conditions.ppt",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Presentations_Detection of Smoke from Microgravity Fires.ppt",
+          "file_size": 8259584,
+          "category": "Presentations",
+          "folder": "Presentations",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Presentations_Detection+of+Smoke+from+Microgravity+Fires.ppt",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Engineering Documents_SAME VPRED Matrix PLN-005 Baseline.xls",
+          "file_size": 537600,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Engineering+Documents_SAME+VPRED+Matrix+PLN-005+Baseline.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Engineering Documents_Drawing_SAME Aging Chamber.PDF",
+          "file_size": 212840,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Engineering+Documents_Drawing_SAME+Aging+Chamber.PDF",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_54 lampwick binneddatacorr from GWM.xlsx",
+          "file_size": 241661,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 054",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_54+lampwick+binneddatacorr+from+GWM.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_TEMflowvsnoflow.xls",
+          "file_size": 39936,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 054",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_TEMflowvsnoflow.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_thermal precipitator map updated.xlsx",
+          "file_size": 17138,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 054",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_thermal+precipitator+map+updated.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_Sample descriptions tables.docx",
+          "file_size": 28571083,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 054",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_Sample+descriptions+tables.docx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_55 Lampwick.xlsx",
+          "file_size": 690112,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 055",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_55+Lampwick.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_60 silicone.xlsx",
+          "file_size": 423378,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 060",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_60+silicone.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_62 Kapton unaged.xlsx",
+          "file_size": 425564,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Kapton/Run 062",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_62+Kapton+unaged.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_62 Kapton aged issue with bins.xlsx",
+          "file_size": 426012,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Kapton/Run 062",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_62+Kapton+aged+issue+with+bins.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_63 Pyrell aged.xlsx",
+          "file_size": 711060,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Pyrell/Run 063",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_63+Pyrell+aged.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_63 Pyrell unaged.xlsx",
+          "file_size": 853799,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Pyrell/Run 063",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_63+Pyrell+unaged.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_64 Pyrell aged.xlsx",
+          "file_size": 475108,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Pyrell/Run 064",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_64+Pyrell+aged.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_64 Pyrell unaged.xlsx",
+          "file_size": 516572,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Pyrell/Run 064",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_64+Pyrell+unaged.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_94 Kapton aged- results.xlsx",
+          "file_size": 415552,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Kapton/Run 094",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_94+Kapton+aged-+results.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_197_13_silicon_run48.xls",
+          "file_size": 5797888,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 048",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_197_13_silicon_run48.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_202_14_silcon_run53.xls",
+          "file_size": 5819904,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 053",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_202_14_silcon_run53.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_200_12_lampwick_run49.xls",
+          "file_size": 4892160,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 049",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_200_12_lampwick_run49.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_201_12_teflon_run50.xls",
+          "file_size": 6471168,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Teflon/Run 050",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_201_12_teflon_run50.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_202_13_pyrell_run52.xls",
+          "file_size": 5827072,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Pyrell/Run 052",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_202_13_pyrell_run52.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_210_10_lampwick_run54.xls",
+          "file_size": 7128576,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 054",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_210_10_lampwick_run54.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_210_10_lampwick_run55.xls",
+          "file_size": 2990080,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 055",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_210_10_lampwick_run55.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Raw Data_2010_210_10_lampwick_run55 wrong.xls",
+          "file_size": 4406784,
+          "category": "Raw Data",
+          "folder": "Raw Data/Reduced Gravity/Cotton Lamp wick/Run 055",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Raw+Data_2010_210_10_lampwick_run55+wrong.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_210_10_lampwick_run57_a.xlsx",
+          "file_size": 539444,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 057",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_210_10_lampwick_run57_a.xlsx",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_210_10_lampwick_run57.xls",
+          "file_size": 5050880,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 057",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_210_10_lampwick_run57.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_210_10_teflon_run56.xls",
+          "file_size": 4087296,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Teflon/Run 056",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_210_10_teflon_run56.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_211_12_teflon_run58.xls",
+          "file_size": 6683648,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Teflon/Run 058",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_211_12_teflon_run58.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_211_13_silcon_run59.xls",
+          "file_size": 6681600,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 059",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_211_13_silcon_run59.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Raw Data_2010_211_14_lampwick run 55 corrected.xls",
+          "file_size": 6368768,
+          "category": "Raw Data",
+          "folder": "Raw Data/Reduced Gravity/Cotton Lamp wick/Run 055",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Raw+Data_2010_211_14_lampwick+run+55+corrected.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_211_14_silicon_run60.xls",
+          "file_size": 5135360,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 060",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_211_14_silicon_run60.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_211_14_silicon_run60 a.xls",
+          "file_size": 6913024,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 060",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_211_14_silicon_run60+a.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Raw Data_ISS Coagulation.doc",
+          "file_size": 141312,
+          "category": "Raw Data",
+          "folder": "Raw Data/Reduced Gravity/Cotton Lamp wick/Run 054, Unaged",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Raw+Data_ISS+Coagulation.doc",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_214_10_kapton_run61.xls",
+          "file_size": 6652416,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Kapton/Run 061",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_214_10_kapton_run61.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_214_10_kapton_run62.xls",
+          "file_size": 6525440,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Kapton/Run 062",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_214_10_kapton_run62.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_235_9_pyrell_run63.xls",
+          "file_size": 6210560,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Pyrell/Run 063",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_235_9_pyrell_run63.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_235_9_pyrell_run63a.xls",
+          "file_size": 6212608,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Pyrell/Run 063",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_235_9_pyrell_run63a.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_235_11_pyrell_run64.xls",
+          "file_size": 6659072,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Pyrell/Run 064",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_235_11_pyrell_run64.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_235_11_pyrell_run64a.xls",
+          "file_size": 6657536,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Pyrell/Run 064",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_235_11_pyrell_run64a.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_235_10_silicone_run65.xls",
+          "file_size": 7300096,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 065",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_235_10_silicone_run65.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_235_10_silicone_run65a.xls",
+          "file_size": 7281664,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 065",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_235_10_silicone_run65a.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_235_10_silicone_run66.xls",
+          "file_size": 6486016,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 066",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_235_10_silicone_run66.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_Copy of 2010_235_10_silicone_run66 test.xls",
+          "file_size": 6486016,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Silicone/Run 066",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_Copy+of+2010_235_10_silicone_run66+test.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_239_13_lampwick_run78.xls",
+          "file_size": 6881280,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Cotton Lamp wick/Run 078",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_239_13_lampwick_run78.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-101_Analyzed Data_2010_239_14_teflon_run79.xls",
+          "file_size": 6196224,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/Teflon/Run 079",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-101/download?source=datamanager&file=PSI-101_Analyzed+Data_2010_239_14_teflon_run79.xls",
+          "restricted": false
+        }
+      ]
     },
     "PSI-100": {
       "file_count": 87,
@@ -3359,6 +4696,286 @@
           "category": "Study Metadata Files",
           "folder": "Study Metadata Files",
           "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-60/download?source=datamanager&file=PSI-60_metadata_NEWID-5_Computational+and+Ex.zip",
+          "restricted": false
+        }
+      ]
+    },
+    "PSI-47": {
+      "file_count": 33,
+      "total_bytes": 41765333,
+      "categories": {
+        "Analyzed Data": 12,
+        "Engineering Documents": 6,
+        "Experimental table": 1,
+        "Presentations": 3,
+        "Raw Data": 6,
+        "Reports": 3,
+        "Representative Image(s)": 1,
+        "Study Metadata Files": 1
+      },
+      "sample_files": [
+        {
+          "file_name": "PSI-47_metadata_PSI-126_DAFT_DAFT-2.zip",
+          "file_size": 8454,
+          "category": "Study Metadata Files",
+          "folder": "Study Metadata Files",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_metadata_PSI-126_DAFT_DAFT-2.zip",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Reports_DAFT_FinalReport.doc",
+          "file_size": 8844800,
+          "category": "Reports",
+          "folder": "Reports",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Reports_DAFT_FinalReport.doc",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "file_size": 185648,
+          "category": "Reports",
+          "folder": "Reports",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Presentations_DAFT_Increment13SciSymposium_2006.ppt",
+          "file_size": 6043136,
+          "category": "Presentations",
+          "folder": "Presentations",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Presentations_DAFT_Increment13SciSymposium_2006.ppt",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_flight data 063_PTrk0003.xls",
+          "file_size": 283648,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/P-TRAK",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_flight+data+063_PTrk0003.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_flight data 063_PTrk0002.xls",
+          "file_size": 283648,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/P-TRAK",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_flight+data+063_PTrk0002.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_flight data 063_PTrk0004.xls",
+          "file_size": 283648,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/P-TRAK",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_flight+data+063_PTrk0004.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Raw Data_PTrk0003.txt",
+          "file_size": 3002,
+          "category": "Raw Data",
+          "folder": "Raw Data/Reduced Gravity/P-TRAK",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Raw+Data_PTrk0003.txt",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Raw Data_PTrk0002.txt",
+          "file_size": 4030,
+          "category": "Raw Data",
+          "folder": "Raw Data/Reduced Gravity/P-TRAK",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Raw+Data_PTrk0002.txt",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Raw Data_PTrk0004.txt",
+          "file_size": 2005,
+          "category": "Raw Data",
+          "folder": "Raw Data/Reduced Gravity/P-TRAK",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Raw+Data_PTrk0004.txt",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_flight data 063_DTrk0003.xls",
+          "file_size": 283648,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/DustTrak",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_flight+data+063_DTrk0003.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_flight data 063_DTrk0002.xls",
+          "file_size": 283648,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/DustTrak",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_flight+data+063_DTrk0002.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_flight data 063_DTrk0004.xls",
+          "file_size": 283648,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity/DustTrak",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_flight+data+063_DTrk0004.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Raw Data_DTrk0003.txt",
+          "file_size": 3305,
+          "category": "Raw Data",
+          "folder": "Raw Data/Reduced Gravity/DustTrak",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Raw+Data_DTrk0003.txt",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Raw Data_DTrk0002.txt",
+          "file_size": 3752,
+          "category": "Raw Data",
+          "folder": "Raw Data/Reduced Gravity/DustTrak",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Raw+Data_DTrk0002.txt",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Raw Data_DTrk0004.txt",
+          "file_size": 2479,
+          "category": "Raw Data",
+          "folder": "Raw Data/Reduced Gravity/DustTrak",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Raw+Data_DTrk0004.txt",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_DAFT Flight Data GMT053.xls",
+          "file_size": 129024,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_DAFT+Flight+Data+GMT053.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_flight data 063.xls",
+          "file_size": 268288,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_flight+data+063.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_flight data 063_TIMING.xls",
+          "file_size": 283648,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_flight+data+063_TIMING.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_ISS_Daft_Aug21_06 urban.xls",
+          "file_size": 29696,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_ISS_Daft_Aug21_06+urban.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_ISS_Daft_Aug21_0611zgy time hist.xls",
+          "file_size": 38400,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_ISS_Daft_Aug21_0611zgy+time+hist.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+          "file_size": 1004032,
+          "category": "Analyzed Data",
+          "folder": "Analyzed Data/Reduced Gravity",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Analyzed+Data_DAFT+Retrieved+Data+Summary.xls",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Presentations_SmokeDetectionfromMicrogravityFires.ppt",
+          "file_size": 8259584,
+          "category": "Presentations",
+          "folder": "Presentations",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Presentations_SmokeDetectionfromMicrogravityFires.ppt",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Reports_DAFT_1YearReport.doc",
+          "file_size": 4919296,
+          "category": "Reports",
+          "folder": "Reports",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Reports_DAFT_1YearReport.doc",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Engineering Documents_DAFT Images.ppt",
+          "file_size": 7632384,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Engineering+Documents_DAFT+Images.ppt",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Engineering Documents_60089MFHD509 P-Trak Condenser Tube Modification.pdf",
+          "file_size": 162862,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Engineering+Documents_60089MFHD509+P-Trak+Condenser+Tube+Modification.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Engineering Documents_Procedure.Sampling.pdf",
+          "file_size": 45776,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Engineering+Documents_Procedure.Sampling.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Engineering Documents_Procedure.DataTransfer.pdf",
+          "file_size": 46025,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Engineering+Documents_Procedure.DataTransfer.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Engineering Documents_Procedure.Restow.pdf",
+          "file_size": 34552,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Engineering+Documents_Procedure.Restow.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Presentations_Daft_FactSheet.pdf",
+          "file_size": 762700,
+          "category": "Presentations",
+          "folder": "Presentations",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Presentations_Daft_FactSheet.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Engineering Documents_Procedure.SetUp.pdf",
+          "file_size": 33915,
+          "category": "Engineering Documents",
+          "folder": "Engineering Documents",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Engineering+Documents_Procedure.SetUp.pdf",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Representative Image(s)_DAFT on ISS.jpg",
+          "file_size": 1312134,
+          "category": "Representative Image(s)",
+          "folder": "Representative Image(s)",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Representative+Image%28s%29_DAFT+on+ISS.jpg",
+          "restricted": false
+        },
+        {
+          "file_name": "PSI-47_Experimental table_DAFT.csv",
+          "file_size": 518,
+          "category": "Experimental table",
+          "folder": "Experimental table",
+          "download_url": "https://psi.nasa.gov/geode-py/ws/api/investigations/PSI-47/download?source=datamanager&file=PSI-47_Experimental+table_DAFT.csv",
           "restricted": false
         }
       ]
