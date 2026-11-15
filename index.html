@@ -1178,6 +1178,9 @@
         <select id="hardware-filter" aria-label="Filter by Hardware or Facility">
           <option value="">All Facilities / Hardware</option>
         </select>
+        <select id="project-type-filter" aria-label="Filter by Project Type">
+          <option value="">All Project Types</option>
+        </select>
         <select id="sort-filter" aria-label="Sort investigations">
           <option value="release_desc">Sort: Release Date (Newest)</option>
           <option value="files_desc">Sort: Most Files</option>
@@ -1289,6 +1292,7 @@
       categories: new Set(),
       categoryCounts: {},
       subAreas: new Map(),
+      projectTypes: new Map(),
       hardwareGroups: new Set(),
       aiFilter: {
         active: false,
@@ -1492,6 +1496,8 @@
           const meta = inv.metadata || {};
           const subNorm = normalizeSubArea(meta.subResearchArea);
           state.subAreas.set(subNorm, (state.subAreas.get(subNorm) || 0) + 1);
+          const pType = String(meta.projectType || '').trim() || 'Unspecified';
+          state.projectTypes.set(pType, (state.projectTypes.get(pType) || 0) + 1);
           totalPubs += (meta.publications || []).length;
 
           getHardwareKeys(meta).forEach((k) => state.hardwareGroups.add(k));
@@ -1556,6 +1562,16 @@
           hwSelect.appendChild(opt);
         }
       });
+
+      const ptypeSelect = document.getElementById('project-type-filter');
+      [...state.projectTypes.entries()]
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .forEach(([ptype, count]) => {
+          const opt = document.createElement('option');
+          opt.value = ptype;
+          opt.textContent = `${ptype} (${count})`;
+          ptypeSelect.appendChild(opt);
+        });
     }
 
     function renderExplorerStrip() {
@@ -1604,6 +1620,7 @@
       const subAreaFilter = document.getElementById('subarea-filter').value;
       const categoryFilter = document.getElementById('category-filter').value;
       const hardwareFilter = document.getElementById('hardware-filter').value;
+      const projectTypeFilter = document.getElementById('project-type-filter').value;
       const sortBy = document.getElementById('sort-filter').value;
       const withFilesOnly = document.getElementById('with-files-only').checked;
 
@@ -1620,6 +1637,7 @@
         if (categoryFilter && !(categoryFilter in (summary.categories || {}))) return false;
         if (subAreaFilter && normalizeSubArea(meta.subResearchArea) !== subAreaFilter) return false;
         if (hardwareFilter && !getHardwareKeys(meta).includes(hardwareFilter)) return false;
+        if (projectTypeFilter && ((meta.projectType || '').trim() || 'Unspecified') !== projectTypeFilter) return false;
         if (!query) return true;
 
         return buildStudyHaystack(inv, summary).includes(query);
@@ -2073,6 +2091,11 @@
       if (/\bsame\b/i.test(lower)) hardware.push('SAME');
       if (/\bbass\b/i.test(lower)) hardware.push('BASS');
 
+      // 5b. Project Type
+      const projectTypes = [];
+      if (/\bground investigation|\bground stud|\bground-based/i.test(lower)) projectTypes.push('Ground Investigation');
+      if (/\bmicrogravity investigation|\bmicrogravity stud|\bflight investigation/i.test(lower)) projectTypes.push('Microgravity Investigation');
+
       // 6. Investigator / Affiliation matching against live dataset
       const investigatorTerms = [];
       const knownPeople = new Set();
@@ -2101,6 +2124,7 @@
 
       const formatTokens = new Set(['csv', '.csv', 'xlsx', '.xlsx', 'xls', '.xls', 'pdf', '.pdf', 'zip', '.zip', 'mp4', '.mp4', 'video', 'videos', 'excel', 'spreadsheet', 'spreadsheets']);
       const sortOnlyTokens = new Set(['largest', 'biggest', 'most', 'recent', 'latest', 'newest', 'volume', 'size', 'terabytes', 'gigabytes', 'count']);
+      const projectTypeTokens = new Set(projectTypes.length ? ['ground', 'ground-based', 'microgravity', 'flight'] : []);
 
       const scientificTerms = [];
       const phrases = ['cool flame', 'cool flames', 'fire safety', 'spacecraft fire', 'flame spread', 'smoke point', 'diffusion flame', 'surface combustion'];
@@ -2112,7 +2136,7 @@
         if (knownPeople.has(t) && !investigatorTerms.includes(t)) {
           investigatorTerms.push(t);
         }
-        if (!formatTokens.has(t) && !sortOnlyTokens.has(t) && !scientificTerms.includes(t)) {
+        if (!formatTokens.has(t) && !sortOnlyTokens.has(t) && !projectTypeTokens.has(t) && !scientificTerms.includes(t)) {
           scientificTerms.push(t);
         }
       });
@@ -2159,6 +2183,7 @@
         categories,
         fileExtensions,
         hardware,
+        projectTypes,
         investigatorTerms,
         scientificTerms,
         expandedTerms: [...expandedTerms],
@@ -2229,6 +2254,13 @@
             if (subNorm === sa || subLower.includes(sa.toLowerCase())) {
               score += 22;
             }
+          }
+
+          // Project Type filter / affinity
+          const invProjectType = String(meta.projectType || '').trim() || 'Unspecified';
+          if (filterPlan.projectTypes && filterPlan.projectTypes.length) {
+            if (!filterPlan.projectTypes.includes(invProjectType)) continue;
+            score += 24;
           }
 
           // Hardware / Program affinity
@@ -2420,6 +2452,7 @@
       if (fp.accessions.length) tags.push({ label: 'Accessions', value: fp.accessions.join(', ') });
       if (fp.subAreas.length) tags.push({ label: 'Sub-Area', value: fp.subAreas.join(', ') });
       if (fp.hardware.length) tags.push({ label: 'Hardware/Program', value: fp.hardware.join(', ') });
+      if (fp.projectTypes && fp.projectTypes.length) tags.push({ label: 'Project Type', value: fp.projectTypes.join(', ') });
       if (fp.investigatorTerms.length) tags.push({ label: 'Investigator', value: fp.investigatorTerms.join(', ') });
       if (fp.categories.length) tags.push({ label: 'Category', value: fp.categories.join(', ') });
       if (fp.fileExtensions.length) tags.push({ label: 'Format', value: fp.fileExtensions.join(', ') });
@@ -2451,6 +2484,7 @@
       document.getElementById('subarea-filter').value = '';
       document.getElementById('category-filter').value = '';
       document.getElementById('hardware-filter').value = '';
+      document.getElementById('project-type-filter').value = '';
       document.getElementById('with-files-only').checked = false;
 
       renderRows();
@@ -3159,6 +3193,7 @@
     document.getElementById('subarea-filter').addEventListener('change', renderRows);
     document.getElementById('category-filter').addEventListener('change', renderRows);
     document.getElementById('hardware-filter').addEventListener('change', renderRows);
+    document.getElementById('project-type-filter').addEventListener('change', renderRows);
     document.getElementById('sort-filter').addEventListener('change', renderRows);
     document.getElementById('with-files-only').addEventListener('change', renderRows);
 
@@ -3167,6 +3202,7 @@
       document.getElementById('subarea-filter').value = '';
       document.getElementById('category-filter').value = '';
       document.getElementById('hardware-filter').value = '';
+      document.getElementById('project-type-filter').value = '';
       document.getElementById('sort-filter').value = 'release_desc';
       document.getElementById('with-files-only').checked = false;
       clearAiFilter();
