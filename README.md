@@ -14,7 +14,7 @@ Live deployment: https://aliciamartins.github.io/astro-kali-space-apps-26/
   - Interprets natural-language research questions into structured filter queries (accessions, keywords/synonyms, sub-research areas, hardware, investigators, file categories, file extensions, and sort criteria).
   - Executes scored filtered searches across all investigation metadata, publications, and repository files, and optionally auto-syncs results to the main dashboard table.
   - Synthesizes findings with inline clickable `PSI-XXX` citations, Dataset & Publication DOI links, direct `psi.nasa.gov` data file links, and CSV/JSON manifest exports.
-  - Runs 100% client-side on static GitHub Pages using the built-in PSI Scientific Retrieval & Synthesis Engine, with an optional session-only **Gemini API Key (`gemini-2.5-flash`)** option for generative synthesis grounded strictly on the retrieved PSI records.
+  - Runs 100% client-side on static GitHub Pages using the built-in PSI Scientific Retrieval & Synthesis Engine, with an optional browser-stored **Gemini API Key (`gemini-2.5-flash` / `gemini-2.0-flash`)** option for generative synthesis grounded strictly on the retrieved PSI records.
 - **NASA PSI API Snapshot Builder (`psi_api_client.py`, `build_data.py`)**: Fetches investigation metadata, enriched repository details (`contacts`, `publications`, `hypothesis`, `approach`, `researchImpacts`, `experimentHardware`, `totalFileSize`), and file summaries into `data/dashboard_data.json`.
 
 ## Running Locally

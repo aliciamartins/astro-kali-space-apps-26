@@ -1249,7 +1249,7 @@
           <strong>AI Synthesis Engine</strong> — Works offline on static GitHub Pages via the built-in PSI Scientific Retrieval &amp; Synthesis Engine. Optionally add a Google Gemini API key (<code>gemini-2.5-flash</code>) for generative LLM synthesis grounded strictly on matched PSI records.
         </div>
         <div class="ai-settings-row">
-          <input type="password" id="gemini-key-input" placeholder="Optional Gemini API Key (stored in sessionStorage only)" autocomplete="off" />
+          <input type="password" id="gemini-key-input" placeholder="Optional Gemini API Key (auto-saved in browser storage)" autocomplete="off" />
           <button type="button" class="btn btn-sm btn-primary" id="gemini-save-btn">Save</button>
           <button type="button" class="btn btn-sm" id="gemini-clear-btn">Clear</button>
         </div>
@@ -2580,8 +2580,38 @@
       };
     }
 
+    function hydrateMatchesFromAccessions(accessions, searchResult) {
+      if (!state.data || !accessions.length) return;
+      const filesMap = state.data.files_by_accession || {};
+      const byAcc = new Map((state.data.investigations || []).map((inv) => [inv.accession, inv]));
+      const hydrated = [];
+
+      accessions.forEach((acc, idx) => {
+        const inv = byAcc.get(acc);
+        if (!inv) return;
+        const meta = inv.metadata || {};
+        const summary = filesMap[acc] || { file_count: 0, total_bytes: 0, categories: {}, sample_files: [] };
+        hydrated.push({
+          inv,
+          summary,
+          score: Math.max(10, 100 - idx * 5),
+          matchedFiles: summary.sample_files || [],
+          matchedPublications: meta.publications || [],
+        });
+      });
+
+      if (!hydrated.length) return;
+      searchResult.matchedInvestigations = hydrated;
+      searchResult.totalMatchedFiles = hydrated.reduce((acc, item) => acc + Number(item.summary.file_count || 0), 0);
+      searchResult.totalMatchedBytes = hydrated.reduce((acc, item) => acc + Number(item.summary.total_bytes || 0), 0);
+    }
+
     async function tryGeminiSynthesis(rawQuery, searchResult, apiKey) {
-      const topContext = searchResult.matchedInvestigations.slice(0, 6).map((item) => {
+      const filesMap = state.data?.files_by_accession || {};
+      const topMatches = searchResult.matchedInvestigations.slice(0, 6);
+      const topAccSet = new Set(topMatches.map((item) => item.inv.accession));
+
+      const topContext = topMatches.map((item) => {
         const m = item.inv.metadata || {};
         return {
           accession: item.inv.accession,
@@ -2612,38 +2642,104 @@
         };
       });
 
+      const remainingCatalog = (state.data?.investigations || [])
+        .filter((inv) => !topAccSet.has(inv.accession))
+        .map((inv) => {
+          const m = inv.metadata || {};
+          const summary = filesMap[inv.accession] || {};
+          return {
+            accession: inv.accession,
+            acronym: m.investigationAcronym || '',
+            title: m.investigation_title || '',
+            subResearchArea: normalizeSubArea(m.subResearchArea),
+            hardware: m.experimentHardware || '',
+            objectiveSnippet: String(m.investigation_objective || '').replace(/\s+/g, ' ').slice(0, 160),
+            fileCount: summary.file_count || 0,
+            totalVolume: formatBytes(summary.total_bytes || 0),
+          };
+        });
+
       const systemPrompt = [
         'You are a NASA Physical Sciences Informatics (PSI) Combustion Science Research Assistant.',
-        'Answer the user question concisely and accurately using ONLY the provided filtered PSI investigation JSON context.',
-        'Always cite studies using their exact accession format like PSI-117 or PSI-159.',
+        'Answer the user question concisely and accurately using ONLY the provided PSI investigation context.',
+        'Always cite relevant studies using their exact accession format like PSI-117 or PSI-159.',
         'Highlight relevant scientific objectives, experimental hardware/flight programs, PIs, publications, and available data files.',
         'Use short paragraphs and bullet points with bold study titles. Do not invent any data, DOIs, or URLs not present in the context.',
       ].join(' ');
 
-      const userPrompt = `User research request: ${rawQuery}\n\nFiltered PSI matches (${searchResult.matchedInvestigations.length} total studies matched):\n${JSON.stringify(topContext, null, 2)}`;
+      const userPrompt = [
+        `User research request: ${rawQuery}`,
+        ``,
+        `Detailed local filter matches (${searchResult.matchedInvestigations.length} matched):`,
+        JSON.stringify(topContext, null, 2),
+        remainingCatalog.length ? `\nAdditional PSI catalog studies (${remainingCatalog.length}):\n${JSON.stringify(remainingCatalog, null, 2)}` : '',
+      ].join('\n');
 
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: systemPrompt }] },
-          contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
-          generationConfig: { temperature: 0.25, maxOutputTokens: 700 },
-        }),
-      });
+      const models = [
+        { id: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash', supportsThinkingConfig: true },
+        { id: 'gemini-2.0-flash', label: 'Gemini 2.0 Flash', supportsThinkingConfig: false },
+      ];
 
-      if (!response.ok) {
-        const errBody = await response.text();
-        throw new Error(`Gemini API HTTP ${response.status}: ${errBody.slice(0, 140)}`);
+      let lastErr = null;
+      for (const model of models) {
+        const generationConfig = {
+          temperature: 0.25,
+          maxOutputTokens: 2048,
+        };
+        if (model.supportsThinkingConfig) {
+          generationConfig.thinkingConfig = { thinkingBudget: 0 };
+        }
+
+        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model.id}:generateContent?key=${encodeURIComponent(apiKey)}`;
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+            contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+            generationConfig,
+          }),
+        });
+
+        if (!response.ok) {
+          let errMessage = `HTTP ${response.status}`;
+          try {
+            const errJson = await response.json();
+            if (errJson?.error?.message) errMessage = `HTTP ${response.status}: ${errJson.error.message}`;
+          } catch {
+            const errText = await response.text().catch(() => '');
+            if (errText) errMessage = `HTTP ${response.status}: ${errText.slice(0, 140)}`;
+          }
+
+          const isAuthError = response.status === 401 || response.status === 403 || /api key/i.test(errMessage);
+          if (isAuthError) {
+            throw new Error(errMessage);
+          }
+          lastErr = new Error(errMessage);
+          continue;
+        }
+
+        const payload = await response.json();
+        const parts = payload?.candidates?.[0]?.content?.parts || [];
+        const text = parts
+          .filter((p) => !p.thought && typeof p.text === 'string')
+          .map((p) => p.text)
+          .join('')
+          .trim();
+
+        if (!text) {
+          const finishReason = payload?.candidates?.[0]?.finishReason || 'unknown';
+          lastErr = new Error(`Empty ${model.label} response (finishReason: ${finishReason})`);
+          continue;
+        }
+
+        return {
+          engine: `${model.label} · Grounded in PSI`,
+          markdown: text,
+        };
       }
-      const payload = await response.json();
-      const text = payload?.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('').trim();
-      if (!text) throw new Error('Empty Gemini response');
-      return {
-        engine: 'Gemini 2.5 Flash · Grounded in PSI',
-        markdown: text,
-      };
+
+      throw lastErr || new Error('Gemini request failed');
     }
 
     /* ============================================================
@@ -2840,23 +2936,37 @@
         const filterPlan = interpretQuery(prompt, state.data);
         const searchResult = runAssistantSearch(filterPlan, state.data);
 
-        if (document.getElementById('ai-sync-toggle').checked && searchResult.matchedInvestigations.length) {
-          applySearchResultToDashboard(searchResult);
-        }
-
-        const apiKey = sessionStorage.getItem(SESSION_KEY_STORAGE) || '';
+        const apiKey = getActiveGeminiKey();
         let synthesisResult = null;
         let geminiWarning = '';
 
-        if (apiKey && searchResult.matchedInvestigations.length) {
+        if (apiKey) {
           try {
             synthesisResult = await tryGeminiSynthesis(prompt, searchResult, apiKey);
+            updateGeminiUiStatus('');
+
+            if (!searchResult.matchedInvestigations.length) {
+              const cited = [];
+              const citeRegex = /\bPSI-(\d+)\b/gi;
+              let cm;
+              while ((cm = citeRegex.exec(synthesisResult.markdown)) !== null) {
+                const norm = `PSI-${cm[1]}`;
+                if (!cited.includes(norm)) cited.push(norm);
+              }
+              hydrateMatchesFromAccessions(cited, searchResult);
+            }
           } catch (err) {
-            geminiWarning = 'Gemini fallback to built-in engine';
+            const msg = err?.message || 'Request failed';
+            geminiWarning = `Gemini fallback (${msg})`;
+            updateGeminiUiStatus(`Gemini error: ${msg}`);
             synthesisResult = buildBuiltInSynthesis(searchResult);
           }
         } else {
           synthesisResult = buildBuiltInSynthesis(searchResult);
+        }
+
+        if (document.getElementById('ai-sync-toggle').checked && searchResult.matchedInvestigations.length) {
+          applySearchResultToDashboard(searchResult);
         }
 
         populateAssistantBubble(thinkingDiv, searchResult, synthesisResult, geminiWarning);
@@ -2919,16 +3029,71 @@
       downloadBlob([header.join(','), ...rows].join('\n'), filename, 'text/csv;charset=utf-8;');
     }
 
-    function updateGeminiUiStatus() {
-      const key = sessionStorage.getItem(SESSION_KEY_STORAGE) || '';
+    function saveGeminiKey(rawKey) {
+      const val = String(rawKey || '').trim();
+      if (!val) return '';
+      sessionStorage.setItem(SESSION_KEY_STORAGE, val);
+      try {
+        localStorage.setItem(SESSION_KEY_STORAGE, val);
+      } catch {
+        // Ignore localStorage quota/privacy errors
+      }
+      updateGeminiUiStatus('');
+      return val;
+    }
+
+    function clearGeminiKey() {
+      sessionStorage.removeItem(SESSION_KEY_STORAGE);
+      try {
+        localStorage.removeItem(SESSION_KEY_STORAGE);
+      } catch {
+        // Ignore storage errors
+      }
+      const keyInput = document.getElementById('gemini-key-input');
+      if (keyInput) {
+        keyInput.value = '';
+        keyInput.placeholder = 'Optional Gemini API Key (auto-saved in browser storage)';
+      }
+      updateGeminiUiStatus('');
+    }
+
+    function getActiveGeminiKey() {
+      const keyInput = document.getElementById('gemini-key-input');
+      const typed = keyInput ? keyInput.value.trim() : '';
+      if (typed) {
+        return saveGeminiKey(typed);
+      }
+      const sessionVal = (sessionStorage.getItem(SESSION_KEY_STORAGE) || '').trim();
+      if (sessionVal) return sessionVal;
+      try {
+        const localVal = (localStorage.getItem(SESSION_KEY_STORAGE) || '').trim();
+        if (localVal) {
+          sessionStorage.setItem(SESSION_KEY_STORAGE, localVal);
+          return localVal;
+        }
+      } catch {
+        // Ignore storage errors
+      }
+      return '';
+    }
+
+    function updateGeminiUiStatus(errorMsg = '') {
+      const key = (sessionStorage.getItem(SESSION_KEY_STORAGE) || (() => {
+        try { return localStorage.getItem(SESSION_KEY_STORAGE) || ''; } catch { return ''; }
+      })()).trim();
       const modeLabel = document.getElementById('ai-engine-mode-label');
       const statusText = document.getElementById('gemini-status-text');
       const keyInput = document.getElementById('gemini-key-input');
       if (key) {
         modeLabel.textContent = 'Gemini 2.5 Flash + PSI';
-        statusText.textContent = 'Gemini API key active in sessionStorage.';
-        statusText.style.color = 'var(--emerald)';
-        if (keyInput && !keyInput.value) keyInput.placeholder = 'API key saved in sessionStorage (enter new key to replace)';
+        if (errorMsg) {
+          statusText.textContent = errorMsg;
+          statusText.style.color = 'var(--orange)';
+        } else {
+          statusText.textContent = 'Gemini API key active (saved in browser storage).';
+          statusText.style.color = 'var(--emerald)';
+        }
+        if (keyInput && !keyInput.value) keyInput.placeholder = 'API key active (enter new key to replace)';
       } else {
         modeLabel.textContent = 'Built-in PSI Engine';
         statusText.textContent = 'Using built-in deterministic PSI retrieval & synthesis engine (no API key needed).';
@@ -3003,20 +3168,37 @@
       document.getElementById('ai-settings-drawer').classList.toggle('open');
     });
 
-    document.getElementById('gemini-save-btn').addEventListener('click', () => {
-      const val = document.getElementById('gemini-key-input').value.trim();
-      if (val) {
-        sessionStorage.setItem(SESSION_KEY_STORAGE, val);
-        document.getElementById('gemini-key-input').value = '';
+    const geminiKeyInputEl = document.getElementById('gemini-key-input');
+    geminiKeyInputEl.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      if (val) saveGeminiKey(val);
+    });
+    geminiKeyInputEl.addEventListener('change', (e) => {
+      const val = e.target.value.trim();
+      if (val) saveGeminiKey(val);
+    });
+    geminiKeyInputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const val = e.target.value.trim();
+        if (val) {
+          saveGeminiKey(val);
+          e.target.value = '';
+        }
       }
-      updateGeminiUiStatus();
     });
 
-    document.getElementById('gemini-clear-btn').addEventListener('click', () => {
-      sessionStorage.removeItem(SESSION_KEY_STORAGE);
-      document.getElementById('gemini-key-input').value = '';
-      updateGeminiUiStatus();
+    document.getElementById('gemini-save-btn').addEventListener('click', () => {
+      const val = geminiKeyInputEl.value.trim();
+      if (val) {
+        saveGeminiKey(val);
+        geminiKeyInputEl.value = '';
+      } else {
+        updateGeminiUiStatus('');
+      }
     });
+
+    document.getElementById('gemini-clear-btn').addEventListener('click', clearGeminiKey);
 
     // AI Chat Submit & Enter Key
     document.getElementById('ai-chat-form').addEventListener('submit', (e) => {
