@@ -1,6 +1,6 @@
-# astro-kali-space-apps-26
+# Flame in Freefall by AstroKali
 
-Para o desafio "Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data", desenvolvemos um dashboard-web-based com informações puxadas da base de dados PSI da NASA.
+For the "Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data" challenge we develope a web-based-dashboard cwith PSI NASA database.
 
 Para puxar as informações, usamos o Antigravity IDE, para puxar a API dos dados e ...
 
@@ -9,15 +9,15 @@ A partir desses dados, desenvolvemos o dashboard ... usando .... com o objetivo 
 Per Aspera Ad Astra
 
 
-        |
-       / \
-      |   |
-      | O |
-      |   |
-     /|   |\
-    / |___| \
-      /|||\
-     ( ||| )
-   (  (   )  )
- (  (       )  )
-(_______________)
+                |
+               / \
+              |   |
+              | O |
+              |   |
+             /|   |\
+            / |___| \
+              /|||\
+             ( ||| )
+           (  (   )  )
+         (  (       )  )
+        (_______________)
