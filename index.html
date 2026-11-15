@@ -3,258 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NASA PSI Combustion Data Dashboard</title>
+  <title>NASA PSI Combustion Data Dashboard &amp; AI Research Assistant</title>
   <style>
     :root {
       --bg: #070b14;
       --surface: #0f172a;
       --surface-alt: #162033;
+      --surface-elevated: #1c2840;
       --border: #1e293b;
+      --border-strong: #334155;
       --text: #e2e8f0;
       --muted: #94a3b8;
       --accent: #38bdf8;
       --accent-soft: rgba(56, 189, 248, 0.14);
       --orange: #fb923c;
+      --orange-soft: rgba(251, 146, 60, 0.14);
+      --emerald: #34d399;
+      --emerald-soft: rgba(52, 211, 153, 0.14);
+      --purple: #a78bfa;
+      --purple-soft: rgba(167, 139, 250, 0.14);
+      --shadow: 0 12px 32px rgba(2, 6, 23, 0.55);
     }
 
     * { box-sizing: border-box; }
 
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.5;
-    }
-
-    header {
-      background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 1.5rem 2rem;
-    }
-
-    .header-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1rem;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 1.6rem;
-      letter-spacing: -0.01em;
-    }
-
-    .subtitle {
-      margin: 0.35rem 0 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .meta-badge {
-      font-size: 0.82rem;
-      color: var(--muted);
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.35rem 0.85rem;
-    }
-
-    main {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 1.5rem 2rem 3rem;
-    }
-
-    .kpis {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.1rem 1.25rem;
-    }
-
-    .card-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-    }
-
-    .card-value {
-      margin-top: 0.35rem;
-      font-size: 1.85rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .card-sub {
-      margin-top: 0.2rem;
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-      margin-bottom: 1.25rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.9rem 1rem;
-    }
-
-    input[type="search"],
-    select {
-      background: var(--surface-alt);
-      color: var(--text);
-      border: 1px solid #334155;
-      border-radius: 6px;
-      padding: 0.6rem 0.85rem;
-      font-size: 0.95rem;
-    }
-
-    input[type="search"] {
-      flex: 1 1 280px;
-    }
-
-    select {
-      flex: 0 1 230px;
-    }
-
-    label.toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .status-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.75rem;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .table-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 780px;
-    }
-
-    th, td {
-      padding: 0.95rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-
-    th {
-      background: var(--surface-alt);
-      color: var(--muted);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    .accession-pill {
-      display: inline-block;
-      background: var(--accent-soft);
-      color: var(--accent);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      border-radius: 6px;
-      padding: 0.2rem 0.55rem;
-      font-weight: 700;
-      font-size: 0.85rem;
-      white-space: nowrap;
-    }
-
-    .title {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .objective {
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin: 0;
-      white-space: pre-line;
-    }
-
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.6rem;
-    }
-
-    .cat-pill {
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.15rem 0.55rem;
-      font-size: 0.76rem;
-      color: var(--muted);
-    }
-
-    details {
-      margin-top: 0.35rem;
-    }
-
-    details summary {
-      cursor: pointer;
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.88rem;
-    }
-
-    .file-list {
-      list-style: none;
-      padding: 0.5rem 0 0;
-      margin: 0;
-      max-height: 280px;
-      overflow-y: auto;
-    }
-
-    .file-list li {
-      padding: 0.4rem 0;
-      border-top: 1px solid var(--border);
-      font-size: 0.83rem;
-    }
-
-    .file-folder {
-      display: block;
-      color: var(--muted);
-      font-size: 0.75rem;
     }
 
     a {
@@ -266,6 +45,537 @@
       text-decoration: underline;
     }
 
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #111827 65%, #0c1a2e 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 1.15rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+
+    .header-inner {
+      max-width: 1760px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.45rem;
+      letter-spacing: -0.015em;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--accent));
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.65);
+      flex: 0 0 auto;
+    }
+
+    .subtitle {
+      margin: 0.25rem 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .meta-badge {
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--surface-alt);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--surface-elevated);
+      border-color: var(--accent);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(167, 139, 250, 0.18));
+      border-color: rgba(56, 189, 248, 0.55);
+      color: #f0f9ff;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.32), rgba(167, 139, 250, 0.28));
+    }
+
+    .btn-sm {
+      padding: 0.28rem 0.62rem;
+      font-size: 0.77rem;
+      border-radius: 6px;
+    }
+
+    /* Two-column Workspace Layout */
+    .workspace-shell {
+      max-width: 1760px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 440px;
+      gap: 1.25rem;
+      padding: 1.25rem 1.5rem 2.5rem;
+      align-items: start;
+    }
+
+    .workspace-shell.ai-collapsed {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .workspace-shell.ai-collapsed #ai-assistant-panel {
+      display: none;
+    }
+
+    .workspace-shell.ai-wide {
+      grid-template-columns: minmax(0, 1fr) 560px;
+    }
+
+    main {
+      min-width: 0;
+    }
+
+    /* KPIs */
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.95rem 1.1rem;
+    }
+
+    .card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    .card-value {
+      margin-top: 0.25rem;
+      font-size: 1.68rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+
+    .card-sub {
+      margin-top: 0.2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* Interactive Explorer Strip */
+    .explorer-strip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .explorer-strip summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+    }
+
+    .explorer-strip summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .explorer-hint {
+      font-size: 0.77rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .explorer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.9rem;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .explorer-title {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .chip-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.38rem;
+    }
+
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 0.22rem 0.62rem;
+      font-size: 0.77rem;
+      transition: all 0.15s ease;
+    }
+
+    .filter-chip:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .filter-chip.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: #f0f9ff;
+      font-weight: 600;
+    }
+
+    .chip-count {
+      background: rgba(148, 163, 184, 0.15);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 0.02rem 0.4rem;
+      font-size: 0.71rem;
+    }
+
+    .filter-chip.active .chip-count {
+      background: rgba(56, 189, 248, 0.28);
+      color: #e0f2fe;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+      margin-bottom: 0.85rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.8rem 0.95rem;
+    }
+
+    input[type="search"],
+    input[type="text"],
+    input[type="password"],
+    select,
+    textarea {
+      background: var(--surface-alt);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      padding: 0.52rem 0.75rem;
+      font-size: 0.88rem;
+      font-family: inherit;
+    }
+
+    input[type="search"]:focus,
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+
+    .controls input[type="search"] {
+      flex: 1 1 260px;
+    }
+
+    .controls select {
+      flex: 0 1 190px;
+      max-width: 100%;
+    }
+
+    label.toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.84rem;
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Active AI Filter Banner */
+    .ai-filter-banner {
+      display: none;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.13), rgba(167, 139, 250, 0.11));
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 9px;
+      padding: 0.6rem 0.9rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.83rem;
+    }
+
+    .ai-filter-banner.visible {
+      display: flex;
+    }
+
+    .ai-filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .status-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.65rem;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .status-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Table */
+    .table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 660px;
+    }
+
+    th, td {
+      padding: 0.9rem 0.95rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--surface-alt);
+      color: var(--muted);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.ai-matched-row {
+      background: rgba(56, 189, 248, 0.035);
+    }
+
+    .accession-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+
+    .accession-pill {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.38);
+      border-radius: 6px;
+      padding: 0.18rem 0.55rem;
+      font-weight: 700;
+      font-size: 0.83rem;
+      white-space: nowrap;
+    }
+
+    .acronym-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--orange);
+      background: var(--orange-soft);
+      border: 1px solid rgba(251, 146, 60, 0.32);
+      border-radius: 4px;
+      padding: 0.1rem 0.42rem;
+    }
+
+    .relevance-tag {
+      font-size: 0.71rem;
+      font-weight: 600;
+      color: var(--emerald);
+      background: var(--emerald-soft);
+      border: 1px solid rgba(52, 211, 153, 0.32);
+      border-radius: 4px;
+      padding: 0.1rem 0.42rem;
+    }
+
+    .title {
+      font-weight: 600;
+      font-size: 0.97rem;
+      margin-bottom: 0.35rem;
+      color: #f8fafc;
+    }
+
+    .pi-line {
+      font-size: 0.81rem;
+      color: #cbd5e1;
+      margin-bottom: 0.42rem;
+    }
+
+    .pi-line span.muted {
+      color: var(--muted);
+    }
+
+    .objective {
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin: 0;
+      white-space: pre-line;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.32rem;
+      margin-top: 0.5rem;
+    }
+
+    .cat-pill {
+      display: inline-flex;
+      align-items: center;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 0.14rem 0.5rem;
+      font-size: 0.73rem;
+      line-height: 1.35;
+      color: var(--muted);
+    }
+
+    .cat-pill.accent {
+      color: var(--accent);
+      border-color: rgba(56, 189, 248, 0.35);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .cat-pill.purple {
+      color: #ddd6fe;
+      border-color: rgba(167, 139, 250, 0.38);
+      background: var(--purple-soft);
+    }
+
+    .cat-pill.emerald {
+      color: #a7f3d0;
+      border-color: rgba(52, 211, 153, 0.35);
+      background: var(--emerald-soft);
+    }
+
+    .cat-pill-btn {
+      cursor: pointer;
+    }
+
+    .cat-pill-btn:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    details {
+      margin-top: 0.3rem;
+    }
+
+    details summary {
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.84rem;
+    }
+
+    .file-list {
+      list-style: none;
+      padding: 0.45rem 0 0;
+      margin: 0;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .file-list li {
+      padding: 0.38rem 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.81rem;
+      word-break: break-word;
+    }
+
+    .file-folder {
+      display: block;
+      color: var(--muted);
+      font-size: 0.73rem;
+    }
+
     .empty, .error {
       padding: 2rem;
       text-align: center;
@@ -275,84 +585,779 @@
     .error {
       color: var(--orange);
     }
+
+    /* AI Research Assistant Dock Panel */
+    #ai-assistant-panel {
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 108px);
+      min-height: 540px;
+      position: sticky;
+      top: 86px;
+      overflow: hidden;
+    }
+
+    .ai-header {
+      padding: 0.85rem 1rem;
+      background: linear-gradient(135deg, #131f37 0%, #17233b 100%);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .ai-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ai-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ai-title {
+      font-weight: 700;
+      font-size: 0.98rem;
+      margin: 0;
+    }
+
+    .ai-badge {
+      font-size: 0.7rem;
+      color: var(--emerald);
+      background: var(--emerald-soft);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      border-radius: 999px;
+      padding: 0.12rem 0.5rem;
+      font-weight: 600;
+    }
+
+    .ai-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.77rem;
+      color: var(--muted);
+    }
+
+    .ai-toolbar-btns {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .ai-settings-drawer {
+      display: none;
+      padding: 0.75rem 1rem;
+      background: var(--surface-alt);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+    }
+
+    .ai-settings-drawer.open {
+      display: block;
+    }
+
+    .ai-settings-row {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.45rem;
+    }
+
+    .ai-settings-row input {
+      flex: 1 1 auto;
+      font-size: 0.8rem;
+      padding: 0.38rem 0.6rem;
+    }
+
+    .ai-messages {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding: 0.95rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .chat-msg {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      max-width: 100%;
+    }
+
+    .chat-msg.user {
+      align-items: flex-end;
+    }
+
+    .chat-bubble {
+      border-radius: 10px;
+      padding: 0.78rem 0.9rem;
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
+    .chat-msg.user .chat-bubble {
+      background: linear-gradient(135deg, #1d4ed8, #0284c7);
+      color: #f8fafc;
+      max-width: 90%;
+      border-bottom-right-radius: 3px;
+    }
+
+    .chat-msg.assistant .chat-bubble {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 100%;
+      border-top-left-radius: 3px;
+    }
+
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.45rem;
+      margin-top: 0.65rem;
+    }
+
+    .prompt-btn {
+      text-align: left;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 0.55rem 0.7rem;
+      font-size: 0.8rem;
+      line-height: 1.35;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .prompt-btn:hover {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    /* Filter Execution Trace inside Assistant Message */
+    .filter-trace {
+      background: rgba(7, 11, 20, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.55rem 0.7rem;
+      margin-bottom: 0.65rem;
+      font-size: 0.76rem;
+    }
+
+    .filter-trace-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.7rem;
+    }
+
+    .trace-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .trace-tag {
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 4px;
+      padding: 0.12rem 0.42rem;
+      color: #cbd5e1;
+      font-size: 0.72rem;
+    }
+
+    .trace-tag strong {
+      color: var(--accent);
+    }
+
+    .synthesis-body {
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .synthesis-body p {
+      margin: 0 0 0.55rem;
+    }
+
+    .synthesis-body ul {
+      margin: 0.35rem 0 0.6rem;
+      padding-left: 1.15rem;
+    }
+
+    .synthesis-body li {
+      margin-bottom: 0.35rem;
+    }
+
+    .engine-tag {
+      display: inline-block;
+      font-size: 0.69rem;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .inline-psi-btn {
+      display: inline-flex;
+      align-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 4px;
+      padding: 0.02rem 0.36rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      vertical-align: baseline;
+    }
+
+    .inline-psi-btn:hover {
+      background: rgba(56, 189, 248, 0.28);
+    }
+
+    /* Source & Data Cards inside AI Reply */
+    .sources-section {
+      margin-top: 0.75rem;
+      padding-top: 0.65rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .sources-heading {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .source-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 0.75rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .source-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .source-card-title {
+      font-weight: 600;
+      font-size: 0.83rem;
+      color: #f8fafc;
+      margin: 0.28rem 0 0.25rem;
+    }
+
+    .source-meta-line {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+      margin-bottom: 0.35rem;
+    }
+
+    .source-pubs {
+      margin: 0.35rem 0;
+      padding: 0.35rem 0.5rem;
+      background: rgba(15, 23, 42, 0.75);
+      border-left: 2px solid var(--purple);
+      border-radius: 0 5px 5px 0;
+      font-size: 0.74rem;
+    }
+
+    .source-pubs div {
+      margin-bottom: 0.22rem;
+    }
+
+    .source-pubs div:last-child {
+      margin-bottom: 0;
+    }
+
+    .source-files {
+      margin-top: 0.38rem;
+      padding-top: 0.38rem;
+      border-top: 1px dashed var(--border);
+    }
+
+    .source-file-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.45rem;
+      font-size: 0.75rem;
+      padding: 0.22rem 0;
+      word-break: break-word;
+    }
+
+    .source-file-size {
+      color: var(--muted);
+      white-space: nowrap;
+      font-size: 0.71rem;
+    }
+
+    .export-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.65rem;
+      padding-top: 0.55rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .ai-composer {
+      padding: 0.75rem 0.9rem;
+      background: var(--surface-alt);
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+
+    .ai-composer textarea {
+      flex: 1 1 auto;
+      resize: none;
+      min-height: 44px;
+      max-height: 120px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .thinking-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    /* Investigation Dossier Modal */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.78);
+      backdrop-filter: blur(4px);
+      z-index: 60;
+      padding: 1.5rem;
+      overflow-y: auto;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-dialog {
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 12px;
+      max-width: 980px;
+      width: 100%;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin: auto 0;
+    }
+
+    .modal-header {
+      padding: 1.1rem 1.35rem;
+      background: linear-gradient(135deg, #131f37, #162033);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .modal-title {
+      margin: 0.35rem 0 0;
+      font-size: 1.15rem;
+      line-height: 1.35;
+    }
+
+    .modal-tabs {
+      display: flex;
+      gap: 0.25rem;
+      padding: 0.65rem 1.35rem 0;
+      background: var(--surface-alt);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--muted);
+      padding: 0.5rem 0.85rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .modal-body {
+      padding: 1.25rem 1.35rem;
+      max-height: 68vh;
+      overflow-y: auto;
+    }
+
+    .dossier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .dossier-kv {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 0.8rem;
+      font-size: 0.82rem;
+    }
+
+    .dossier-kv-label {
+      font-size: 0.71rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .dossier-section {
+      margin-bottom: 1rem;
+    }
+
+    .dossier-section h4 {
+      margin: 0 0 0.35rem;
+      font-size: 0.88rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .dossier-section p {
+      margin: 0;
+      font-size: 0.87rem;
+      color: #cbd5e1;
+      white-space: pre-line;
+    }
+
+    .dossier-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .dossier-list li {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 0.8rem;
+      font-size: 0.83rem;
+    }
+
+    @media (max-width: 1160px) {
+      .workspace-shell,
+      .workspace-shell.ai-wide {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      #ai-assistant-panel {
+        position: static;
+        height: 600px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      header, .workspace-shell {
+        padding-left: 0.9rem;
+        padding-right: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="header-inner">
       <div>
-        <h1>NASA PSI Fire &amp; Combustion Dashboard</h1>
+        <h1><span class="brand-dot"></span>NASA PSI Fire &amp; Combustion Dashboard</h1>
         <p class="subtitle">
-          Open microgravity investigation catalog and direct file downloads from
+          Open microgravity investigation catalog, scientific metadata, and direct file downloads from
           <a href="https://psi.nasa.gov/physci/repo/search?q=&amp;data_source=psi&amp;data_type=investigation" target="_blank" rel="noopener">NASA Physical Sciences Informatics (PSI)</a>
         </p>
       </div>
-      <div class="meta-badge" id="snapshot-meta">Loading snapshot...</div>
+      <div class="header-actions">
+        <div class="meta-badge" id="snapshot-meta">Loading snapshot...</div>
+        <button type="button" class="btn btn-primary" id="toggle-ai-btn" aria-expanded="true">
+          Hide AI Assistant
+        </button>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="kpis">
-      <div class="card">
-        <div class="card-label">Investigations</div>
-        <div class="card-value" id="kpi-inv">-</div>
-        <div class="card-sub" id="kpi-inv-sub">Matched studies</div>
-      </div>
-      <div class="card">
-        <div class="card-label">Total Files</div>
-        <div class="card-value" id="kpi-files">-</div>
-        <div class="card-sub">Across matched studies</div>
-      </div>
-      <div class="card">
-        <div class="card-label">Data Volume</div>
-        <div class="card-value" id="kpi-size">-</div>
-        <div class="card-sub">Reported file bytes</div>
-      </div>
-      <div class="card">
-        <div class="card-label">File Categories</div>
-        <div class="card-value" id="kpi-cats">-</div>
-        <div class="card-sub">Distinct repository groups</div>
-      </div>
-    </section>
+  <div class="workspace-shell" id="workspace-shell">
+    <main>
+      <section class="kpis">
+        <div class="card">
+          <div class="card-label">Investigations</div>
+          <div class="card-value" id="kpi-inv">-</div>
+          <div class="card-sub" id="kpi-inv-sub">Matched studies</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Total Files</div>
+          <div class="card-value" id="kpi-files">-</div>
+          <div class="card-sub">Across Combustion Science studies</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Data Volume</div>
+          <div class="card-value" id="kpi-size">-</div>
+          <div class="card-sub">Reported repository bytes</div>
+        </div>
+        <div class="card">
+          <div class="card-label">File Categories</div>
+          <div class="card-value" id="kpi-cats">-</div>
+          <div class="card-sub" id="kpi-cats-sub">Distinct repository groups</div>
+        </div>
+      </section>
 
-    <section class="controls">
-      <input type="search" id="search-input" placeholder="Search accession (e.g. PSI-98), title, objective, or filename..." />
-      <select id="category-filter">
-        <option value="">All Categories</option>
-      </select>
-      <label class="toggle">
-        <input type="checkbox" id="with-files-only" />
-        Only studies with files
-      </label>
-    </section>
+      <details class="explorer-strip" open>
+        <summary>
+          <span>Interactive Topic &amp; File Category Explorer</span>
+          <span class="explorer-hint">Click any chip to filter studies or inspect volumes</span>
+        </summary>
+        <div class="explorer-grid">
+          <div>
+            <div class="explorer-title">Sub-Research Areas</div>
+            <div class="chip-wrap" id="explorer-subareas"></div>
+          </div>
+          <div>
+            <div class="explorer-title">Repository File Categories</div>
+            <div class="chip-wrap" id="explorer-categories"></div>
+          </div>
+        </div>
+      </details>
 
-    <div class="status-bar">
-      <span id="match-count">Loading...</span>
-      <span>Tip: Download links go directly to psi.nasa.gov</span>
+      <section class="controls">
+        <input type="search" id="search-input" placeholder="Search accession (e.g. PSI-98), title, objective, PI, publication, hardware, or filename..." />
+        <select id="subarea-filter" aria-label="Filter by Sub-Research Area">
+          <option value="">All Sub-Research Areas</option>
+        </select>
+        <select id="category-filter" aria-label="Filter by File Category">
+          <option value="">All Categories</option>
+        </select>
+        <select id="hardware-filter" aria-label="Filter by Hardware or Facility">
+          <option value="">All Facilities / Hardware</option>
+        </select>
+        <select id="sort-filter" aria-label="Sort investigations">
+          <option value="release_desc">Sort: Release Date (Newest)</option>
+          <option value="files_desc">Sort: Most Files</option>
+          <option value="size_desc">Sort: Largest Data Volume</option>
+          <option value="accession_asc">Sort: Accession (Ascending)</option>
+          <option value="relevance">Sort: AI Relevance</option>
+        </select>
+        <label class="toggle">
+          <input type="checkbox" id="with-files-only" />
+          Only studies with files
+        </label>
+        <button type="button" class="btn btn-sm" id="reset-filters-btn">Reset</button>
+      </section>
+
+      <div class="ai-filter-banner" id="active-ai-filter-banner">
+        <div class="ai-filter-tags" id="active-ai-filter-details"></div>
+        <button type="button" class="btn btn-sm" id="clear-ai-filter-btn">Clear AI Filter</button>
+      </div>
+
+      <div class="status-bar">
+        <span id="match-count">Loading...</span>
+        <div class="status-actions">
+          <span>Tip: Download links go directly to psi.nasa.gov</span>
+          <button type="button" class="btn btn-sm" id="export-filtered-csv-btn">Export Table CSV</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 135px;">Accession</th>
+              <th>Investigation Details</th>
+              <th style="width: 115px;">Release Date</th>
+              <th style="width: 270px;">Repository Files</th>
+            </tr>
+          </thead>
+          <tbody id="rows">
+            <tr><td colspan="4" class="empty">Loading NASA PSI dataset...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <aside id="ai-assistant-panel" aria-label="AI Research Assistant">
+      <div class="ai-header">
+        <div class="ai-header-top">
+          <div class="ai-title-wrap">
+            <h2 class="ai-title">PSI AI Research Assistant</h2>
+            <span class="ai-badge" id="ai-status-badge">Indexing...</span>
+          </div>
+          <div class="ai-toolbar-btns">
+            <button type="button" class="btn btn-sm" id="ai-wide-btn" title="Toggle wider assistant pane">Wide</button>
+            <button type="button" class="btn btn-sm" id="ai-settings-btn" title="Configure optional Gemini API key">Engine</button>
+            <button type="button" class="btn btn-sm" id="ai-clear-btn" title="Reset conversation">Clear</button>
+          </div>
+        </div>
+        <div class="ai-toolbar">
+          <label class="toggle" style="font-size: 0.78rem;">
+            <input type="checkbox" id="ai-sync-toggle" checked />
+            Auto-sync filtered results to dashboard table
+          </label>
+          <span id="ai-engine-mode-label">Built-in PSI Engine</span>
+        </div>
+      </div>
+
+      <div class="ai-settings-drawer" id="ai-settings-drawer">
+        <div>
+          <strong>AI Synthesis Engine</strong> — Works offline on static GitHub Pages via the built-in PSI Scientific Retrieval &amp; Synthesis Engine. Optionally add a Google Gemini API key (<code>gemini-2.5-flash</code>) for generative LLM synthesis grounded strictly on matched PSI records.
+        </div>
+        <div class="ai-settings-row">
+          <input type="password" id="gemini-key-input" placeholder="Optional Gemini API Key (stored in sessionStorage only)" autocomplete="off" />
+          <button type="button" class="btn btn-sm btn-primary" id="gemini-save-btn">Save</button>
+          <button type="button" class="btn btn-sm" id="gemini-clear-btn">Clear</button>
+        </div>
+        <div id="gemini-status-text" style="margin-top: 0.35rem; color: var(--muted); font-size: 0.74rem;"></div>
+      </div>
+
+      <div class="ai-messages" id="ai-messages"></div>
+
+      <form class="ai-composer" id="ai-chat-form">
+        <textarea id="ai-input" rows="2" placeholder="Ask about cool flames, fire safety, PIs, DOIs, hardware, or request CSV/PDF data files..."></textarea>
+        <button type="submit" class="btn btn-primary" id="ai-send-btn">Search &amp; Ask</button>
+      </form>
+    </aside>
+  </div>
+
+  <!-- Investigation Dossier Modal -->
+  <div class="modal-backdrop" id="dossier-modal" role="dialog" aria-modal="true" aria-labelledby="dossier-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div id="dossier-header-content"></div>
+        <button type="button" class="btn btn-sm" id="dossier-close-btn">Close</button>
+      </div>
+      <div class="modal-tabs" id="dossier-tabs">
+        <button type="button" class="tab-btn active" data-tab="overview">Overview &amp; Science</button>
+        <button type="button" class="tab-btn" data-tab="team">Team &amp; Publications</button>
+        <button type="button" class="tab-btn" data-tab="files">Repository Data Files</button>
+      </div>
+      <div class="modal-body" id="dossier-content"></div>
     </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 130px;">Accession</th>
-            <th>Investigation Details</th>
-            <th style="width: 130px;">Release Date</th>
-            <th style="width: 340px;">Repository Files</th>
-          </tr>
-        </thead>
-        <tbody id="rows">
-          <tr><td colspan="4" class="empty">Loading NASA PSI dataset...</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </main>
+  </div>
 
   <script>
+    const SESSION_KEY_STORAGE = 'psi_gemini_api_key';
+
     const state = {
       data: null,
       categories: new Set(),
+      categoryCounts: {},
+      subAreas: new Map(),
+      hardwareGroups: new Set(),
+      aiFilter: {
+        active: false,
+        query: '',
+        matchedAccessions: new Set(),
+        scores: new Map(),
+        matchedFilesByAcc: new Map(),
+        traceTags: [],
+        sortBy: 'relevance',
+      },
+      activeDossierAccession: null,
+      activeDossierTab: 'overview',
+      dossierFileSearch: '',
+      dossierFileCategory: '',
+      lastMatchedRows: [],
+      chatHistory: [],
+      assistantBusy: false,
     };
+
+    const MONTH_MAP = {
+      jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+      jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11,
+    };
+
+    const STOPWORDS = new Set([
+      'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'can', 'data', 'datasets', 'dataset',
+      'do', 'does', 'experiments', 'experiment', 'file', 'files', 'find', 'for', 'from', 'give',
+      'have', 'how', 'in', 'into', 'investigate', 'investigations', 'investigation', 'is', 'it',
+      'link', 'links', 'list', 'me', 'of', 'on', 'or', 'papers', 'please', 'related', 'research',
+      'search', 'show', 'studies', 'study', 'tell', 'that', 'the', 'their', 'them', 'these',
+      'those', 'to', 'using', 'what', 'which', 'with', 'about', 'all', 'any', 'only',
+    ]);
+
+    const DOMAIN_SYNONYMS = {
+      'cool flame': ['cool flame', 'cool flames', 'low-temperature', 'two-stage', 'oscillatory'],
+      'cool': ['cool flame', 'cool flames', 'low-temperature'],
+      'droplet': ['droplet', 'droplets', 'mdca', 'alkane', 'heptane', 'decane', 'dodecane', 'flex'],
+      'smoke': ['smoke', 'aerosol', 'particulate', 'soot', 'pyrolysis', 'same'],
+      'soot': ['soot', 'smoke', 'aerosol', 'particulate', 'co-flow'],
+      'aerosol': ['aerosol', 'smoke', 'particulate', 'dust', 'same'],
+      'aerosols': ['aerosol', 'smoke', 'particulate', 'dust', 'same'],
+      'fire safety': ['fire safety', 'spacecraft fire', 'flammability', 'extinction', 'flame spread', 'saffire', 'bass'],
+      'spacecraft': ['spacecraft', 'cygnus', 'saffire'],
+      'simulation': ['simulation', 'cfd', 'numerical', 'model', 'modeling', 'openfoam', 'kinetics'],
+      'cfd': ['cfd', 'simulation', 'numerical', 'modeling', 'openfoam'],
+      'gaseous': ['gaseous', 'gas', 'propane', 'butane', 'pentane', 'methane', 'ethylene', 'burner'],
+      'alkane': ['alkane', 'n-alkane', 'heptane', 'octane', 'decane', 'dodecane', 'propane', 'butane', 'pentane'],
+      'solid': ['solid', 'solids', 'pmma', 'nomex', 'cotton', 'surface combustion', 'bass', 'saffire'],
+      'radiation': ['radiation', 'radiative', 'radiometer', 'extinction'],
+      'laminar': ['laminar', 'diffusion', 'liftoff', 'co-flow', 'coflow'],
+      'extinction': ['extinction', 'extinguishment', 'flammability', 'flex'],
+    };
+
+    const HARDWARE_PATTERNS = [
+      { key: 'ACME', label: 'ACME (Advanced Combustion)', test: (h) => /acme|advanced combustion via microgravity/i.test(h) },
+      { key: 'CIR', label: 'CIR (Combustion Integrated Rack)', test: (h) => /\bcir\b|combustion integrated rack/i.test(h) },
+      { key: 'MDCA', label: 'MDCA (Droplet Apparatus)', test: (h) => /mdca|droplet combustion/i.test(h) },
+      { key: 'SAFFIRE', label: 'SAFFIRE / Cygnus', test: (h) => /saffire|cygnus/i.test(h) },
+      { key: 'MSG', label: 'Microgravity Science Glovebox (MSG)', test: (h) => /glovebox|\bmsg\b/i.test(h) },
+      { key: 'SOOT', label: 'Soot & Aerosol Diagnostics', test: (h) => /soot|p-trak|aerosol/i.test(h) },
+      { key: 'GROUND', label: 'PI Ground Lab Hardware', test: (h, meta) => /principal investigator/i.test(h) || /ground/i.test(meta.projectType || '') },
+    ];
+
+    const QUICK_PROMPTS = [
+      'Find cool flame droplet studies and link their CSV simulation data',
+      'Which studies investigate spacecraft fire safety and smoke aerosols?',
+      'Show ISS gaseous flame experiments (ACME / CIR) with publications',
+      'What are the largest combustion datasets with analyzed data files?',
+    ];
 
     function escapeHtml(value) {
       return String(value ?? '')
@@ -372,6 +1377,103 @@
       return `${scaled.toFixed(exp === 0 ? 0 : 2)} ${units[exp]}`;
     }
 
+    function normalizeSubArea(raw) {
+      const cleaned = String(raw || '').trim();
+      if (!cleaned) return 'Unspecified';
+      const lower = cleaned.toLowerCase();
+      if (lower === 'flames of gaseous fuels' || lower === 'flames of gaseous fuel') {
+        return 'Flames of Gaseous Fuels';
+      }
+      if (lower === 'droplet' || lower === 'droplets') {
+        return 'Droplets';
+      }
+      return cleaned;
+    }
+
+    function parsePsiDate(dateStr) {
+      const raw = String(dateStr || '').trim();
+      if (!raw) return 0;
+      const m = raw.match(/^(\d{1,2})-([A-Za-z]{3})-(\d{4})$/);
+      if (m) {
+        const day = parseInt(m[1], 10);
+        const mon = MONTH_MAP[m[2].toLowerCase()];
+        const year = parseInt(m[3], 10);
+        if (mon !== undefined) return Date.UTC(year, mon, day);
+      }
+      const parsed = Date.parse(raw);
+      return Number.isNaN(parsed) ? 0 : parsed;
+    }
+
+    function parseAccessionNumber(acc) {
+      const m = String(acc || '').match(/(\d+)/);
+      return m ? parseInt(m[1], 10) : 0;
+    }
+
+    function getPsiSearchUrl(accession) {
+      return `https://psi.nasa.gov/physci/repo/search?q=${encodeURIComponent(accession)}&data_source=psi&data_type=investigation`;
+    }
+
+    function getFileExtension(fileName) {
+      const name = String(fileName || '').trim().toLowerCase();
+      const idx = name.lastIndexOf('.');
+      return idx > 0 ? name.slice(idx) : '';
+    }
+
+    function getHardwareKeys(meta) {
+      const hw = String(meta.experimentHardware || '');
+      return HARDWARE_PATTERNS.filter((p) => p.test(hw, meta)).map((p) => p.key);
+    }
+
+    function getPrimaryPiLabel(meta) {
+      const contacts = Array.isArray(meta.contacts) ? meta.contacts : [];
+      if (!contacts.length) return '';
+      const pi = contacts.find((c) => (c.roles || []).some((r) => /principal investigator/i.test(r))) || contacts[0];
+      const parts = [];
+      if (pi.name) parts.push(pi.name);
+      if (pi.affiliation) parts.push(`(${pi.affiliation})`);
+      const extra = contacts.length > 1 ? ` +${contacts.length - 1} team` : '';
+      return `${parts.join(' ')}${extra}`;
+    }
+
+    function buildStudyHaystack(inv, summary) {
+      const meta = inv.metadata || {};
+      const contactsText = (meta.contacts || [])
+        .map((c) => `${c.name || ''} ${c.affiliation || ''} ${(c.roles || []).join(' ')}`)
+        .join(' ');
+      const pubsText = (meta.publications || [])
+        .map((p) => `${p.title || ''} ${p.authors || ''} ${p.doi || ''}`)
+        .join(' ');
+      const filesText = (summary.sample_files || [])
+        .map((f) => `${f.file_name || ''} ${f.category || ''} ${f.folder || ''}`)
+        .join(' ');
+
+      return [
+        inv.accession || '',
+        meta.investigationAcronym || '',
+        meta.investigation_title || '',
+        meta.investigation_objective || '',
+        meta.hypothesis || '',
+        meta.approach || '',
+        meta.researchImpacts || '',
+        meta.researchArea || '',
+        meta.subResearchArea || '',
+        normalizeSubArea(meta.subResearchArea),
+        meta.experimentHardware || '',
+        meta.managingNasaCenter || '',
+        meta.flightProgram || '',
+        meta.spaceProgram || '',
+        meta.projectType || '',
+        meta.doi || '',
+        meta.related_glds || '',
+        contactsText,
+        pubsText,
+        filesText,
+      ].join(' ').toLowerCase();
+    }
+
+    /* ============================================================
+       Dashboard Data Loading & Explorer / Table Rendering
+       ============================================================ */
     async function loadDashboard() {
       const tbody = document.getElementById('rows');
       try {
@@ -383,11 +1485,23 @@
         const filesMap = data.files_by_accession || {};
         let totalFiles = 0;
         let totalBytes = 0;
-        for (const summary of Object.values(filesMap)) {
+        let totalPubs = 0;
+
+        for (const inv of data.investigations || []) {
+          const acc = inv.accession || '';
+          const meta = inv.metadata || {};
+          const subNorm = normalizeSubArea(meta.subResearchArea);
+          state.subAreas.set(subNorm, (state.subAreas.get(subNorm) || 0) + 1);
+          totalPubs += (meta.publications || []).length;
+
+          getHardwareKeys(meta).forEach((k) => state.hardwareGroups.add(k));
+
+          const summary = filesMap[acc] || {};
           totalFiles += Number(summary.file_count || 0);
           totalBytes += Number(summary.total_bytes || 0);
-          for (const cat of Object.keys(summary.categories || {})) {
+          for (const [cat, cnt] of Object.entries(summary.categories || {})) {
             state.categories.add(cat);
+            state.categoryCounts[cat] = (state.categoryCounts[cat] || 0) + Number(cnt || 0);
           }
         }
 
@@ -398,29 +1512,99 @@
         document.getElementById('kpi-files').textContent = totalFiles.toLocaleString();
         document.getElementById('kpi-size').textContent = formatBytes(totalBytes);
         document.getElementById('kpi-cats').textContent = state.categories.size.toLocaleString();
+        document.getElementById('kpi-cats-sub').textContent = `${totalPubs.toLocaleString()} linked publications`;
 
         const generatedAt = data.generated_at ? new Date(data.generated_at).toLocaleString() : 'Unknown';
         const areaText = data.research_area ? ` | Research Area: ${data.research_area}` : '';
         document.getElementById('snapshot-meta').textContent = `Updated: ${generatedAt}${areaText}`;
+        document.getElementById('ai-status-badge').textContent = `${invCount} Studies · ${totalPubs} Pubs`;
 
-        const select = document.getElementById('category-filter');
-        [...state.categories].sort().forEach((cat) => {
-          const opt = document.createElement('option');
-          opt.value = cat;
-          opt.textContent = cat;
-          select.appendChild(opt);
-        });
-
+        populateDropdowns();
+        renderExplorerStrip();
         renderRows();
+        initChatWelcome();
       } catch (err) {
         tbody.innerHTML = `<tr><td colspan="4" class="error">Failed to load ./data/dashboard_data.json (${escapeHtml(err.message)}). Run <code>python build_data.py</code> and serve over HTTP.</td></tr>`;
       }
     }
 
+    function populateDropdowns() {
+      const catSelect = document.getElementById('category-filter');
+      [...state.categories].sort().forEach((cat) => {
+        const opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = `${cat} (${(state.categoryCounts[cat] || 0).toLocaleString()})`;
+        catSelect.appendChild(opt);
+      });
+
+      const subSelect = document.getElementById('subarea-filter');
+      [...state.subAreas.entries()]
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .forEach(([sub, count]) => {
+          const opt = document.createElement('option');
+          opt.value = sub;
+          opt.textContent = `${sub} (${count})`;
+          subSelect.appendChild(opt);
+        });
+
+      const hwSelect = document.getElementById('hardware-filter');
+      HARDWARE_PATTERNS.forEach((p) => {
+        if (state.hardwareGroups.has(p.key)) {
+          const opt = document.createElement('option');
+          opt.value = p.key;
+          opt.textContent = p.label;
+          hwSelect.appendChild(opt);
+        }
+      });
+    }
+
+    function renderExplorerStrip() {
+      const subWrap = document.getElementById('explorer-subareas');
+      const activeSub = document.getElementById('subarea-filter').value;
+      subWrap.innerHTML = [...state.subAreas.entries()]
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .map(([sub, count]) => `
+          <button type="button" class="filter-chip ${activeSub === sub ? 'active' : ''}" data-subarea="${escapeHtml(sub)}">
+            <span>${escapeHtml(sub)}</span>
+            <span class="chip-count">${count}</span>
+          </button>
+        `).join('');
+
+      const catWrap = document.getElementById('explorer-categories');
+      const activeCat = document.getElementById('category-filter').value;
+      catWrap.innerHTML = Object.entries(state.categoryCounts)
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .map(([cat, count]) => `
+          <button type="button" class="filter-chip ${activeCat === cat ? 'active' : ''}" data-category="${escapeHtml(cat)}">
+            <span>${escapeHtml(cat)}</span>
+            <span class="chip-count">${count.toLocaleString()}</span>
+          </button>
+        `).join('');
+    }
+
+    function renderActiveAiBanner() {
+      const banner = document.getElementById('active-ai-filter-banner');
+      const details = document.getElementById('active-ai-filter-details');
+      if (!state.aiFilter.active) {
+        banner.classList.remove('visible');
+        details.innerHTML = '';
+        return;
+      }
+
+      const tagsHtml = state.aiFilter.traceTags
+        .map((t) => `<span class="trace-tag"><strong>${escapeHtml(t.label)}:</strong> ${escapeHtml(t.value)}</span>`)
+        .join('');
+      details.innerHTML = `<span style="font-weight: 700; color: var(--accent);">AI Filter Active:</span> ${tagsHtml}`;
+      banner.classList.add('visible');
+    }
+
     function renderRows() {
       if (!state.data) return;
       const query = document.getElementById('search-input').value.trim().toLowerCase();
+      const subAreaFilter = document.getElementById('subarea-filter').value;
       const categoryFilter = document.getElementById('category-filter').value;
+      const hardwareFilter = document.getElementById('hardware-filter').value;
+      const sortBy = document.getElementById('sort-filter').value;
       const withFilesOnly = document.getElementById('with-files-only').checked;
 
       const filesMap = state.data.files_by_accession || {};
@@ -429,20 +1613,63 @@
         const meta = inv.metadata || {};
         const summary = filesMap[accession] || { file_count: 0, total_bytes: 0, categories: {}, sample_files: [] };
 
+        if (state.aiFilter.active && !state.aiFilter.matchedAccessions.has(accession)) {
+          return false;
+        }
         if (withFilesOnly && !summary.file_count) return false;
         if (categoryFilter && !(categoryFilter in (summary.categories || {}))) return false;
+        if (subAreaFilter && normalizeSubArea(meta.subResearchArea) !== subAreaFilter) return false;
+        if (hardwareFilter && !getHardwareKeys(meta).includes(hardwareFilter)) return false;
         if (!query) return true;
 
-        const fileNames = (summary.sample_files || []).map((f) => f.file_name || '').join(' ');
-        const haystack = `${accession} ${meta.investigation_title || ''} ${meta.investigation_objective || ''} ${meta.researchArea || ''} ${meta.subResearchArea || ''} ${meta.doi || ''} ${fileNames}`.toLowerCase();
-        return haystack.includes(query);
+        return buildStudyHaystack(inv, summary).includes(query);
       });
 
-      document.getElementById('match-count').textContent = `Showing ${matched.length} of ${(state.data.investigations || []).length} investigations`;
+      matched.sort((a, b) => {
+        const accA = a.accession || '';
+        const accB = b.accession || '';
+        const sumA = filesMap[accA] || {};
+        const sumB = filesMap[accB] || {};
+
+        if (sortBy === 'relevance' && state.aiFilter.active) {
+          const sA = state.aiFilter.scores.get(accA) || 0;
+          const sB = state.aiFilter.scores.get(accB) || 0;
+          if (sB !== sA) return sB - sA;
+        }
+        if (sortBy === 'files_desc') {
+          const diff = Number(sumB.file_count || 0) - Number(sumA.file_count || 0);
+          if (diff !== 0) return diff;
+        }
+        if (sortBy === 'size_desc') {
+          const diff = Number(sumB.total_bytes || 0) - Number(sumA.total_bytes || 0);
+          if (diff !== 0) return diff;
+        }
+        if (sortBy === 'accession_asc') {
+          return parseAccessionNumber(accA) - parseAccessionNumber(accB);
+        }
+        return parsePsiDate((b.metadata || {}).public_release_date) - parsePsiDate((a.metadata || {}).public_release_date);
+      });
+
+      state.lastMatchedRows = matched;
+
+      let matchedFilesTotal = 0;
+      let matchedBytesTotal = 0;
+      for (const inv of matched) {
+        const s = filesMap[inv.accession || ''] || {};
+        matchedFilesTotal += Number(s.file_count || 0);
+        matchedBytesTotal += Number(s.total_bytes || 0);
+      }
+
+      const totalStudies = (state.data.investigations || []).length;
+      document.getElementById('match-count').textContent =
+        `Showing ${matched.length} of ${totalStudies} investigations · ${matchedFilesTotal.toLocaleString()} indexed files · ${formatBytes(matchedBytesTotal)}`;
+
+      renderExplorerStrip();
+      renderActiveAiBanner();
 
       const tbody = document.getElementById('rows');
       if (!matched.length) {
-        tbody.innerHTML = '<tr><td colspan="4" class="empty">No matching investigations found.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="4" class="empty">No matching investigations found. Try clearing one or more filters.</td></tr>';
         return;
       }
 
@@ -450,7 +1677,11 @@
         const accession = inv.accession || '';
         const meta = inv.metadata || {};
         const summary = filesMap[accession] || { file_count: 0, total_bytes: 0, categories: {}, sample_files: [] };
-        const psiSearchUrl = `https://psi.nasa.gov/physci/repo/search?q=${encodeURIComponent(accession)}&data_source=psi&data_type=investigation`;
+        const psiSearchUrl = getPsiSearchUrl(accession);
+        const normSub = normalizeSubArea(meta.subResearchArea);
+        const piLine = getPrimaryPiLabel(meta);
+        const pubCount = (meta.publications || []).length;
+        const aiScore = state.aiFilter.active ? state.aiFilter.scores.get(accession) : null;
 
         const objectiveRaw = String(meta.investigation_objective || 'No objective description available.');
         const objectiveBlock = objectiveRaw.length > 320
@@ -458,58 +1689,1442 @@
           : `<p class="objective">${escapeHtml(objectiveRaw)}</p>`;
 
         const areaPills = [
-          meta.researchArea ? `<span class="cat-pill" style="color: var(--accent); border-color: rgba(56, 189, 248, 0.35);">${escapeHtml(meta.researchArea)}</span>` : '',
-          meta.subResearchArea ? `<span class="cat-pill">${escapeHtml(meta.subResearchArea)}</span>` : '',
+          meta.researchArea ? `<span class="cat-pill accent">${escapeHtml(meta.researchArea)}</span>` : '',
+          normSub && normSub !== 'Unspecified' ? `<span class="cat-pill">${escapeHtml(normSub)}</span>` : '',
+          meta.managingNasaCenter ? `<span class="cat-pill">${escapeHtml(meta.managingNasaCenter)}</span>` : '',
+          meta.experimentHardware ? `<span class="cat-pill emerald" title="${escapeHtml(meta.experimentHardware)}">${escapeHtml(meta.experimentHardware.length > 48 ? meta.experimentHardware.slice(0, 45) + '...' : meta.experimentHardware)}</span>` : '',
           meta.doi ? `<a class="cat-pill" href="https://doi.org/${encodeURIComponent(meta.doi)}" target="_blank" rel="noopener">DOI: ${escapeHtml(meta.doi)}</a>` : '',
+          pubCount ? `<button type="button" class="cat-pill purple cat-pill-btn" data-dossier="${escapeHtml(accession)}" data-dossier-tab="team">${pubCount} Publication${pubCount === 1 ? '' : 's'}</button>` : '',
         ].filter(Boolean).join('');
 
         const catPills = Object.entries(summary.categories || {})
           .map(([cat, count]) => `<span class="cat-pill">${escapeHtml(cat)}: ${count}</span>`)
           .join('');
 
-        const sampleFiles = (summary.sample_files || []).filter((f) => !categoryFilter || f.category === categoryFilter);
-        const fileItems = sampleFiles.map((f) => `
+        const aiMatchedFiles = state.aiFilter.active ? (state.aiFilter.matchedFilesByAcc.get(accession) || null) : null;
+        const baseFiles = (summary.sample_files || []).filter((f) => !categoryFilter || f.category === categoryFilter);
+        const displayFiles = (aiMatchedFiles && aiMatchedFiles.length && !categoryFilter) ? aiMatchedFiles : baseFiles;
+
+        const fileItems = displayFiles.map((f) => `
           <li>
             <a href="${escapeHtml(f.download_url)}" target="_blank" rel="noopener">${escapeHtml(f.file_name)}</a>
             <span>(${formatBytes(f.file_size)})</span>
-            ${f.folder ? `<span class="file-folder">${escapeHtml(f.folder)}</span>` : ''}
+            <span class="file-folder">${escapeHtml(f.category || '')}${f.folder ? ` &middot; ${escapeHtml(f.folder)}` : ''}</span>
           </li>
         `).join('');
 
-        const filesColumn = summary.file_count
-          ? `
+        let filesColumn = '';
+        if (summary.file_count) {
+          const listLabel = (aiMatchedFiles && aiMatchedFiles.length && !categoryFilter)
+            ? `Browse ${displayFiles.length} AI-matched files (${summary.file_count.toLocaleString()} total)`
+            : `Browse ${displayFiles.length}${summary.file_count > displayFiles.length ? ` of ${summary.file_count.toLocaleString()}` : ''} files`;
+          filesColumn = `
             <div><strong>${summary.file_count.toLocaleString()}</strong> files &middot; ${formatBytes(summary.total_bytes)}</div>
             <details>
-              <summary>Browse ${sampleFiles.length}${summary.file_count > sampleFiles.length ? ` of ${summary.file_count}` : ''} files</summary>
+              <summary>${escapeHtml(listLabel)}</summary>
               <ul class="file-list">${fileItems}</ul>
             </details>
-          `
-          : (summary.error
-            ? `<a href="${psiSearchUrl}" target="_blank" rel="noopener" title="${escapeHtml(summary.error)}">Large dataset &mdash; browse files on psi.nasa.gov</a>`
-            : '<span style="color: var(--muted);">0 files indexed</span>');
+            <div style="margin-top: 0.35rem;">
+              <button type="button" class="btn btn-sm" data-dossier="${escapeHtml(accession)}" data-dossier-tab="files">Filter Files in Dossier</button>
+            </div>
+          `;
+        } else if (summary.error) {
+          filesColumn = `
+            ${summary.total_bytes ? `<div style="margin-bottom: 0.25rem;"><strong>${formatBytes(summary.total_bytes)}</strong> reported volume</div>` : ''}
+            <a href="${psiSearchUrl}" target="_blank" rel="noopener" title="${escapeHtml(summary.error)}">Large dataset &mdash; browse files on psi.nasa.gov</a>
+          `;
+        } else {
+          filesColumn = '<span style="color: var(--muted);">0 files indexed</span>';
+        }
 
         return `
-          <tr>
+          <tr class="${state.aiFilter.active ? 'ai-matched-row' : ''}" id="row-${escapeHtml(accession)}">
             <td>
-              <a class="accession-pill" href="${psiSearchUrl}" target="_blank" rel="noopener">${escapeHtml(accession)}</a>
+              <div class="accession-col">
+                <a class="accession-pill" href="${psiSearchUrl}" target="_blank" rel="noopener">${escapeHtml(accession)}</a>
+                ${meta.investigationAcronym ? `<span class="acronym-tag">${escapeHtml(meta.investigationAcronym)}</span>` : ''}
+                ${aiScore !== null ? `<span class="relevance-tag">Match score: ${Math.round(aiScore)}</span>` : ''}
+                <button type="button" class="btn btn-sm" data-dossier="${escapeHtml(accession)}" data-dossier-tab="overview">View Dossier</button>
+              </div>
             </td>
             <td>
               <div class="title">${escapeHtml(meta.investigation_title || 'Untitled Investigation')}</div>
+              ${piLine ? `<div class="pi-line"><span class="muted">PI / Team:</span> ${escapeHtml(piLine)}</div>` : ''}
               ${areaPills ? `<div class="pills" style="margin: 0 0 0.5rem;">${areaPills}</div>` : ''}
               ${objectiveBlock}
               ${catPills ? `<div class="pills">${catPills}</div>` : ''}
             </td>
-            <td>${escapeHtml(meta.public_release_date || '-')}</td>
+            <td>
+              <div>${escapeHtml(meta.public_release_date || '-')}</div>
+              ${meta.projectType ? `<div style="font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem;">${escapeHtml(meta.projectType)}</div>` : ''}
+            </td>
             <td>${filesColumn}</td>
           </tr>
         `;
       }).join('');
     }
 
+    /* ============================================================
+       Investigation Research Dossier Modal
+       ============================================================ */
+    function openDossier(accession, tab = 'overview') {
+      if (!state.data) return;
+      const inv = (state.data.investigations || []).find((i) => i.accession === accession);
+      if (!inv) return;
+
+      state.activeDossierAccession = accession;
+      state.activeDossierTab = tab;
+      state.dossierFileSearch = '';
+      state.dossierFileCategory = '';
+
+      renderDossierModal();
+      document.getElementById('dossier-modal').classList.add('open');
+    }
+
+    function closeDossier() {
+      document.getElementById('dossier-modal').classList.remove('open');
+      state.activeDossierAccession = null;
+    }
+
+    function renderDossierModal() {
+      const accession = state.activeDossierAccession;
+      if (!accession || !state.data) return;
+      const inv = (state.data.investigations || []).find((i) => i.accession === accession);
+      if (!inv) return;
+
+      const meta = inv.metadata || {};
+      const summary = (state.data.files_by_accession || {})[accession] || { file_count: 0, total_bytes: 0, categories: {}, sample_files: [] };
+      const psiUrl = getPsiSearchUrl(accession);
+
+      document.getElementById('dossier-header-content').innerHTML = `
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem;">
+          <a class="accession-pill" href="${psiUrl}" target="_blank" rel="noopener">${escapeHtml(accession)}</a>
+          ${meta.investigationAcronym ? `<span class="acronym-tag">${escapeHtml(meta.investigationAcronym)}</span>` : ''}
+          ${meta.doi ? `<a class="cat-pill accent" href="https://doi.org/${encodeURIComponent(meta.doi)}" target="_blank" rel="noopener">Study DOI: ${escapeHtml(meta.doi)}</a>` : ''}
+          <span class="cat-pill">${escapeHtml(normalizeSubArea(meta.subResearchArea))}</span>
+        </div>
+        <h3 class="modal-title" id="dossier-modal-title">${escapeHtml(meta.investigation_title || 'Untitled Investigation')}</h3>
+      `;
+
+      document.querySelectorAll('#dossier-tabs .tab-btn').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.tab === state.activeDossierTab);
+      });
+
+      const body = document.getElementById('dossier-content');
+
+      if (state.activeDossierTab === 'overview') {
+        const hardwareLinks = String(meta.experimentHardwareLink || '')
+          .split(',')
+          .map((u) => u.trim())
+          .filter((u) => /^https?:\/\//i.test(u));
+
+        const relatedList = String(meta.related_glds || '')
+          .split(',')
+          .map((s) => s.trim())
+          .filter(Boolean);
+
+        const existingAccessions = new Set((state.data.investigations || []).map((i) => i.accession));
+        const relatedHtml = relatedList.map((rel) => {
+          const clean = rel.toUpperCase().startsWith('PSI-') ? rel.toUpperCase() : rel;
+          if (existingAccessions.has(clean)) {
+            return `<button type="button" class="btn btn-sm" data-dossier="${escapeHtml(clean)}" data-dossier-tab="overview">${escapeHtml(clean)}</button>`;
+          }
+          return `<a class="cat-pill" href="${getPsiSearchUrl(clean)}" target="_blank" rel="noopener">${escapeHtml(clean)}</a>`;
+        }).join(' ');
+
+        body.innerHTML = `
+          <div class="dossier-grid">
+            <div class="dossier-kv"><div class="dossier-kv-label">Release Date</div>${escapeHtml(meta.public_release_date || '-')}</div>
+            <div class="dossier-kv"><div class="dossier-kv-label">Managing NASA Center</div>${escapeHtml(meta.managingNasaCenter || '-')}</div>
+            <div class="dossier-kv"><div class="dossier-kv-label">Flight / Space Program</div>${escapeHtml(meta.flightProgram || meta.spaceProgram || '-')}</div>
+            <div class="dossier-kv"><div class="dossier-kv-label">Project Type &amp; Funding</div>${escapeHtml(meta.projectType || '-')}${meta.funding ? ` · Grant ${escapeHtml(meta.funding)}` : ''}</div>
+            <div class="dossier-kv">
+              <div class="dossier-kv-label">Experiment Hardware</div>
+              <div>${escapeHtml(meta.experimentHardware || '-')}</div>
+              ${hardwareLinks.length ? `<div style="margin-top:0.25rem;">${hardwareLinks.map((u, idx) => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener">Hardware Spec ${idx + 1}</a>`).join(' · ')}</div>` : ''}
+            </div>
+            <div class="dossier-kv"><div class="dossier-kv-label">Repository Volume</div>${(summary.file_count || 0).toLocaleString()} indexed files · ${formatBytes(summary.total_bytes)}</div>
+          </div>
+
+          <div class="dossier-section">
+            <h4>Scientific Objective</h4>
+            <p>${escapeHtml(meta.investigation_objective || 'No objective description available.')}</p>
+          </div>
+          ${meta.hypothesis ? `<div class="dossier-section"><h4>Hypothesis</h4><p>${escapeHtml(meta.hypothesis)}</p></div>` : ''}
+          ${meta.approach ? `<div class="dossier-section"><h4>Experimental / Numerical Approach</h4><p>${escapeHtml(meta.approach)}</p></div>` : ''}
+          ${meta.researchImpacts ? `<div class="dossier-section"><h4>Research &amp; Space Safety Impacts</h4><p>${escapeHtml(meta.researchImpacts)}</p></div>` : ''}
+          ${relatedHtml ? `<div class="dossier-section"><h4>Related PSI Investigations</h4><div style="display:flex;flex-wrap:wrap;gap:0.4rem;">${relatedHtml}</div></div>` : ''}
+        `;
+        return;
+      }
+
+      if (state.activeDossierTab === 'team') {
+        const contacts = meta.contacts || [];
+        const pubs = meta.publications || [];
+
+        const contactsHtml = contacts.length
+          ? `<ul class="dossier-list">${contacts.map((c) => `
+              <li>
+                <strong>${escapeHtml(c.name || 'Unnamed Researcher')}</strong>
+                ${(c.roles || []).map((r) => `<span class="cat-pill accent" style="margin-left:0.35rem;">${escapeHtml(r)}</span>`).join('')}
+                <div style="color:var(--muted); margin-top:0.2rem;">
+                  ${escapeHtml(c.affiliation || 'Affiliation not listed')}
+                  ${c.email ? ` · <a href="mailto:${escapeHtml(c.email)}">${escapeHtml(c.email)}</a>` : ''}
+                </div>
+              </li>
+            `).join('')}</ul>`
+          : '<p style="color:var(--muted);">No contact records indexed for this study.</p>';
+
+        const pubsHtml = pubs.length
+          ? `<ul class="dossier-list">${pubs.map((p) => `
+              <li>
+                <div style="font-weight:600; color:#f8fafc;">${escapeHtml(p.title || 'Untitled Publication')}</div>
+                ${p.authors ? `<div style="color:var(--muted); margin-top:0.2rem;">${escapeHtml(p.authors)}</div>` : ''}
+                <div style="margin-top:0.35rem; display:flex; flex-wrap:wrap; gap:0.45rem; align-items:center;">
+                  ${p.status ? `<span class="cat-pill">${escapeHtml(p.status)}</span>` : ''}
+                  ${p.doi ? `<a class="cat-pill accent" href="https://doi.org/${encodeURIComponent(p.doi)}" target="_blank" rel="noopener">DOI: ${escapeHtml(p.doi)}</a>` : ''}
+                  ${p.pubmed_id ? `<a class="cat-pill" href="https://pubmed.ncbi.nlm.nih.gov/${encodeURIComponent(p.pubmed_id)}/" target="_blank" rel="noopener">PubMed: ${escapeHtml(p.pubmed_id)}</a>` : ''}
+                </div>
+              </li>
+            `).join('')}</ul>`
+          : '<p style="color:var(--muted);">No peer-reviewed publications linked in this snapshot.</p>';
+
+        body.innerHTML = `
+          <div class="dossier-section">
+            <h4>Investigators &amp; Research Team (${contacts.length})</h4>
+            ${contactsHtml}
+          </div>
+          <div class="dossier-section">
+            <h4>Linked Publications (${pubs.length})</h4>
+            ${pubsHtml}
+          </div>
+        `;
+        return;
+      }
+
+      const sampleFiles = summary.sample_files || [];
+      const catOptions = Object.keys(summary.categories || {}).sort();
+      const searchNeedle = state.dossierFileSearch.trim().toLowerCase();
+      const filteredFiles = sampleFiles.filter((f) => {
+        if (state.dossierFileCategory && f.category !== state.dossierFileCategory) return false;
+        if (searchNeedle) {
+          const hay = `${f.file_name || ''} ${f.category || ''} ${f.folder || ''}`.toLowerCase();
+          return hay.includes(searchNeedle);
+        }
+        return true;
+      });
+
+      body.innerHTML = `
+        <div style="display:flex; flex-wrap:wrap; gap:0.55rem; align-items:center; margin-bottom:0.85rem;">
+          <input type="search" id="dossier-file-search" placeholder="Filter sample files by name, extension (.csv, .pdf), or folder..." value="${escapeHtml(state.dossierFileSearch)}" style="flex:1 1 240px;" />
+          <select id="dossier-file-category" style="flex:0 1 200px;">
+            <option value="">All Categories (${sampleFiles.length} sample)</option>
+            ${catOptions.map((c) => `<option value="${escapeHtml(c)}" ${state.dossierFileCategory === c ? 'selected' : ''}>${escapeHtml(c)} (${summary.categories[c]})</option>`).join('')}
+          </select>
+          <a class="btn btn-sm btn-primary" href="${psiUrl}" target="_blank" rel="noopener">Browse All ${(summary.file_count || 0).toLocaleString()} Files on NASA PSI</a>
+        </div>
+        ${summary.error ? `<p style="color:var(--orange); font-size:0.84rem;">${escapeHtml(summary.error)} (Reported total volume: ${formatBytes(summary.total_bytes)}).</p>` : ''}
+        <div style="font-size:0.8rem; color:var(--muted); margin-bottom:0.55rem;">
+          Showing ${filteredFiles.length} of ${sampleFiles.length} indexed sample files (out of ${(summary.file_count || 0).toLocaleString()} total repository files · ${formatBytes(summary.total_bytes)})
+        </div>
+        <ul class="dossier-list" id="dossier-file-list">
+          ${filteredFiles.length ? filteredFiles.map((f) => `
+            <li>
+              <div style="display:flex; justify-content:space-between; gap:0.6rem; align-items:flex-start;">
+                <a href="${escapeHtml(f.download_url)}" target="_blank" rel="noopener" style="font-weight:600; word-break:break-word;">${escapeHtml(f.file_name)}</a>
+                <span style="white-space:nowrap; color:var(--muted);">${formatBytes(f.file_size)}</span>
+              </div>
+              <div style="margin-top:0.25rem; font-size:0.76rem; color:var(--muted);">
+                <span class="cat-pill">${escapeHtml(f.category || 'Uncategorized')}</span>
+                ${f.folder ? `<span style="margin-left:0.4rem;">${escapeHtml(f.folder)}</span>` : ''}
+              </div>
+            </li>
+          `).join('') : '<li style="color:var(--muted);">No sample files match the current filter.</li>'}
+        </ul>
+      `;
+
+      const fileSearchInput = document.getElementById('dossier-file-search');
+      if (fileSearchInput) {
+        fileSearchInput.addEventListener('input', (e) => {
+          state.dossierFileSearch = e.target.value;
+          updateDossierFileListOnly();
+        });
+      }
+      const fileCatSelect = document.getElementById('dossier-file-category');
+      if (fileCatSelect) {
+        fileCatSelect.addEventListener('change', (e) => {
+          state.dossierFileCategory = e.target.value;
+          updateDossierFileListOnly();
+        });
+      }
+    }
+
+    function updateDossierFileListOnly() {
+      const accession = state.activeDossierAccession;
+      if (!accession || !state.data) return;
+      const summary = (state.data.files_by_accession || {})[accession] || { sample_files: [] };
+      const sampleFiles = summary.sample_files || [];
+      const searchNeedle = state.dossierFileSearch.trim().toLowerCase();
+      const filteredFiles = sampleFiles.filter((f) => {
+        if (state.dossierFileCategory && f.category !== state.dossierFileCategory) return false;
+        if (searchNeedle) {
+          return `${f.file_name || ''} ${f.category || ''} ${f.folder || ''}`.toLowerCase().includes(searchNeedle);
+        }
+        return true;
+      });
+      const listEl = document.getElementById('dossier-file-list');
+      if (!listEl) return;
+      listEl.innerHTML = filteredFiles.length
+        ? filteredFiles.map((f) => `
+          <li>
+            <div style="display:flex; justify-content:space-between; gap:0.6rem; align-items:flex-start;">
+              <a href="${escapeHtml(f.download_url)}" target="_blank" rel="noopener" style="font-weight:600; word-break:break-word;">${escapeHtml(f.file_name)}</a>
+              <span style="white-space:nowrap; color:var(--muted);">${formatBytes(f.file_size)}</span>
+            </div>
+            <div style="margin-top:0.25rem; font-size:0.76rem; color:var(--muted);">
+              <span class="cat-pill">${escapeHtml(f.category || 'Uncategorized')}</span>
+              ${f.folder ? `<span style="margin-left:0.4rem;">${escapeHtml(f.folder)}</span>` : ''}
+            </div>
+          </li>
+        `).join('')
+        : '<li style="color:var(--muted);">No sample files match the current filter.</li>';
+    }
+
+    /* ============================================================
+       AI Research Query Interpretation & Filtered Search Engine
+       ============================================================ */
+    function interpretQuery(rawQuery, data) {
+      const text = String(rawQuery || '').trim();
+      const lower = text.toLowerCase();
+
+      // 1. Explicit PSI accession IDs
+      const accessions = [];
+      const accRegex = /\bPSI[-\s]?(\d+)\b/gi;
+      let m;
+      while ((m = accRegex.exec(text)) !== null) {
+        const norm = `PSI-${m[1]}`;
+        if (!accessions.includes(norm)) accessions.push(norm);
+      }
+
+      // 2. Sub-research areas mentioned
+      const subAreas = [];
+      const subMatchers = [
+        { label: 'Droplets', test: /\bdroplets?\b/i },
+        { label: 'Flames of Gaseous Fuels', test: /\bgaseous\b|\bgas flames?\b/i },
+        { label: 'Spacecraft Fire Safety', test: /\bspacecraft fire\b|\bfire safety\b/i },
+        { label: 'Smoke Aerosol, Combustion Simulation', test: /\bsmoke\b|\baerosol\b/i },
+        { label: 'Surface Combustion', test: /\bsurface combustion\b|\bsolid fuels?\b/i },
+        { label: 'Laminar Flames', test: /\blaminar\b/i },
+      ];
+      subMatchers.forEach((sm) => {
+        if (sm.test.test(lower)) subAreas.push(sm.label);
+      });
+
+      // 3. File Categories mentioned
+      const categories = [];
+      const catMatchers = [
+        { label: 'Analyzed Data', test: /\banalyzed data\b|\banalyzed\b/i },
+        { label: 'Raw Data', test: /\braw data\b|\braw files?\b/i },
+        { label: 'Experimental table', test: /\bexperimental table\b|\btables?\b/i },
+        { label: 'Reports', test: /\breports?\b|\bdissertation\b|\bfinal report\b/i },
+        { label: 'Presentations', test: /\bpresentations?\b|\bslides?\b|\bppt\b/i },
+        { label: 'Study Metadata Files', test: /\bmetadata\b/i },
+        { label: 'Science Documents', test: /\bscience documents?\b/i },
+        { label: 'Engineering Documents', test: /\bengineering\b/i },
+        { label: 'Representative Image(s)', test: /\brepresentative image\b|\bimages?\b|\bphotos?\b/i },
+      ];
+      catMatchers.forEach((cm) => {
+        if (cm.test.test(lower)) categories.push(cm.label);
+      });
+
+      // 4. File Extensions mentioned
+      const fileExtensions = [];
+      const extMatchers = [
+        { ext: '.csv', test: /\.csv\b|\bcsv\b/i },
+        { ext: '.xlsx', test: /\.xlsx\b|\bexcel\b|\bspreadsheet/i },
+        { ext: '.xls', test: /\.xls\b/i },
+        { ext: '.pdf', test: /\.pdf\b|\bpdf\b/i },
+        { ext: '.zip', test: /\.zip\b|\bzip\b|\barchive\b/i },
+        { ext: '.mp4', test: /\.mp4\b|\bvideo\b|\bvideos\b/i },
+        { ext: '.png', test: /\.png\b/i },
+        { ext: '.jpg', test: /\.jpg\b|\.jpeg\b/i },
+        { ext: '.txt', test: /\.txt\b/i },
+        { ext: '.dat', test: /\.dat\b/i },
+      ];
+      extMatchers.forEach((em) => {
+        if (em.test.test(lower)) {
+          if (!fileExtensions.includes(em.ext)) fileExtensions.push(em.ext);
+        }
+      });
+      if (fileExtensions.includes('.xlsx') && !fileExtensions.includes('.xls')) {
+        fileExtensions.push('.xls');
+      }
+
+      // 5. Hardware / Flight Program
+      const hardware = [];
+      if (/\bacme\b/i.test(lower)) hardware.push('ACME');
+      if (/\bcir\b|combustion integrated rack/i.test(lower)) hardware.push('CIR');
+      if (/\bmdca\b|droplet combustion/i.test(lower)) hardware.push('MDCA');
+      if (/\bsaffire\b|\bcygnus\b/i.test(lower)) hardware.push('SAFFIRE');
+      if (/\bmsg\b|glovebox/i.test(lower)) hardware.push('MSG');
+      if (/\biss\b|international space station/i.test(lower)) hardware.push('ISS');
+      if (/\bflex\b/i.test(lower)) hardware.push('FLEX');
+      if (/\bspice\b/i.test(lower)) hardware.push('SPICE');
+      if (/\bsame\b/i.test(lower)) hardware.push('SAME');
+      if (/\bbass\b/i.test(lower)) hardware.push('BASS');
+
+      // 6. Investigator / Affiliation matching against live dataset
+      const investigatorTerms = [];
+      const knownPeople = new Set();
+      for (const inv of data.investigations || []) {
+        for (const c of (inv.metadata || {}).contacts || []) {
+          if (c.name) {
+            const parts = c.name.split(/\s+/).filter((p) => p.length > 3);
+            parts.forEach((p) => knownPeople.add(p.toLowerCase()));
+          }
+          if (c.affiliation) {
+            c.affiliation.split(/[\s,()]+/).filter((w) => w.length > 4 && !STOPWORDS.has(w.toLowerCase()))
+              .forEach((w) => {
+                if (!['university', 'center', 'research', 'institute', 'national', 'nasa', 'laboratory'].includes(w.toLowerCase())) {
+                  knownPeople.add(w.toLowerCase());
+                }
+              });
+          }
+        }
+      }
+
+      // 7. Tokenize scientific terms & preserve multi-word domain phrases
+      const rawTokens = lower
+        .replace(/[^a-z0-9\-.\s]/g, ' ')
+        .split(/\s+/)
+        .filter((t) => t.length >= 2 && !STOPWORDS.has(t) && !/^psi-\d+$/.test(t));
+
+      const formatTokens = new Set(['csv', '.csv', 'xlsx', '.xlsx', 'xls', '.xls', 'pdf', '.pdf', 'zip', '.zip', 'mp4', '.mp4', 'video', 'videos', 'excel', 'spreadsheet', 'spreadsheets']);
+      const sortOnlyTokens = new Set(['largest', 'biggest', 'most', 'recent', 'latest', 'newest', 'volume', 'size', 'terabytes', 'gigabytes', 'count']);
+
+      const scientificTerms = [];
+      const phrases = ['cool flame', 'cool flames', 'fire safety', 'spacecraft fire', 'flame spread', 'smoke point', 'diffusion flame', 'surface combustion'];
+      phrases.forEach((p) => {
+        if (lower.includes(p)) scientificTerms.push(p);
+      });
+
+      rawTokens.forEach((t) => {
+        if (knownPeople.has(t) && !investigatorTerms.includes(t)) {
+          investigatorTerms.push(t);
+        }
+        if (!formatTokens.has(t) && !sortOnlyTokens.has(t) && !scientificTerms.includes(t)) {
+          scientificTerms.push(t);
+        }
+      });
+
+      // Expand synonyms for richer recall (kept separate from primary terms for scoring)
+      const expandedTerms = new Set(scientificTerms);
+      for (const term of scientificTerms) {
+        if (DOMAIN_SYNONYMS[term]) {
+          DOMAIN_SYNONYMS[term].forEach((syn) => expandedTerms.add(syn));
+        }
+      }
+
+      // 8. Sort & Intent
+      let sortBy = 'relevance';
+      if (/\blargest\b|\bbiggest\b|\bmost data\b|\bdata volume\b|\bhighest volume\b|\bterabytes?\b|\bgigabytes?\b/i.test(lower)) {
+        sortBy = 'size_desc';
+      } else if (/\bmost files\b|\bhighest file count\b|\bmany files\b/i.test(lower)) {
+        sortBy = 'files_desc';
+      } else if (/\brecent\b|\blatest\b|\bnewest\b|\b2025\b|\b2026\b/i.test(lower)) {
+        sortBy = 'release_desc';
+      }
+
+      let intent = 'research';
+      if (/\bcompare\b|\bcomparison\b|\bdifference\b|\bversus\b|\bvs\b/i.test(lower)) {
+        intent = 'comparison';
+      } else if (/\bpublication|\bpapers?\b|\bdoi\b|\bcitation/i.test(lower)) {
+        intent = 'publications';
+      } else if (fileExtensions.length || categories.length || /\bdownload\b|\bdata files?\b|\bcsv\b|\bspreadsheet/i.test(lower)) {
+        intent = 'files';
+      } else if (sortBy === 'size_desc' || sortBy === 'files_desc') {
+        intent = 'volume';
+      }
+
+      const withFilesOnly = Boolean(
+        fileExtensions.length ||
+        categories.length ||
+        /\bwith files\b|\bdownload\b|\bdata files?\b|\blink.*data\b/i.test(lower)
+      );
+
+      return {
+        rawQuery: text,
+        accessions,
+        subAreas,
+        categories,
+        fileExtensions,
+        hardware,
+        investigatorTerms,
+        scientificTerms,
+        expandedTerms: [...expandedTerms],
+        withFilesOnly,
+        sortBy,
+        intent,
+      };
+    }
+
+    function runAssistantSearch(filterPlan, data) {
+      const filesMap = data.files_by_accession || {};
+      const allInvs = data.investigations || [];
+
+      function evaluate(strictFormatAndCategory) {
+        const results = [];
+
+        for (const inv of allInvs) {
+          const accession = inv.accession || '';
+          const meta = inv.metadata || {};
+          const summary = filesMap[accession] || { file_count: 0, total_bytes: 0, categories: {}, sample_files: [] };
+          const sampleFiles = summary.sample_files || [];
+
+          if (filterPlan.withFilesOnly && !summary.file_count && !(strictFormatAndCategory === false && summary.total_bytes > 0)) {
+            continue;
+          }
+
+          // Check format / category match on study files
+          const formatMatchingFiles = sampleFiles.filter((f) => {
+            const ext = getFileExtension(f.file_name);
+            const extOk = !filterPlan.fileExtensions.length || filterPlan.fileExtensions.includes(ext);
+            const catOk = !filterPlan.categories.length || filterPlan.categories.includes(f.category);
+            return extOk && catOk;
+          });
+
+          const categoryPresentInStudy = !filterPlan.categories.length ||
+            filterPlan.categories.some((c) => c in (summary.categories || {}));
+
+          if (strictFormatAndCategory) {
+            if (filterPlan.fileExtensions.length && formatMatchingFiles.length === 0) continue;
+            if (filterPlan.categories.length && !categoryPresentInStudy) continue;
+          }
+
+          // Compute relevance score
+          let score = 0;
+          const title = String(meta.investigation_title || '').toLowerCase();
+          const acronym = String(meta.investigationAcronym || '').toLowerCase();
+          const objective = String(meta.investigation_objective || '').toLowerCase();
+          const hypothesis = String(meta.hypothesis || '').toLowerCase();
+          const approach = String(meta.approach || '').toLowerCase();
+          const impacts = String(meta.researchImpacts || '').toLowerCase();
+          const hwText = `${meta.experimentHardware || ''} ${meta.flightProgram || ''} ${meta.managingNasaCenter || ''}`.toLowerCase();
+          const subNorm = normalizeSubArea(meta.subResearchArea);
+          const subLower = `${meta.researchArea || ''} ${subNorm} ${meta.subResearchArea || ''}`.toLowerCase();
+          const contactsText = (meta.contacts || []).map((c) => `${c.name || ''} ${c.affiliation || ''}`).join(' ').toLowerCase();
+          const pubsText = (meta.publications || []).map((p) => `${p.title || ''} ${p.authors || ''}`).join(' ').toLowerCase();
+
+          // Explicit accession match
+          if (filterPlan.accessions.length) {
+            if (filterPlan.accessions.includes(accession)) {
+              score += 150;
+            } else if (!filterPlan.scientificTerms.length && !filterPlan.hardware.length && !filterPlan.investigatorTerms.length) {
+              continue;
+            }
+          }
+
+          // Sub-Research Area affinity
+          for (const sa of filterPlan.subAreas) {
+            if (subNorm === sa || subLower.includes(sa.toLowerCase())) {
+              score += 22;
+            }
+          }
+
+          // Hardware / Program affinity
+          let hardwareMatches = 0;
+          for (const hw of filterPlan.hardware) {
+            if (hwText.includes(hw.toLowerCase()) || title.includes(hw.toLowerCase()) || acronym.includes(hw.toLowerCase()) || objective.includes(hw.toLowerCase())) {
+              score += 24;
+              hardwareMatches++;
+            }
+          }
+
+          // Investigator / Affiliation match
+          for (const person of filterPlan.investigatorTerms) {
+            if (contactsText.includes(person)) score += 30;
+            if (pubsText.includes(person)) score += 16;
+          }
+
+          // Primary scientific terms (normalized singular matching for plural tokens like aerosols/flames)
+          let primaryHits = 0;
+          for (const term of filterPlan.scientificTerms) {
+            let termMatched = false;
+            const singular = term.length > 4 && term.endsWith('s') && !term.endsWith('ss') ? term.slice(0, -1) : term;
+            const matchTerm = (hay) => hay.includes(term) || (singular !== term && hay.includes(singular));
+            const isPhrase = term.includes(' ');
+            const titleWeight = isPhrase ? 28 : 15;
+            const bodyWeight = isPhrase ? 16 : 8;
+
+            if (matchTerm(title) || matchTerm(acronym)) {
+              score += titleWeight;
+              termMatched = true;
+            }
+            if (matchTerm(subLower)) {
+              score += 14;
+              termMatched = true;
+            }
+            if (matchTerm(objective) || matchTerm(hypothesis) || matchTerm(approach) || matchTerm(impacts)) {
+              score += bodyWeight;
+              termMatched = true;
+            }
+            if (matchTerm(hwText)) {
+              score += 12;
+              termMatched = true;
+            }
+            if (matchTerm(pubsText)) {
+              score += 10;
+              termMatched = true;
+            }
+            if (sampleFiles.some((f) => matchTerm(`${f.file_name} ${f.folder}`.toLowerCase()))) {
+              score += 10;
+              termMatched = true;
+            }
+            if (termMatched) primaryHits++;
+          }
+
+          // Synonym / expanded terms (smaller boost)
+          for (const syn of filterPlan.expandedTerms) {
+            if (filterPlan.scientificTerms.includes(syn)) continue;
+            if (title.includes(syn) || objective.includes(syn) || hypothesis.includes(syn) || approach.includes(syn)) {
+              score += 5;
+            }
+          }
+
+          const contentScore = score;
+
+          // Format & Category score boosts
+          if (filterPlan.categories.length && categoryPresentInStudy) {
+            score += 18;
+          }
+          if (filterPlan.fileExtensions.length && formatMatchingFiles.length) {
+            score += Math.min(28, formatMatchingFiles.length * 6);
+          }
+
+          // If user gave a general volume/recent/all query with no restrictive terms, score all matching studies
+          const hasSpecificContentQuery = Boolean(
+            filterPlan.accessions.length ||
+            filterPlan.scientificTerms.length ||
+            filterPlan.hardware.length ||
+            filterPlan.investigatorTerms.length
+          );
+
+          if (hasSpecificContentQuery) {
+            const minRequiredHits = filterPlan.scientificTerms.length >= 2 ? 2 : 1;
+            const minScore = filterPlan.scientificTerms.length >= 2 ? 20 : 12;
+            const hasStrongContentHit =
+              filterPlan.accessions.includes(accession) ||
+              hardwareMatches > 0 ||
+              (primaryHits >= minRequiredHits && contentScore >= minScore) ||
+              contentScore >= 36;
+            if (!hasStrongContentHit) continue;
+          } else {
+            // General query (e.g., "largest combustion datasets with analyzed data files")
+            score += 10;
+          }
+
+          // Rank files for this study by relevance to query
+          const rankedFiles = [...sampleFiles].map((f) => {
+            let fScore = 0;
+            const ext = getFileExtension(f.file_name);
+            const fHay = `${f.file_name} ${f.category} ${f.folder}`.toLowerCase();
+            if (filterPlan.fileExtensions.includes(ext)) fScore += 30;
+            if (filterPlan.categories.includes(f.category)) fScore += 22;
+            for (const term of filterPlan.scientificTerms) {
+              if (fHay.includes(term)) fScore += 10;
+            }
+            if (f.category === 'Analyzed Data' || f.category === 'Experimental table') fScore += 4;
+            if (f.category === 'Reports') fScore += 2;
+            return { file: f, fScore };
+          })
+          .sort((a, b) => b.fScore - a.fScore || Number(b.file.file_size || 0) - Number(a.file.file_size || 0))
+          .map((item) => item.file);
+
+          const preferredFiles = formatMatchingFiles.length
+            ? rankedFiles.filter((f) => {
+                const extOk = !filterPlan.fileExtensions.length || filterPlan.fileExtensions.includes(getFileExtension(f.file_name));
+                const catOk = !filterPlan.categories.length || filterPlan.categories.includes(f.category);
+                return extOk && catOk;
+              })
+            : rankedFiles;
+
+          // Rank publications by relevance to query
+          const rankedPubs = [...(meta.publications || [])].map((p) => {
+            let pScore = 0;
+            const pHay = `${p.title || ''} ${p.authors || ''}`.toLowerCase();
+            for (const term of filterPlan.scientificTerms) {
+              if (pHay.includes(term)) pScore += 10;
+            }
+            for (const person of filterPlan.investigatorTerms) {
+              if (pHay.includes(person)) pScore += 15;
+            }
+            return { pub: p, pScore };
+          })
+          .sort((a, b) => b.pScore - a.pScore)
+          .map((x) => x.pub);
+
+          results.push({
+            inv,
+            summary,
+            score,
+            matchedFiles: preferredFiles,
+            matchedPublications: rankedPubs,
+          });
+        }
+
+        // Sort final matched investigations
+        results.sort((a, b) => {
+          if (filterPlan.sortBy === 'size_desc') {
+            const diff = Number(b.summary.total_bytes || 0) - Number(a.summary.total_bytes || 0);
+            if (diff !== 0) return diff;
+          } else if (filterPlan.sortBy === 'files_desc') {
+            const diff = Number(b.summary.file_count || 0) - Number(a.summary.file_count || 0);
+            if (diff !== 0) return diff;
+          } else if (filterPlan.sortBy === 'release_desc') {
+            const diff = parsePsiDate((b.inv.metadata || {}).public_release_date) - parsePsiDate((a.inv.metadata || {}).public_release_date);
+            if (diff !== 0) return diff;
+          }
+          if (b.score !== a.score) return b.score - a.score;
+          return Number(b.summary.total_bytes || 0) - Number(a.summary.total_bytes || 0);
+        });
+
+        return results;
+      }
+
+      let matched = evaluate(true);
+      let appliedFallback = false;
+      if (!matched.length && (filterPlan.fileExtensions.length || filterPlan.categories.length)) {
+        matched = evaluate(false);
+        appliedFallback = matched.length > 0;
+      }
+
+      let totalMatchedFiles = 0;
+      let totalMatchedBytes = 0;
+      for (const item of matched) {
+        totalMatchedFiles += Number(item.summary.file_count || 0);
+        totalMatchedBytes += Number(item.summary.total_bytes || 0);
+      }
+
+      return {
+        matchedInvestigations: matched,
+        totalMatchedFiles,
+        totalMatchedBytes,
+        filterPlan,
+        appliedFallback,
+      };
+    }
+
+    function buildTraceTags(searchResult) {
+      const fp = searchResult.filterPlan;
+      const tags = [];
+      if (fp.accessions.length) tags.push({ label: 'Accessions', value: fp.accessions.join(', ') });
+      if (fp.subAreas.length) tags.push({ label: 'Sub-Area', value: fp.subAreas.join(', ') });
+      if (fp.hardware.length) tags.push({ label: 'Hardware/Program', value: fp.hardware.join(', ') });
+      if (fp.investigatorTerms.length) tags.push({ label: 'Investigator', value: fp.investigatorTerms.join(', ') });
+      if (fp.categories.length) tags.push({ label: 'Category', value: fp.categories.join(', ') });
+      if (fp.fileExtensions.length) tags.push({ label: 'Format', value: fp.fileExtensions.join(', ') });
+      if (fp.scientificTerms.length) tags.push({ label: 'Keywords', value: fp.scientificTerms.slice(0, 6).join(', ') });
+      if (fp.withFilesOnly) tags.push({ label: 'Scope', value: 'With files' });
+      tags.push({ label: 'Sort', value: fp.sortBy });
+      tags.push({
+        label: 'Matched',
+        value: `${searchResult.matchedInvestigations.length} studies (${formatBytes(searchResult.totalMatchedBytes)})`,
+      });
+      return tags;
+    }
+
+    function applySearchResultToDashboard(searchResult) {
+      const matched = searchResult.matchedInvestigations;
+      state.aiFilter.active = true;
+      state.aiFilter.query = searchResult.filterPlan.rawQuery;
+      state.aiFilter.matchedAccessions = new Set(matched.map((m) => m.inv.accession));
+      state.aiFilter.scores = new Map(matched.map((m) => [m.inv.accession, m.score]));
+      state.aiFilter.matchedFilesByAcc = new Map(matched.map((m) => [m.inv.accession, m.matchedFiles]));
+      state.aiFilter.traceTags = buildTraceTags(searchResult);
+
+      const targetSort = searchResult.filterPlan.sortBy || 'relevance';
+      state.aiFilter.sortBy = targetSort;
+      document.getElementById('sort-filter').value = targetSort;
+
+      // Clear manual dropdowns that might hide AI matches unexpectedly
+      document.getElementById('search-input').value = '';
+      document.getElementById('subarea-filter').value = '';
+      document.getElementById('category-filter').value = '';
+      document.getElementById('hardware-filter').value = '';
+      document.getElementById('with-files-only').checked = false;
+
+      renderRows();
+    }
+
+    function clearAiFilter() {
+      state.aiFilter.active = false;
+      state.aiFilter.query = '';
+      state.aiFilter.matchedAccessions.clear();
+      state.aiFilter.scores.clear();
+      state.aiFilter.matchedFilesByAcc.clear();
+      state.aiFilter.traceTags = [];
+      if (document.getElementById('sort-filter').value === 'relevance') {
+        document.getElementById('sort-filter').value = 'release_desc';
+      }
+      renderRows();
+    }
+
+    /* ============================================================
+       AI Synthesis (Built-in Scientific Engine + Optional Gemini API)
+       ============================================================ */
+    function formatSimpleMarkdownWithCitations(rawText) {
+      const escaped = escapeHtml(rawText);
+      const lines = escaped.split(/\r?\n/);
+      let htmlOut = '';
+      let inList = false;
+
+      for (const rawLine of lines) {
+        const line = rawLine.trim();
+        if (!line) {
+          if (inList) {
+            htmlOut += '</ul>';
+            inList = false;
+          }
+          continue;
+        }
+        const bulletMatch = line.match(/^[-*]\s+(.*)$/);
+        if (bulletMatch) {
+          if (!inList) {
+            htmlOut += '<ul>';
+            inList = true;
+          }
+          htmlOut += `<li>${applyInlineFormatting(bulletMatch[1])}</li>`;
+        } else {
+          if (inList) {
+            htmlOut += '</ul>';
+            inList = false;
+          }
+          htmlOut += `<p>${applyInlineFormatting(line)}</p>`;
+        }
+      }
+      if (inList) htmlOut += '</ul>';
+      return htmlOut;
+    }
+
+    function applyInlineFormatting(escapedLine) {
+      return escapedLine
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\b(PSI-\d+)\b/g, '<button type="button" class="inline-psi-btn" data-dossier="$1" data-dossier-tab="overview" title="Open $1 Dossier">$1</button>');
+    }
+
+    function buildBuiltInSynthesis(searchResult) {
+      const { matchedInvestigations, totalMatchedFiles, totalMatchedBytes, filterPlan, appliedFallback } = searchResult;
+
+      if (!matchedInvestigations.length) {
+        return {
+          engine: 'Built-in PSI Scientific Engine',
+          markdown: [
+            `No investigations in the current snapshot matched **"${filterPlan.rawQuery}"**.`,
+            `- Try broader combustion terms (e.g., \`cool flame\`, \`droplet\`, \`smoke\`, \`aerosol\`, \`saffire\`, \`acme\`, \`flex\`), an accession like \`PSI-117\`, or a file format like \`csv\` or \`pdf\`.`,
+            `- You can also clear filters to browse all **${(state.data.investigations || []).length}** Combustion Science studies.`,
+          ].join('\n'),
+        };
+      }
+
+      const lines = [];
+      if (appliedFallback) {
+        lines.push(
+          `No studies had exact sample files matching all requested format/category constraints simultaneously, so I broadened the file filter to show the **${matchedInvestigations.length}** closest matching investigations.`
+        );
+      } else {
+        lines.push(
+          `Found **${matchedInvestigations.length}** matching PSI investigation${matchedInvestigations.length === 1 ? '' : 's'} totaling **${totalMatchedFiles.toLocaleString()}** indexed files (**${formatBytes(totalMatchedBytes)}**).`
+        );
+      }
+
+      const top = matchedInvestigations.slice(0, 4);
+      for (const item of top) {
+        const inv = item.inv;
+        const meta = inv.metadata || {};
+        const acc = inv.accession;
+        const pi = getPrimaryPiLabel(meta);
+        const rawObj = String(meta.investigation_objective || meta.hypothesis || '').replace(/\s+/g, ' ').trim();
+        const snippet = rawObj.length > 185 ? `${rawObj.slice(0, 182)}...` : rawObj;
+
+        const details = [];
+        if (meta.experimentHardware) details.push(`Hardware: ${meta.experimentHardware}`);
+        if (pi) details.push(`Team: ${pi}`);
+        if (item.summary.file_count) {
+          const matchedExtCount = filterPlan.fileExtensions.length
+            ? `${item.matchedFiles.length} matching ${filterPlan.fileExtensions.join('/')} sample file(s)`
+            : `${item.summary.file_count.toLocaleString()} files (${formatBytes(item.summary.total_bytes)})`;
+          details.push(`Data: ${matchedExtCount}`);
+        } else if (item.summary.total_bytes) {
+          details.push(`Volume: ${formatBytes(item.summary.total_bytes)}`);
+        }
+        if ((meta.publications || []).length) {
+          details.push(`${meta.publications.length} publication(s)`);
+        }
+
+        lines.push(
+          `- **${acc}** — **${meta.investigation_title || 'Untitled'}** (${normalizeSubArea(meta.subResearchArea)}). ${snippet}${details.length ? ` *(${details.join(' · ')})*` : ''}`
+        );
+      }
+
+      if (matchedInvestigations.length > 4) {
+        const rest = matchedInvestigations.slice(4).map((m) => m.inv.accession).join(', ');
+        lines.push(`Additional matched studies (${matchedInvestigations.length - 4}): ${rest}.`);
+      }
+
+      lines.push(`All linked NASA PSI repository records, DOIs, peer-reviewed publications, and direct data file links are attached below.`);
+
+      return {
+        engine: 'Built-in PSI Scientific Engine',
+        markdown: lines.join('\n'),
+      };
+    }
+
+    async function tryGeminiSynthesis(rawQuery, searchResult, apiKey) {
+      const topContext = searchResult.matchedInvestigations.slice(0, 6).map((item) => {
+        const m = item.inv.metadata || {};
+        return {
+          accession: item.inv.accession,
+          acronym: m.investigationAcronym || '',
+          title: m.investigation_title || '',
+          subResearchArea: normalizeSubArea(m.subResearchArea),
+          releaseDate: m.public_release_date || '',
+          doi: m.doi || '',
+          hardware: m.experimentHardware || '',
+          center: m.managingNasaCenter || '',
+          flightProgram: m.flightProgram || '',
+          contacts: (m.contacts || []).slice(0, 3).map((c) => `${c.name} (${c.affiliation})`).filter(Boolean),
+          objective: String(m.investigation_objective || '').slice(0, 450),
+          hypothesis: String(m.hypothesis || '').slice(0, 350),
+          approach: String(m.approach || '').slice(0, 350),
+          fileCount: item.summary.file_count,
+          totalBytesFormatted: formatBytes(item.summary.total_bytes),
+          categories: item.summary.categories,
+          topMatchedFiles: item.matchedFiles.slice(0, 5).map((f) => ({
+            file_name: f.file_name,
+            category: f.category,
+            size: formatBytes(f.file_size),
+          })),
+          topPublications: item.matchedPublications.slice(0, 3).map((p) => ({
+            title: p.title,
+            doi: p.doi,
+          })),
+        };
+      });
+
+      const systemPrompt = [
+        'You are a NASA Physical Sciences Informatics (PSI) Combustion Science Research Assistant.',
+        'Answer the user question concisely and accurately using ONLY the provided filtered PSI investigation JSON context.',
+        'Always cite studies using their exact accession format like PSI-117 or PSI-159.',
+        'Highlight relevant scientific objectives, experimental hardware/flight programs, PIs, publications, and available data files.',
+        'Use short paragraphs and bullet points with bold study titles. Do not invent any data, DOIs, or URLs not present in the context.',
+      ].join(' ');
+
+      const userPrompt = `User research request: ${rawQuery}\n\nFiltered PSI matches (${searchResult.matchedInvestigations.length} total studies matched):\n${JSON.stringify(topContext, null, 2)}`;
+
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: systemPrompt }] },
+          contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+          generationConfig: { temperature: 0.25, maxOutputTokens: 700 },
+        }),
+      });
+
+      if (!response.ok) {
+        const errBody = await response.text();
+        throw new Error(`Gemini API HTTP ${response.status}: ${errBody.slice(0, 140)}`);
+      }
+      const payload = await response.json();
+      const text = payload?.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('').trim();
+      if (!text) throw new Error('Empty Gemini response');
+      return {
+        engine: 'Gemini 2.5 Flash · Grounded in PSI',
+        markdown: text,
+      };
+    }
+
+    /* ============================================================
+       Chat Rendering, Sources Linking & Manifest Exports
+       ============================================================ */
+    function initChatWelcome() {
+      const container = document.getElementById('ai-messages');
+      const totalInvs = (state.data?.investigations || []).length;
+      const totalPubs = (state.data?.investigations || []).reduce((acc, i) => acc + ((i.metadata || {}).publications || []).length, 0);
+
+      container.innerHTML = `
+        <div class="chat-msg assistant">
+          <div class="chat-bubble">
+            <div style="font-weight:700; color:#f8fafc; margin-bottom:0.3rem;">NASA PSI Combustion Research Assistant</div>
+            <div style="color:var(--muted); font-size:0.82rem;">
+              Ask a scientific question or request specific datasets, investigators, hardware, or file types across <strong>${totalInvs}</strong> investigations and <strong>${totalPubs}</strong> linked publications. I will interpret your request, execute a filtered search, sync the dashboard table, and return findings with direct source &amp; file links.
+            </div>
+            <div class="prompt-grid">
+              ${QUICK_PROMPTS.map((q) => `<button type="button" class="prompt-btn" data-quick-prompt="${escapeHtml(q)}">&rarr; ${escapeHtml(q)}</button>`).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function appendUserBubble(text) {
+      const container = document.getElementById('ai-messages');
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'chat-msg user';
+      msgDiv.innerHTML = `<div class="chat-bubble">${escapeHtml(text)}</div>`;
+      container.appendChild(msgDiv);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function appendThinkingBubble() {
+      const container = document.getElementById('ai-messages');
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'chat-msg assistant';
+      msgDiv.innerHTML = `<div class="chat-bubble"><span class="thinking-indicator">Interpreting request &amp; searching PSI repository...</span></div>`;
+      container.appendChild(msgDiv);
+      container.scrollTop = container.scrollHeight;
+      return msgDiv;
+    }
+
+    function renderSourceCardHtml(item, msgId, cardIdx) {
+      const inv = item.inv;
+      const meta = inv.metadata || {};
+      const acc = inv.accession || '';
+      const psiUrl = getPsiSearchUrl(acc);
+      const pi = getPrimaryPiLabel(meta);
+      const pubs = item.matchedPublications || [];
+      const files = item.matchedFiles || [];
+      const topFiles = files.slice(0, 5);
+      const extraFiles = files.slice(5);
+
+      const pubsHtml = pubs.length ? `
+        <div class="source-pubs">
+          <div style="font-weight:600; color:#ddd6fe; margin-bottom:0.2rem;">Publications (${pubs.length}):</div>
+          ${pubs.slice(0, 2).map((p) => `
+            <div>
+              ${escapeHtml(p.title || 'Untitled')}
+              ${p.doi ? ` · <a href="https://doi.org/${encodeURIComponent(p.doi)}" target="_blank" rel="noopener">DOI: ${escapeHtml(p.doi)}</a>` : ''}
+            </div>
+          `).join('')}
+          ${pubs.length > 2 ? `<div style="color:var(--muted);">+ ${pubs.length - 2} more in Dossier</div>` : ''}
+        </div>
+      ` : '';
+
+      const filesHtml = files.length ? `
+        <div class="source-files">
+          <div style="font-size:0.72rem; font-weight:600; color:var(--muted); margin-bottom:0.2rem;">
+            Linked Data Files (${files.length}${item.summary.file_count > files.length ? ` shown of ${item.summary.file_count.toLocaleString()}` : ''}):
+          </div>
+          ${topFiles.map((f) => `
+            <div class="source-file-row">
+              <div>
+                <a href="${escapeHtml(f.download_url)}" target="_blank" rel="noopener">${escapeHtml(f.file_name)}</a>
+                <span style="color:var(--muted); font-size:0.7rem;"> [${escapeHtml(f.category || 'File')}]</span>
+              </div>
+              <span class="source-file-size">${formatBytes(f.file_size)}</span>
+            </div>
+          `).join('')}
+          ${extraFiles.length ? `
+            <details style="margin-top:0.25rem;">
+              <summary style="font-size:0.74rem;">Show ${extraFiles.length} more indexed files</summary>
+              ${extraFiles.map((f) => `
+                <div class="source-file-row">
+                  <div>
+                    <a href="${escapeHtml(f.download_url)}" target="_blank" rel="noopener">${escapeHtml(f.file_name)}</a>
+                    <span style="color:var(--muted); font-size:0.7rem;"> [${escapeHtml(f.category || 'File')}]</span>
+                  </div>
+                  <span class="source-file-size">${formatBytes(f.file_size)}</span>
+                </div>
+              `).join('')}
+            </details>
+          ` : ''}
+        </div>
+      ` : (item.summary.error ? `
+        <div class="source-files">
+          <a href="${psiUrl}" target="_blank" rel="noopener" style="font-size:0.76rem;">Browse ${formatBytes(item.summary.total_bytes)} dataset directly on psi.nasa.gov &rarr;</a>
+        </div>
+      ` : '');
+
+      return `
+        <div class="source-card" data-msg="${escapeHtml(msgId)}" data-card="${cardIdx}">
+          <div class="source-card-head">
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:0.35rem;">
+              <a class="accession-pill" style="font-size:0.76rem; padding:0.12rem 0.45rem;" href="${psiUrl}" target="_blank" rel="noopener">${escapeHtml(acc)}</a>
+              <span class="cat-pill">${escapeHtml(normalizeSubArea(meta.subResearchArea))}</span>
+              <span class="cat-pill">${(item.summary.file_count || 0).toLocaleString()} files · ${formatBytes(item.summary.total_bytes)}</span>
+            </div>
+            <button type="button" class="btn btn-sm" data-dossier="${escapeHtml(acc)}" data-dossier-tab="overview">Dossier</button>
+          </div>
+          <div class="source-card-title">${escapeHtml(meta.investigation_title || 'Untitled Investigation')}</div>
+          <div class="source-meta-line">
+            ${meta.doi ? `<a href="https://doi.org/${encodeURIComponent(meta.doi)}" target="_blank" rel="noopener">Dataset DOI: ${escapeHtml(meta.doi)}</a>` : ''}
+            ${pi ? `<span>PI: ${escapeHtml(pi)}</span>` : ''}
+            ${meta.experimentHardware ? `<span>Hardware: ${escapeHtml(meta.experimentHardware)}</span>` : ''}
+          </div>
+          ${pubsHtml}
+          ${filesHtml}
+        </div>
+      `;
+    }
+
+    const messageSearchRegistry = new Map();
+
+    function populateAssistantBubble(msgDiv, searchResult, synthesisResult, geminiWarning = '') {
+      const msgId = `msg-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+      messageSearchRegistry.set(msgId, searchResult);
+
+      const traceTags = buildTraceTags(searchResult);
+      const matched = searchResult.matchedInvestigations;
+      const topCards = matched.slice(0, 5);
+      const extraCards = matched.slice(5);
+
+      const traceTagsHtml = traceTags
+        .map((t) => `<span class="trace-tag"><strong>${escapeHtml(t.label)}:</strong> ${escapeHtml(t.value)}</span>`)
+        .join('');
+
+      const sourcesHtml = matched.length ? `
+        <div class="sources-section">
+          <div class="sources-heading">
+            <span>Linked Sources &amp; Direct Data (${matched.length} Stud${matched.length === 1 ? 'y' : 'ies'})</span>
+          </div>
+          ${topCards.map((item, idx) => renderSourceCardHtml(item, msgId, idx)).join('')}
+          ${extraCards.length ? `
+            <details>
+              <summary style="font-size:0.79rem; margin-bottom:0.45rem;">Show ${extraCards.length} additional matched source${extraCards.length === 1 ? '' : 's'}</summary>
+              ${extraCards.map((item, idx) => renderSourceCardHtml(item, msgId, idx + 5)).join('')}
+            </details>
+          ` : ''}
+          <div class="export-bar">
+            <button type="button" class="btn btn-sm" data-export-csv="${escapeHtml(msgId)}">Download Manifest CSV</button>
+            <button type="button" class="btn btn-sm" data-export-json="${escapeHtml(msgId)}">Download JSON</button>
+            <button type="button" class="btn btn-sm" data-copy-citations="${escapeHtml(msgId)}">Copy Citations &amp; Links</button>
+          </div>
+        </div>
+      ` : '';
+
+      msgDiv.innerHTML = `
+        <div class="chat-bubble">
+          <div class="filter-trace">
+            <div class="filter-trace-head">
+              <span>Executed Filtered Search</span>
+              ${matched.length ? `<button type="button" class="btn btn-sm btn-primary" data-apply-msg="${escapeHtml(msgId)}">Apply to Dashboard (${matched.length})</button>` : ''}
+            </div>
+            <div class="trace-tags">${traceTagsHtml}</div>
+          </div>
+
+          <span class="engine-tag">${escapeHtml(synthesisResult.engine)}${geminiWarning ? ` · ${escapeHtml(geminiWarning)}` : ''}</span>
+          <div class="synthesis-body">
+            ${formatSimpleMarkdownWithCitations(synthesisResult.markdown)}
+          </div>
+          ${sourcesHtml}
+        </div>
+      `;
+
+      const container = document.getElementById('ai-messages');
+      container.scrollTop = container.scrollHeight;
+    }
+
+    async function handleChatSubmit(rawPrompt) {
+      const prompt = String(rawPrompt || '').trim();
+      if (!prompt || !state.data || state.assistantBusy) return;
+
+      state.assistantBusy = true;
+      document.getElementById('ai-send-btn').disabled = true;
+
+      appendUserBubble(prompt);
+      const thinkingDiv = appendThinkingBubble();
+
+      try {
+        const filterPlan = interpretQuery(prompt, state.data);
+        const searchResult = runAssistantSearch(filterPlan, state.data);
+
+        if (document.getElementById('ai-sync-toggle').checked && searchResult.matchedInvestigations.length) {
+          applySearchResultToDashboard(searchResult);
+        }
+
+        const apiKey = sessionStorage.getItem(SESSION_KEY_STORAGE) || '';
+        let synthesisResult = null;
+        let geminiWarning = '';
+
+        if (apiKey && searchResult.matchedInvestigations.length) {
+          try {
+            synthesisResult = await tryGeminiSynthesis(prompt, searchResult, apiKey);
+          } catch (err) {
+            geminiWarning = 'Gemini fallback to built-in engine';
+            synthesisResult = buildBuiltInSynthesis(searchResult);
+          }
+        } else {
+          synthesisResult = buildBuiltInSynthesis(searchResult);
+        }
+
+        populateAssistantBubble(thinkingDiv, searchResult, synthesisResult, geminiWarning);
+      } finally {
+        state.assistantBusy = false;
+        document.getElementById('ai-send-btn').disabled = false;
+      }
+    }
+
+    /* ============================================================
+       CSV / JSON / Citation Export Helpers
+       ============================================================ */
+    function csvCell(val) {
+      const s = String(val ?? '').replace(/\r?\n/g, ' ');
+      return `"${s.replace(/"/g, '""')}"`;
+    }
+
+    function downloadBlob(content, filename, mimeType) {
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function exportInvestigationsCsv(items, filename) {
+      const filesMap = state.data?.files_by_accession || {};
+      const header = [
+        'Accession', 'Title', 'SubResearchArea', 'ReleaseDate', 'DatasetDOI',
+        'PSI_URL', 'Hardware', 'PI_Contacts', 'Publication_DOIs',
+        'TotalFiles', 'TotalBytes', 'MatchedSampleFileURLs',
+      ];
+      const rows = items.map((entry) => {
+        const inv = entry.inv || entry;
+        const meta = inv.metadata || {};
+        const acc = inv.accession || '';
+        const summary = entry.summary || filesMap[acc] || {};
+        const files = entry.matchedFiles || summary.sample_files || [];
+        const pubDois = (meta.publications || []).map((p) => p.doi).filter(Boolean).join('; ');
+        const fileUrls = files.slice(0, 10).map((f) => `${f.file_name} (${f.download_url})`).join(' | ');
+        return [
+          acc,
+          meta.investigation_title || '',
+          normalizeSubArea(meta.subResearchArea),
+          meta.public_release_date || '',
+          meta.doi ? `https://doi.org/${meta.doi}` : '',
+          getPsiSearchUrl(acc),
+          meta.experimentHardware || '',
+          getPrimaryPiLabel(meta),
+          pubDois,
+          summary.file_count || 0,
+          summary.total_bytes || 0,
+          fileUrls,
+        ].map(csvCell).join(',');
+      });
+      downloadBlob([header.join(','), ...rows].join('\n'), filename, 'text/csv;charset=utf-8;');
+    }
+
+    function updateGeminiUiStatus() {
+      const key = sessionStorage.getItem(SESSION_KEY_STORAGE) || '';
+      const modeLabel = document.getElementById('ai-engine-mode-label');
+      const statusText = document.getElementById('gemini-status-text');
+      const keyInput = document.getElementById('gemini-key-input');
+      if (key) {
+        modeLabel.textContent = 'Gemini 2.5 Flash + PSI';
+        statusText.textContent = 'Gemini API key active in sessionStorage.';
+        statusText.style.color = 'var(--emerald)';
+        if (keyInput && !keyInput.value) keyInput.placeholder = 'API key saved in sessionStorage (enter new key to replace)';
+      } else {
+        modeLabel.textContent = 'Built-in PSI Engine';
+        statusText.textContent = 'Using built-in deterministic PSI retrieval & synthesis engine (no API key needed).';
+        statusText.style.color = 'var(--muted)';
+      }
+    }
+
+    /* ============================================================
+       Event Wiring
+       ============================================================ */
     document.getElementById('search-input').addEventListener('input', renderRows);
+    document.getElementById('subarea-filter').addEventListener('change', renderRows);
     document.getElementById('category-filter').addEventListener('change', renderRows);
+    document.getElementById('hardware-filter').addEventListener('change', renderRows);
+    document.getElementById('sort-filter').addEventListener('change', renderRows);
     document.getElementById('with-files-only').addEventListener('change', renderRows);
 
+    document.getElementById('reset-filters-btn').addEventListener('click', () => {
+      document.getElementById('search-input').value = '';
+      document.getElementById('subarea-filter').value = '';
+      document.getElementById('category-filter').value = '';
+      document.getElementById('hardware-filter').value = '';
+      document.getElementById('sort-filter').value = 'release_desc';
+      document.getElementById('with-files-only').checked = false;
+      clearAiFilter();
+    });
+
+    document.getElementById('clear-ai-filter-btn').addEventListener('click', clearAiFilter);
+
+    document.getElementById('export-filtered-csv-btn').addEventListener('click', () => {
+      if (!state.lastMatchedRows.length) return;
+      exportInvestigationsCsv(state.lastMatchedRows, 'nasa_psi_filtered_studies.csv');
+    });
+
+    // Explorer strip click delegation
+    document.getElementById('explorer-subareas').addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-subarea]');
+      if (!btn) return;
+      const select = document.getElementById('subarea-filter');
+      select.value = select.value === btn.dataset.subarea ? '' : btn.dataset.subarea;
+      renderRows();
+    });
+
+    document.getElementById('explorer-categories').addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-category]');
+      if (!btn) return;
+      const select = document.getElementById('category-filter');
+      select.value = select.value === btn.dataset.category ? '' : btn.dataset.category;
+      renderRows();
+    });
+
+    // AI Panel Toggle & Settings
+    document.getElementById('toggle-ai-btn').addEventListener('click', () => {
+      const shell = document.getElementById('workspace-shell');
+      const collapsed = shell.classList.toggle('ai-collapsed');
+      const btn = document.getElementById('toggle-ai-btn');
+      btn.textContent = collapsed ? 'Open AI Assistant' : 'Hide AI Assistant';
+      btn.setAttribute('aria-expanded', String(!collapsed));
+    });
+
+    document.getElementById('ai-wide-btn').addEventListener('click', () => {
+      const shell = document.getElementById('workspace-shell');
+      const wide = shell.classList.toggle('ai-wide');
+      document.getElementById('ai-wide-btn').textContent = wide ? 'Standard' : 'Wide';
+    });
+
+    document.getElementById('ai-clear-btn').addEventListener('click', () => {
+      if (state.data) initChatWelcome();
+    });
+
+    document.getElementById('ai-settings-btn').addEventListener('click', () => {
+      document.getElementById('ai-settings-drawer').classList.toggle('open');
+    });
+
+    document.getElementById('gemini-save-btn').addEventListener('click', () => {
+      const val = document.getElementById('gemini-key-input').value.trim();
+      if (val) {
+        sessionStorage.setItem(SESSION_KEY_STORAGE, val);
+        document.getElementById('gemini-key-input').value = '';
+      }
+      updateGeminiUiStatus();
+    });
+
+    document.getElementById('gemini-clear-btn').addEventListener('click', () => {
+      sessionStorage.removeItem(SESSION_KEY_STORAGE);
+      document.getElementById('gemini-key-input').value = '';
+      updateGeminiUiStatus();
+    });
+
+    // AI Chat Submit & Enter Key
+    document.getElementById('ai-chat-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('ai-input');
+      const query = input.value.trim();
+      if (!query) return;
+      input.value = '';
+      handleChatSubmit(query);
+    });
+
+    document.getElementById('ai-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        document.getElementById('ai-chat-form').requestSubmit();
+      }
+    });
+
+    // Global delegated clicks for Dossier, Quick Prompts, Apply Filter, and Exports
+    document.addEventListener('click', (e) => {
+      const dossierBtn = e.target.closest('[data-dossier]');
+      if (dossierBtn) {
+        openDossier(dossierBtn.dataset.dossier, dossierBtn.dataset.dossierTab || 'overview');
+        return;
+      }
+
+      const quickBtn = e.target.closest('[data-quick-prompt]');
+      if (quickBtn) {
+        handleChatSubmit(quickBtn.dataset.quickPrompt);
+        return;
+      }
+
+      const applyBtn = e.target.closest('[data-apply-msg]');
+      if (applyBtn) {
+        const res = messageSearchRegistry.get(applyBtn.dataset.applyMsg);
+        if (res) {
+          applySearchResultToDashboard(res);
+          applyBtn.textContent = 'Synced to Table';
+        }
+        return;
+      }
+
+      const expCsvBtn = e.target.closest('[data-export-csv]');
+      if (expCsvBtn) {
+        const res = messageSearchRegistry.get(expCsvBtn.dataset.exportCsv);
+        if (res) exportInvestigationsCsv(res.matchedInvestigations, 'nasa_psi_ai_research_manifest.csv');
+        return;
+      }
+
+      const expJsonBtn = e.target.closest('[data-export-json]');
+      if (expJsonBtn) {
+        const res = messageSearchRegistry.get(expJsonBtn.dataset.exportJson);
+        if (res) {
+          const bundle = {
+            query: res.filterPlan.rawQuery,
+            filters: res.filterPlan,
+            matchedCount: res.matchedInvestigations.length,
+            studies: res.matchedInvestigations.map((m) => ({
+              accession: m.inv.accession,
+              psi_url: getPsiSearchUrl(m.inv.accession),
+              metadata: m.inv.metadata,
+              file_summary: m.summary,
+              matched_files: m.matchedFiles,
+            })),
+          };
+          downloadBlob(JSON.stringify(bundle, null, 2), 'nasa_psi_ai_research_results.json', 'application/json');
+        }
+        return;
+      }
+
+      const copyBtn = e.target.closest('[data-copy-citations]');
+      if (copyBtn) {
+        const res = messageSearchRegistry.get(copyBtn.dataset.copyCitations);
+        if (res && navigator.clipboard) {
+          const text = res.matchedInvestigations.map((m) => {
+            const meta = m.inv.metadata || {};
+            const acc = m.inv.accession;
+            const doiStr = meta.doi ? `https://doi.org/${meta.doi}` : 'N/A';
+            const filesStr = m.matchedFiles.slice(0, 3).map((f) => `  - ${f.file_name}: ${f.download_url}`).join('\n');
+            return `${acc}: ${meta.investigation_title}\n  PSI: ${getPsiSearchUrl(acc)}\n  DOI: ${doiStr}${filesStr ? `\n${filesStr}` : ''}`;
+          }).join('\n\n');
+          navigator.clipboard.writeText(text).then(() => {
+            const orig = copyBtn.textContent;
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => { copyBtn.textContent = orig; }, 1500);
+          });
+        }
+      }
+    });
+
+    // Dossier Modal Events
+    document.getElementById('dossier-close-btn').addEventListener('click', closeDossier);
+    document.getElementById('dossier-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'dossier-modal') closeDossier();
+    });
+    document.getElementById('dossier-tabs').addEventListener('click', (e) => {
+      const tabBtn = e.target.closest('.tab-btn');
+      if (!tabBtn) return;
+      state.activeDossierTab = tabBtn.dataset.tab;
+      renderDossierModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.getElementById('dossier-modal').classList.contains('open')) {
+        closeDossier();
+      }
+    });
+
+    updateGeminiUiStatus();
     loadDashboard();
   </script>
 </body>
