@@ -1246,7 +1246,7 @@
 
       <div class="ai-settings-drawer" id="ai-settings-drawer">
         <div>
-          <strong>AI Synthesis Engine</strong> — Works offline on static GitHub Pages via the built-in PSI Scientific Retrieval &amp; Synthesis Engine. Optionally add a Google Gemini API key (<code>gemini-2.5-flash</code>) for generative LLM synthesis grounded strictly on matched PSI records.
+          <strong>AI Synthesis Engine</strong> — Works offline on static GitHub Pages via the built-in PSI Scientific Retrieval &amp; Synthesis Engine. Optionally add a Google Gemini API key (<code>gemini-3.8-flash</code>) for generative LLM synthesis grounded strictly on matched PSI records.
         </div>
         <div class="ai-settings-row">
           <input type="password" id="gemini-key-input" placeholder="Optional Gemini API Key (auto-saved in browser storage)" autocomplete="off" />
@@ -2606,6 +2606,87 @@
       searchResult.totalMatchedBytes = hydrated.reduce((acc, item) => acc + Number(item.summary.total_bytes || 0), 0);
     }
 
+    let cachedDiscoveredGeminiModel = null;
+
+    async function callGeminiGenerateContent(modelId, modelLabel, systemPrompt, userPrompt, apiKey) {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(modelId)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: systemPrompt }] },
+          contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+          generationConfig: { temperature: 0.25 },
+        }),
+      });
+
+      if (!response.ok) {
+        let errMessage = `HTTP ${response.status}`;
+        try {
+          const errJson = await response.json();
+          if (errJson?.error?.message) errMessage = `HTTP ${response.status}: ${errJson.error.message}`;
+        } catch {
+          const errText = await response.text().catch(() => '');
+          if (errText) errMessage = `HTTP ${response.status}: ${errText.slice(0, 140)}`;
+        }
+        const err = new Error(errMessage);
+        err.status = response.status;
+        err.isAuthError = response.status === 401 || response.status === 403 || /api key/i.test(errMessage);
+        throw err;
+      }
+
+      const payload = await response.json();
+      const parts = payload?.candidates?.[0]?.content?.parts || [];
+      const text = parts
+        .filter((p) => !p.thought && typeof p.text === 'string')
+        .map((p) => p.text)
+        .join('')
+        .trim();
+
+      if (!text) {
+        const finishReason = payload?.candidates?.[0]?.finishReason || 'unknown';
+        throw new Error(`Empty ${modelLabel} response (finishReason: ${finishReason})`);
+      }
+
+      return {
+        engine: `${modelLabel} · Grounded in PSI`,
+        markdown: text,
+      };
+    }
+
+    async function discoverAvailableGeminiModel(apiKey) {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`);
+      if (!res.ok) return null;
+      const data = await res.json();
+      const candidates = (data.models || []).filter((m) => {
+        const name = String(m.name || '');
+        const methods = m.supportedGenerationMethods || [];
+        return methods.includes('generateContent') &&
+          /gemini/i.test(name) &&
+          !/embedding|imagen|veo|tts|audio|robotics|aqa|1\.5|2\.0/i.test(name);
+      });
+      if (!candidates.length) return null;
+
+      candidates.sort((a, b) => {
+        const score = (m) => {
+          const n = String(m.name || '').toLowerCase();
+          let s = 0;
+          if (n.includes('flash')) s += 40;
+          if (n.includes('3.')) s += 30;
+          else if (n.includes('2.5')) s += 20;
+          if (n.includes('lite')) s -= 5;
+          if (n.includes('latest')) s += 5;
+          return s;
+        };
+        return score(b) - score(a);
+      });
+
+      const chosen = candidates[0];
+      const modelId = String(chosen.name || '').replace(/^models\//, '');
+      if (!modelId) return null;
+      return { id: modelId, label: chosen.displayName || modelId };
+    }
+
     async function tryGeminiSynthesis(rawQuery, searchResult, apiKey) {
       const filesMap = state.data?.files_by_accession || {};
       const topMatches = searchResult.matchedInvestigations.slice(0, 6);
@@ -2675,68 +2756,38 @@
         remainingCatalog.length ? `\nAdditional PSI catalog studies (${remainingCatalog.length}):\n${JSON.stringify(remainingCatalog, null, 2)}` : '',
       ].join('\n');
 
-      const models = [
-        { id: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash', supportsThinkingConfig: true },
-        { id: 'gemini-2.0-flash', label: 'Gemini 2.0 Flash', supportsThinkingConfig: false },
-      ];
+      const models = [];
+      if (cachedDiscoveredGeminiModel) {
+        models.push(cachedDiscoveredGeminiModel);
+      }
+      models.push(
+        { id: 'gemini-3.8-flash', label: 'Gemini 3.8 Flash' },
+        { id: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash' },
+        { id: 'gemini-flash-latest', label: 'Gemini Flash Latest' },
+      );
 
+      const seenModels = new Set();
       let lastErr = null;
+      let sawNotFound = false;
+
       for (const model of models) {
-        const generationConfig = {
-          temperature: 0.25,
-          maxOutputTokens: 2048,
-        };
-        if (model.supportsThinkingConfig) {
-          generationConfig.thinkingConfig = { thinkingBudget: 0 };
+        if (seenModels.has(model.id)) continue;
+        seenModels.add(model.id);
+        try {
+          return await callGeminiGenerateContent(model.id, model.label, systemPrompt, userPrompt, apiKey);
+        } catch (err) {
+          if (err.isAuthError) throw err;
+          if (err.status === 404) sawNotFound = true;
+          lastErr = err;
         }
+      }
 
-        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model.id}:generateContent?key=${encodeURIComponent(apiKey)}`;
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            systemInstruction: { parts: [{ text: systemPrompt }] },
-            contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
-            generationConfig,
-          }),
-        });
-
-        if (!response.ok) {
-          let errMessage = `HTTP ${response.status}`;
-          try {
-            const errJson = await response.json();
-            if (errJson?.error?.message) errMessage = `HTTP ${response.status}: ${errJson.error.message}`;
-          } catch {
-            const errText = await response.text().catch(() => '');
-            if (errText) errMessage = `HTTP ${response.status}: ${errText.slice(0, 140)}`;
-          }
-
-          const isAuthError = response.status === 401 || response.status === 403 || /api key/i.test(errMessage);
-          if (isAuthError) {
-            throw new Error(errMessage);
-          }
-          lastErr = new Error(errMessage);
-          continue;
+      if (sawNotFound) {
+        const discovered = await discoverAvailableGeminiModel(apiKey).catch(() => null);
+        if (discovered && !seenModels.has(discovered.id)) {
+          cachedDiscoveredGeminiModel = discovered;
+          return await callGeminiGenerateContent(discovered.id, discovered.label, systemPrompt, userPrompt, apiKey);
         }
-
-        const payload = await response.json();
-        const parts = payload?.candidates?.[0]?.content?.parts || [];
-        const text = parts
-          .filter((p) => !p.thought && typeof p.text === 'string')
-          .map((p) => p.text)
-          .join('')
-          .trim();
-
-        if (!text) {
-          const finishReason = payload?.candidates?.[0]?.finishReason || 'unknown';
-          lastErr = new Error(`Empty ${model.label} response (finishReason: ${finishReason})`);
-          continue;
-        }
-
-        return {
-          engine: `${model.label} · Grounded in PSI`,
-          markdown: text,
-        };
       }
 
       throw lastErr || new Error('Gemini request failed');
@@ -3085,7 +3136,7 @@
       const statusText = document.getElementById('gemini-status-text');
       const keyInput = document.getElementById('gemini-key-input');
       if (key) {
-        modeLabel.textContent = 'Gemini 2.5 Flash + PSI';
+        modeLabel.textContent = 'Gemini 3.8 Flash + PSI';
         if (errorMsg) {
           statusText.textContent = errorMsg;
           statusText.style.color = 'var(--orange)';
